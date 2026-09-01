@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ─── Runtime CSS custom properties (available in JS/CSS at runtime) ─── */
+:root {
+  --background:     #FFFFFF;
+  --foreground:     #111318;
+  --card-bg:        #FFFFFF;
+  --bg-secondary:   #F9FAFB;
+  --bg-tertiary:    #F3F4F6;
+  --accent:         #1E3A5F;
+  --accent-hover:   #142838;
+  --charcoal:       #111318;
+  --slate-grey:     #59616B;
+  --metallic-zinc:  #E5E7EB;
+  --border-color:   #E5E7EB;
+}
+
+/* ─── Tailwind v4 theme tokens ────────────────────────────────────────── */
+/* Literal values required here — var() to :root variables NOT supported  */
+/* at Tailwind build time for color tokens.                                */
+/* Font vars use Next.js-injected CSS variables (resolved at runtime).     */
+@theme {
+  /* Colors */
+  --color-background:   #FFFFFF;
+  --color-foreground:   #111318;
+  --color-card-bg:      #FFFFFF;
+  --color-accent:       #1E3A5F;
+  --color-accent-hover: #142838;
+  --color-charcoal:     #111318;
+  --color-slate-grey:   #59616B;
+  --color-border:       #E5E7EB;
+
+  /* Fonts — Next.js injects --font-inter / --font-space-grotesk at runtime */
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, "Courier New", monospace;
+}
+
+/* ─── Base element styles ─────────────────────────────────────────────── */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ─── Custom utility classes ──────────────────────────────────────────── */
+
+/* Elevated light card — subtle rest shadow, lifts on hover */
+.premium-card-light {
+  box-shadow: 0 1px 2px rgba(17, 19, 24, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.premium-card-light:hover {
+  box-shadow: 0 16px 32px -12px rgba(17, 19, 24, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Dark CTA card — was referenced with no background defined anywhere,   */
+/* which rendered white text on a transparent (white) card. Fixed here.  */
+.premium-card-dark {
+  background-color: var(--charcoal);
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.45);
+}
+
+/* Light technical grid — white/off-white section backgrounds */
+.tech-grid-overlay {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(89, 97, 107, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(89, 97, 107, 0.06) 1px, transparent 1px);
+}
+
+/* Dark technical grid — CTA / footer dark sections */
+.tech-grid-overlay-dark {
+  background-size: 30px 30px;
+  background-image:
+    linear-gradient(to right, rgba(226, 232, 240, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.03) 1px, transparent 1px);
+}
+
+/* Blueprint dot grid — dark navy blue, for dark backgrounds */
+.tech-dot-grid {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(30, 58, 95, 0.15) 1px, transparent 0);
+}
+
+/* Blueprint dot grid — grey, for white/light backgrounds */
+.tech-dot-grid-light {
+  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(89, 97, 107, 0.07) 1px, transparent 0);
+}
+
+/* ─── Accessibility: reduced motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Partner logo marquee ─────────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
