@@ -3,7 +3,6 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ScrollProgressBar from "@/components/animations/ScrollProgressBar";
 import ScrollToTop from "@/components/animations/ScrollToTop";
 import { defaultMetadata } from "@/lib/seo/config";
 
@@ -30,7 +29,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <ScrollProgressBar />
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
