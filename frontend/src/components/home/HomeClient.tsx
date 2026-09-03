@@ -15,6 +15,7 @@ import {
 import { ArrowRight } from 'lucide-react';
 import { ProductCategory, Industry, Project, BlogPost } from '@/types';
 import { getImageUrl } from '@/lib/api/client';
+import IndustrialTicker from '@/components/animations/IndustrialTicker';
 
 function StatCounter({ value, targetVal, noMotion, suffix = '+' }: { value: string; targetVal: number; noMotion: boolean; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -710,6 +711,8 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
 
       </section>
 
+      {/* ─── TECHNICAL SPECIFICATION TICKER ─── */}
+      <IndustrialTicker />
 
       {/* ─── 02 PRODUCTS ─── */}
       <section ref={productsRef} className="bg-[#F5F6F7] py-32 relative z-20 border-b border-[#D9DDE1]">
@@ -1422,6 +1425,9 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
           </div>
         </div>
       </section>
+
+      {/* ─── REVERSE MARQUEE TICKER ─── */}
+      <IndustrialTicker reverse speed={34} />
 
       {/* ─── 08 CTA — Intentional dark contrast section ─── */}
       <CtaSection />
