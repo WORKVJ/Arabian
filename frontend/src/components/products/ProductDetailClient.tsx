@@ -138,7 +138,7 @@ function ProductGallery({ images, productName }: { images: ProductImage[]; produ
               key={img.id}
               onClick={() => setActiveIdx(i)}
               className={`relative aspect-square w-16 shrink-0 overflow-hidden border-2 transition-all duration-200 ${
-                i === activeIdx ? 'border-[#1E3A5F]' : 'border-[#D9DDE1] hover:border-[#111318]'
+                i === activeIdx ? 'border-[#E8612C]' : 'border-[#D9DDE1] hover:border-[#111318]'
               }`}
               aria-label={`View image ${i + 1}`}
             >
@@ -165,7 +165,7 @@ function ProductGallery({ images, productName }: { images: ProductImage[]; produ
             onClick={() => setLightboxOpen(false)}
           >
             <button
-              className="absolute top-4 right-4 text-white hover:text-[#1E3A5F] transition-colors"
+              className="absolute top-4 right-4 text-white hover:text-[#E8612C] transition-colors"
               onClick={() => setLightboxOpen(false)}
               aria-label="Close lightbox"
             >
@@ -174,14 +174,14 @@ function ProductGallery({ images, productName }: { images: ProductImage[]; produ
             {images.length > 1 && (
               <>
                 <button
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-[#1E3A5F] transition-colors"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-[#E8612C] transition-colors"
                   onClick={(e) => { e.stopPropagation(); prev(); }}
                   aria-label="Previous"
                 >
                   <ChevronLeft className="w-8 h-8" />
                 </button>
                 <button
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-[#1E3A5F] transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-[#E8612C] transition-colors"
                   onClick={(e) => { e.stopPropagation(); next(); }}
                   aria-label="Next"
                 >
@@ -253,7 +253,7 @@ function RelatedCard({ product, index }: { product: RelatedProduct; index: numbe
     >
       <Link
         href={`/products/${product.slug}`}
-        className="group flex flex-col bg-white border border-[#D9DDE1] overflow-hidden hover:border-[#1E3A5F] transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#1E3A5F] outline-none"
+        className="group flex flex-col bg-white border border-[#D9DDE1] overflow-hidden hover:border-[#E8612C] transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#E8612C] outline-none"
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-[#F0F1F3]">
           {product.primary_image ? (
@@ -279,16 +279,16 @@ function RelatedCard({ product, index }: { product: RelatedProduct; index: numbe
           )}
         </div>
         <div className="p-4">
-          <span className="text-[9px] font-mono text-[#1E3A5F] tracking-widest uppercase block mb-1">
+          <span className="text-[9px] font-mono text-[#E8612C] tracking-widest uppercase block mb-1">
             {product.category_name}
           </span>
-          <h4 className="text-sm font-display font-black text-[#111318] uppercase tracking-wide mb-1.5 group-hover:text-[#1E3A5F] transition-colors">
+          <h4 className="text-sm font-display font-black text-[#111318] uppercase tracking-wide mb-1.5 group-hover:text-[#E8612C] transition-colors">
             {product.name}
           </h4>
           <p className="text-[11px] text-[#6B7280] line-clamp-2 leading-relaxed mb-3">
             {product.short_description}
           </p>
-          <span className="inline-flex items-center gap-1 text-[10px] font-display font-bold text-[#1E3A5F] uppercase tracking-widest">
+          <span className="inline-flex items-center gap-1 text-[10px] font-display font-bold text-[#E8612C] uppercase tracking-widest">
             Explore <ArrowRight className="w-3 h-3" />
           </span>
         </div>
@@ -330,7 +330,7 @@ function StickyCTA({ product, heroRef }: { product: Product; heroRef: React.RefO
             </span>
             <Link
               href={contactHref}
-              className="flex items-center gap-1.5 px-6 py-2 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors whitespace-nowrap rounded-sm"
+              className="flex items-center gap-1.5 px-6 py-2 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors whitespace-nowrap rounded-sm"
             >
               Contact Us
             </Link>
@@ -346,7 +346,7 @@ function StickyCTA({ product, heroRef }: { product: Product; heroRef: React.RefO
           >
             <Link
               href={contactHref}
-              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors whitespace-nowrap rounded-sm"
+              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors whitespace-nowrap rounded-sm"
             >
               Contact Us
             </Link>
@@ -365,7 +365,7 @@ function SectionCTAs({ productName }: { productName: string }) {
     <div className="flex flex-wrap gap-3 mt-6 pt-5 border-t border-[#D9DDE1]">
       <Link
         href={contactHref}
-        className="inline-flex items-center gap-1.5 px-6 py-2 bg-[#1E3A5F] text-white text-[9px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors rounded-sm"
+        className="inline-flex items-center gap-1.5 px-6 py-2 bg-[#E8612C] text-white text-[9px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors rounded-sm"
       >
         Contact Us
       </Link>
@@ -424,13 +424,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-[10px] font-mono text-[#9CA3AF] mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#1E3A5F] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#E8612C] transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/products" className="hover:text-[#1E3A5F] transition-colors">Products</Link>
+            <Link href="/products" className="hover:text-[#E8612C] transition-colors">Products</Link>
             <span>/</span>
             <Link
               href={`/products?category=${product.category?.slug}`}
-              className="hover:text-[#1E3A5F] transition-colors"
+              className="hover:text-[#E8612C] transition-colors"
             >
               {product.category?.name}
             </Link>
@@ -456,7 +456,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 {/* Index + category */}
-                <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.25em] uppercase block mb-3">
+                <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.25em] uppercase block mb-3">
                   01 // {product.category?.name || 'Product System'}
                 </span>
 
@@ -481,7 +481,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <div className="flex flex-col sm:flex-row gap-3 mb-8">
                   <Link
                     href={`/contact?subject=${encodeURIComponent(`Inquiry: ${product.name}`)}`}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1E3A5F] text-white text-[11px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#E8612C] text-white text-[11px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors"
                   >
                     Contact Us <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
@@ -530,7 +530,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 viewport={{ once: true, margin: '-60px 0px' }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-4">
+                <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-4">
                   01 // Overview
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-display font-black text-[#111318] uppercase tracking-wide leading-tight mb-6">
@@ -568,7 +568,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                         transition={{ duration: 0.3, delay: i * 0.05 }}
                         className="flex items-start gap-3 text-[12px] text-[#374151] leading-relaxed"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1E3A5F] shrink-0 mt-1.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#E8612C] shrink-0 mt-1.5" />
                         {feat}
                       </motion.li>
                     ))}
@@ -591,7 +591,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               transition={{ duration: 0.5 }}
               className="mb-10"
             >
-              <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+              <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
                 02 // Technical Data
               </span>
               <h2 className="text-2xl sm:text-3xl font-display font-black text-[#111318] uppercase tracking-wide">
@@ -629,7 +629,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               <div className="flex gap-3 w-full sm:w-auto shrink-0">
                 <Link
                   href={quoteHref}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors rounded-sm"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors rounded-sm"
                 >
                   Request Quote
                 </Link>
@@ -656,7 +656,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               transition={{ duration: 0.5 }}
               className="mb-10"
             >
-              <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+              <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
                 03 // Where It Is Used
               </span>
               <h2 className="text-2xl sm:text-3xl font-display font-black text-[#111318] uppercase tracking-wide">
@@ -672,9 +672,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px 0px' }}
                   transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className="group border border-[#D9DDE1] p-5 hover:border-[#1E3A5F] transition-colors duration-200 cursor-default"
+                  className="group border border-[#D9DDE1] p-5 hover:border-[#E8612C] transition-colors duration-200 cursor-default"
                 >
-                  <div className="w-3 h-0.5 bg-[#1E3A5F] mb-3 group-hover:w-6 transition-all duration-300" />
+                  <div className="w-3 h-0.5 bg-[#E8612C] mb-3 group-hover:w-6 transition-all duration-300" />
                   <p className="text-[11px] font-display font-bold text-[#111318] uppercase tracking-wide">
                     {app}
                   </p>
@@ -710,7 +710,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                       viewport={{ once: true, margin: '-60px 0px' }}
                       transition={{ duration: 0.5 }}
                     >
-                      <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-4">
+                      <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-4">
                         04 // Standards
                       </span>
                       <h2 className="text-lg font-display font-black text-[#111318] uppercase tracking-wide mb-8">
@@ -728,18 +728,18 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             transition={{ duration: 0.4, delay: idx * 0.08 }}
                           >
                             {/* Left accent bar on hover */}
-                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#1E3A5F] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#E8612C] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
                             
                             <div className="flex items-start gap-3">
                               <div className="flex-shrink-0 mt-0.5">
-                                <div className="w-5 h-5 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center group-hover:bg-[#1E3A5F]/20 transition-colors">
-                                  <svg className="w-3 h-3 text-[#1E3A5F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3.5">
+                                <div className="w-5 h-5 rounded-full bg-[#E8612C]/10 flex items-center justify-center group-hover:bg-[#E8612C]/20 transition-colors">
+                                  <svg className="w-3 h-3 text-[#E8612C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3.5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                   </svg>
                                 </div>
                               </div>
                               <div>
-                                <span className="block font-mono text-[#1E3A5F] text-[9px] uppercase tracking-wider mb-1">
+                                <span className="block font-mono text-[#E8612C] text-[9px] uppercase tracking-wider mb-1">
                                   Compliance Code
                                 </span>
                                 <h4 className="font-display font-black text-[#111318] text-[13px] group-hover:text-white uppercase tracking-tight transition-colors duration-200 leading-snug">
@@ -766,7 +766,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                       viewport={{ once: true, margin: '-60px 0px' }}
                       transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-4">
+                      <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-4">
                         Technical Documents
                       </span>
                       <h3 className="text-lg font-display font-black text-[#111318] uppercase tracking-wide mb-8">
@@ -781,7 +781,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                             rel="noopener noreferrer"
                             className="flex items-center justify-between p-4 bg-white border border-[#D9DDE1] hover:border-[#111318] hover:bg-[#111318] transition-all duration-300 group shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(17,19,24,0.12)] hover:-translate-y-0.5 rounded-sm relative overflow-hidden"
                           >
-                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#1E3A5F] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#E8612C] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
                             
                             <div className="pl-2">
                               <p className="text-[11px] font-display font-bold text-[#111318] uppercase tracking-wide group-hover:text-white transition-colors duration-200">
@@ -817,7 +817,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               transition={{ duration: 0.5 }}
               className="mb-10"
             >
-              <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+              <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
                 05 // FAQ
               </span>
               <h2 className="text-2xl font-display font-black text-[#111318] uppercase tracking-wide">
@@ -839,7 +839,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <span className="text-[12px] font-display font-bold text-[#111318] uppercase tracking-wide pr-4">
                       {item.question}
                     </span>
-                    <span className="text-[#1E3A5F] text-lg font-mono shrink-0">+</span>
+                    <span className="text-[#E8612C] text-lg font-mono shrink-0">+</span>
                   </summary>
                   <div className="px-5 pb-5 text-[12px] text-[#6B7280] leading-relaxed border-t border-[#D9DDE1] pt-4">
                     {item.answer}
@@ -864,7 +864,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               className="flex items-end justify-between mb-10"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+                <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
                   Related Systems
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-display font-black text-[#111318] uppercase tracking-wide">
@@ -873,7 +873,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </div>
               <Link
                 href="/products"
-                className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-display font-bold text-[#111318] uppercase tracking-widest hover:text-[#1E3A5F] transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-display font-bold text-[#111318] uppercase tracking-widest hover:text-[#E8612C] transition-colors"
               >
                 View All <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -897,7 +897,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[9px] font-mono text-[#1E3A5F] tracking-[0.35em] uppercase block mb-5">
+            <span className="text-[9px] font-mono text-[#E8612C] tracking-[0.35em] uppercase block mb-5">
               Engineering Support // Saudi
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-white uppercase leading-tight tracking-tight mb-4">
@@ -909,9 +909,9 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1E3A5F] text-white text-[11px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#E8612C] text-white text-[11px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors"
               >
-                Contact Us <ArrowRight className="w-4 h-4" />
+                Contact Us <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
                 href="/products"

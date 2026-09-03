@@ -90,13 +90,13 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`relative font-sans text-[11px] font-semibold uppercase tracking-wider transition-colors flex items-center gap-1 ${
-                        isPageActive ? 'text-[#1E3A5F]' : 'text-[#111318]/80 hover:text-[#111318]'
+                        isPageActive ? 'text-[#E8612C]' : 'text-[#111318]/80 hover:text-[#111318]'
                       }`}
                     >
                       {item.name}
                       <span className="text-[8px] transition-transform duration-300 group-hover/dropdown:rotate-180">&#9662;</span>
                       <span
-                        className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E3A5F] transition-all duration-300 group-hover/dropdown:w-full"
+                        className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#E8612C] transition-all duration-300 group-hover/dropdown:w-full"
                         style={isPageActive ? { width: '100%' } : {}}
                       />
                     </Link>
@@ -108,7 +108,7 @@ export default function Header() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="font-sans text-[10px] font-bold uppercase tracking-wider text-slate-700 hover:text-[#1E3A5F] hover:bg-slate-50 px-3 py-2 transition-colors rounded-sm"
+                            className="font-sans text-[10px] font-bold uppercase tracking-wider text-slate-700 hover:text-[#E8612C] hover:bg-slate-50 px-3 py-2 transition-colors rounded-sm"
                           >
                             {subItem.name}
                           </Link>
@@ -124,12 +124,12 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={`relative font-sans text-[11px] font-semibold uppercase tracking-wider transition-colors py-2 block ${
-                      isPageActive ? 'text-[#1E3A5F]' : 'text-[#111318]/80 hover:text-[#111318]'
+                      isPageActive ? 'text-[#E8612C]' : 'text-[#111318]/80 hover:text-[#111318]'
                     }`}
                   >
                     {item.name}
                     <span
-                      className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E3A5F] transition-all duration-300 group-hover:w-full"
+                      className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#E8612C] transition-all duration-300 group-hover:w-full"
                       style={isPageActive ? { width: '100%' } : {}}
                     />
                   </Link>
@@ -143,7 +143,7 @@ export default function Header() {
         <div className="hidden lg:block shrink-0">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-4 py-2 bg-[#1E3A5F] hover:bg-[#142838] text-white font-sans text-[11px] font-bold uppercase tracking-widest transition-all duration-300 hover:translate-y-[-1px] shadow-sm"
+            className="inline-flex items-center justify-center px-4 py-2 bg-[#E8612C] hover:bg-[#CF4D1B] text-white font-sans text-[11px] font-bold uppercase tracking-widest transition-all duration-300 hover:translate-y-[-1px] shadow-sm"
           >
             <span>Contact Us &rarr;</span>
           </Link>
@@ -153,7 +153,7 @@ export default function Header() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="inline-flex items-center justify-center p-2 text-[#111318] hover:text-[#1E3A5F] focus:outline-none transition-colors"
+            className="inline-flex items-center justify-center p-2 text-[#111318] hover:text-[#E8612C] focus:outline-none transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
           >
@@ -179,7 +179,7 @@ export default function Header() {
                   return (
                     <div key={item.name} className="border-b border-[#E5E7EB] pb-4">
                       <div className="flex items-center gap-3 font-sans text-base font-black uppercase tracking-wider text-[#111318] mb-3">
-                        <span className="font-mono text-xs text-[#1E3A5F]">0{idx + 1}</span>
+                        <span className="font-mono text-xs text-[#E8612C]">0{idx + 1}</span>
                         <span>{item.name}</span>
                       </div>
                       <div className="pl-6 flex flex-col space-y-3.5 border-l border-[#E5E7EB]">
@@ -188,7 +188,7 @@ export default function Header() {
                             key={subItem.name}
                             href={subItem.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="font-sans text-xs font-bold uppercase tracking-wider text-[#59616B] hover:text-[#1E3A5F] transition-colors"
+                            className="font-sans text-xs font-bold uppercase tracking-wider text-[#59616B] hover:text-[#E8612C] transition-colors"
                           >
                             {subItem.name}
                           </Link>
@@ -203,9 +203,9 @@ export default function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 font-sans text-base font-black uppercase tracking-wider text-[#111318] hover:text-[#1E3A5F] transition-colors"
+                      className="flex items-center gap-3 font-sans text-base font-black uppercase tracking-wider text-[#111318] hover:text-[#E8612C] transition-colors"
                     >
-                      <span className="font-mono text-xs text-[#1E3A5F]">0{idx + 1}</span>
+                      <span className="font-mono text-xs text-[#E8612C]">0{idx + 1}</span>
                       <span>{item.name}</span>
                     </Link>
                   </div>
@@ -216,7 +216,7 @@ export default function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center px-4 py-4 font-sans text-xs font-bold uppercase tracking-widest text-white bg-[#1E3A5F] hover:bg-[#142838] transition-colors rounded-[2px]"
+                  className="w-full inline-flex items-center justify-center px-4 py-4 font-sans text-xs font-bold uppercase tracking-widest text-white bg-[#E8612C] hover:bg-[#CF4D1B] transition-colors rounded-[2px]"
                 >
                   Contact Us
                 </Link>

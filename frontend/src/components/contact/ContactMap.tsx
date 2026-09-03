@@ -61,7 +61,7 @@ export default function ContactMap() {
       </div>
 
       <div className="flex items-start gap-2 text-[#59616B]">
-        <MapPin className="w-3.5 h-3.5 text-[#1E3A5F] shrink-0 mt-0.5" />
+        <MapPin className="w-3.5 h-3.5 text-[#E8612C] shrink-0 mt-0.5" />
         <p className="font-sans text-[10px] uppercase tracking-wider leading-relaxed">
           {officeLocations[activeOffice].address}
         </p>

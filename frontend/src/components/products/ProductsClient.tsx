@@ -47,11 +47,11 @@ function CategoryCard({ category, index }: { category: ProductCategory; index: n
         delay: (index % 3) * 0.09,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className="group relative flex flex-col bg-white border border-[#D9DDE1] overflow-hidden hover:border-[#1E3A5F] transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgba(232,97,44,0.12)]"
+      className="group relative flex flex-col bg-white border border-[#D9DDE1] overflow-hidden hover:border-[#E8612C] transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgba(232,97,44,0.12)]"
     >
       <Link
         href={`/products/${category.slug}`}
-        className="flex flex-col flex-1 focus-visible:ring-2 focus-visible:ring-[#1E3A5F] outline-none"
+        className="flex flex-col flex-1 focus-visible:ring-2 focus-visible:ring-[#E8612C] outline-none"
         aria-label={`Explore ${category.name} products`}
       >
         {/* Image */}
@@ -78,7 +78,7 @@ function CategoryCard({ category, index }: { category: ProductCategory; index: n
 
           {/* Amber sweep line on hover */}
           <motion.div
-            className="absolute bottom-0 left-0 h-[3px] bg-[#1E3A5F]"
+            className="absolute bottom-0 left-0 h-[3px] bg-[#E8612C]"
             initial={{ width: 0 }}
             whileHover={{ width: '100%' }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
@@ -86,7 +86,7 @@ function CategoryCard({ category, index }: { category: ProductCategory; index: n
 
           {/* Hover CTA overlay */}
           <div className="absolute inset-0 flex items-end justify-start p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-            <span className="inline-flex items-center gap-2 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest px-4 py-2">
+            <span className="inline-flex items-center gap-2 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest px-4 py-2">
               Explore Products <ArrowRight className="w-3 h-3" />
             </span>
           </div>
@@ -95,12 +95,12 @@ function CategoryCard({ category, index }: { category: ProductCategory; index: n
         {/* Card body */}
         <div className="flex flex-col flex-1 p-6">
           {/* Index */}
-          <span className="text-[9px] font-mono text-[#1E3A5F] tracking-[0.25em] font-bold mb-2 block">
+          <span className="text-[9px] font-mono text-[#E8612C] tracking-[0.25em] font-bold mb-2 block">
             {String(index + 1).padStart(2, '0')} // Category
           </span>
 
           {/* Category name */}
-          <h2 className="text-lg font-display font-black text-[#111318] uppercase leading-tight tracking-tight mb-3 group-hover:text-[#1E3A5F] transition-colors duration-200">
+          <h2 className="text-lg font-display font-black text-[#111318] uppercase leading-tight tracking-tight mb-3 group-hover:text-[#E8612C] transition-colors duration-200">
             {category.name}
           </h2>
 
@@ -113,10 +113,10 @@ function CategoryCard({ category, index }: { category: ProductCategory; index: n
 
           {/* Footer link */}
           <div className="flex items-center gap-2 mt-4 pt-4 border-t border-[#D9DDE1]">
-            <span className="text-[10px] font-display font-bold text-[#111318] uppercase tracking-widest group-hover:text-[#1E3A5F] transition-colors duration-200">
+            <span className="text-[10px] font-display font-bold text-[#111318] uppercase tracking-widest group-hover:text-[#E8612C] transition-colors duration-200">
               View Products
             </span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#1E3A5F] transition-transform duration-200 group-hover:translate-x-1" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#E8612C] transition-transform duration-200 group-hover:translate-x-1" />
           </div>
         </div>
       </Link>
@@ -170,7 +170,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
         <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-[10px] font-mono text-white/40 mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#1E3A5F] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#E8612C] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-white/70">Products</span>
           </nav>
@@ -180,7 +180,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-5">
+            <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-5">
               Product Catalog // Saudi / GCC
             </span>
             <h1 className="font-display font-black text-white uppercase leading-[0.95] tracking-tighter text-[clamp(2.8rem,6vw,5rem)] max-w-3xl mb-6">
@@ -227,7 +227,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+          <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
             All Systems
           </span>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -238,7 +238,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
               {displayCategories.length} {displayCategories.length === 1 ? 'Category' : 'Categories'} Available
             </span>
           </div>
-          <div className="w-14 h-[2px] bg-[#1E3A5F] mt-4" />
+          <div className="w-14 h-[2px] bg-[#E8612C] mt-4" />
         </motion.div>
 
         {/* Grid */}
@@ -283,7 +283,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="flex flex-col gap-3"
               >
-                <span className="text-2xl text-[#1E3A5F] font-mono">{item.icon}</span>
+                <span className="text-2xl text-[#E8612C] font-mono">{item.icon}</span>
                 <h3 className="text-[11px] font-display font-black text-[#111318] uppercase tracking-wide">
                   {item.title}
                 </h3>
@@ -305,7 +305,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
             viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[9px] font-mono text-[#1E3A5F] tracking-[0.3em] uppercase block mb-4">
+            <span className="text-[9px] font-mono text-[#E8612C] tracking-[0.3em] uppercase block mb-4">
               Engineering Support
             </span>
             <h2 className="text-3xl sm:text-4xl font-display font-black text-white uppercase leading-tight mb-4">
@@ -317,7 +317,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors"
               >
                 Contact Us <ArrowRight className="w-3.5 h-3.5" />
               </Link>

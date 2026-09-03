@@ -57,7 +57,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
             {/* Left: Intro */}
             <div className="lg:col-span-7">
               <Reveal direction="left" delay={0.1}>
-                <span className="text-[14px] font-display font-black text-[#1E3A5F] tracking-[0.3em] uppercase block mb-3">
+                <span className="text-[14px] font-display font-black text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
                   Industrial Supply // Category
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-black uppercase leading-tight tracking-tight mb-5">
@@ -69,7 +69,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-8 py-3 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 px-8 py-3 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors shadow-sm"
                   >
                     Contact Us <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
@@ -102,7 +102,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
       <section className="py-16 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#D9DDE1]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4">
-            <span className="text-[9px] font-mono text-[#1E3A5F] tracking-widest uppercase block mb-2">01 // INTRODUCTION</span>
+            <span className="text-[9px] font-mono text-[#E8612C] tracking-widest uppercase block mb-2">01 // INTRODUCTION</span>
             <h2 className="text-xl font-display font-black text-[#111318] uppercase tracking-wide">
               Engineering Excellence for GCC Sites
             </h2>
@@ -121,7 +121,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
       {/* Product Grid */}
       <section className="py-20 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <span className="text-[10px] font-mono font-bold text-[#1E3A5F] tracking-[0.25em] uppercase block mb-2">
+          <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.25em] uppercase block mb-2">
             Available Product Catalogue
           </span>
           <h2 className="text-3xl font-display font-black text-[#111318] uppercase tracking-tight">
@@ -136,7 +136,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
               return (
                 <div
                   key={prod.id}
-                  className="flex flex-col bg-white border border-[#D9DDE1] hover:border-[#1E3A5F] transition-colors rounded-sm overflow-hidden h-full shadow-sm"
+                  className="flex flex-col bg-white border border-[#D9DDE1] hover:border-[#E8612C] transition-colors rounded-sm overflow-hidden h-full shadow-sm"
                 >
                   <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
                     {prodImg ? (
@@ -156,7 +156,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
 
                   <div className="p-6 flex flex-col flex-1 justify-between">
                     <div>
-                      <span className="text-[9px] font-mono font-bold text-[#1E3A5F] uppercase tracking-wider block mb-1">
+                      <span className="text-[9px] font-mono font-bold text-[#E8612C] uppercase tracking-wider block mb-1">
                         Code: {prod.product_code}
                       </span>
                       <h3 className="text-base font-bold text-[#111318] font-display uppercase tracking-wide mb-3">
@@ -170,7 +170,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
                     <div className="flex flex-col gap-2 pt-4 border-t border-[#D9DDE1]">
                       <Link
                         href={`/products/${prod.slug}`}
-                        className="inline-flex items-center justify-between text-xs font-bold text-[#1E3A5F] hover:text-[#142838] uppercase font-display tracking-wider transition-colors"
+                        className="inline-flex items-center justify-between text-xs font-bold text-[#E8612C] hover:text-[#CF4D1B] uppercase font-display tracking-wider transition-colors"
                       >
                         View Technical dossier <ChevronRight className="w-4 h-4" />
                       </Link>
@@ -201,9 +201,9 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {technicalAdvantages.map((adv, idx) => (
-              <div key={idx} className="border border-[#D9DDE1] p-6 bg-white flex flex-col justify-between h-full hover:border-[#1E3A5F] transition-colors rounded-sm">
+              <div key={idx} className="border border-[#D9DDE1] p-6 bg-white flex flex-col justify-between h-full hover:border-[#E8612C] transition-colors rounded-sm">
                 <div>
-                  <ShieldCheck className="w-6 h-6 text-[#1E3A5F] mb-4" />
+                  <ShieldCheck className="w-6 h-6 text-[#E8612C] mb-4" />
                   <h3 className="text-sm font-display font-black uppercase text-[#111318] mb-2">{adv.title}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-sans">{adv.desc}</p>
                 </div>
@@ -224,7 +224,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
             <ul className="space-y-3">
               {applications.map((app, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-xs text-slate-500 font-sans leading-relaxed">
-                  <span className="w-1.5 h-1.5 bg-[#1E3A5F] rounded-full shrink-0 mt-1.5" />
+                  <span className="w-1.5 h-1.5 bg-[#E8612C] rounded-full shrink-0 mt-1.5" />
                   <span>{app}</span>
                 </li>
               ))}
@@ -252,7 +252,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
       <section className="bg-[#111318] py-20 text-center text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 tech-grid-overlay-dark" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-[9px] font-mono text-[#1E3A5F] tracking-[0.3em] uppercase block">
+          <span className="text-[9px] font-mono text-[#E8612C] tracking-[0.3em] uppercase block">
             Partner with Arabian Gratings
           </span>
           <h2 className="text-3xl font-display font-black uppercase leading-tight">
@@ -264,7 +264,7 @@ export default function CategoryDetailClient({ category, products }: CategoryDet
           <div className="flex justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-[#1E3A5F] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#142838] transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-[#E8612C] text-white text-[10px] font-display font-bold uppercase tracking-widest hover:bg-[#CF4D1B] transition-colors"
             >
               Contact Us <ArrowRight className="w-3.5 h-3.5" />
             </Link>
