@@ -565,6 +565,8 @@ export const STATIC_PRODUCTS_DETAIL: Product[] = STATIC_PRODUCTS.map(p => ({
   specifications: {},
   spec_rows: (detailSpecs[p.slug] || []).map((s, i) => ({ id: i, name: s.name, value: s.value, sort_order: i })),
   faq: [],
+  meta_keywords: p.seo_description || '',
+  documents: [],
   product_images: p.slug === 'press-lock-type-gratings'
     ? [
         makeProductImage(202, '/img/products/prod-press-lock-exact.jpg', 'Press Lock Interlocked Flat-Bar Steel Grating 3D Schematic'),
