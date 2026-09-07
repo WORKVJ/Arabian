@@ -167,11 +167,11 @@ export default function AboutPage() {
               badge: 'REF#01 // 40 PCS BUNDLES',
             },
             {
-              img: '/img/real2/new (8).jpeg',
-              tag: 'QA / COATING VERIFICATION',
-              title: 'Calibrated Thickness Testing',
-              desc: 'Digital gauge measurements confirming 139 µm zinc protection to exceed regional marine lifetime specs.',
-              badge: 'BS EN ISO 1461 // 139 µm',
+              img: '/facility-overview.jpg',
+              tag: 'QA / CERTIFIED VERIFICATION',
+              title: 'Rigorous Load & QA Testing',
+              desc: 'Engineering teams verify deflection thresholds, weld fusion, and dimensional tolerances before dispatch.',
+              badge: 'ISO 9001 // BS EN 14122',
             },
           ].map((card, i) => (
             <Reveal key={card.title} direction="up" delay={i * 0.1}>

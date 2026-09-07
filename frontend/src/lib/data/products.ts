@@ -67,14 +67,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     is_active: true, sort_order: 6, product_count: 1,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
-  {
-    id: 8, name: 'Stud Products', slug: 'stud-products',
-    short_description: 'Industry-leading shear studs and tactile studs for structural and pedestrian safety applications.',
-    description: 'Arabian Gratings Stud Products include shear connectors for steel-concrete composite structures and tactile pavement studs for pedestrian safety across Saudi Arabia and GCC.',
-    image: makeMedia(8, '/product-tactile-stud.jpg', 'Stud Products Saudi Arabia'),
-    is_active: true, sort_order: 7, product_count: 1,
-    no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
-  },
+
 ];
 
 // ─── Helper: find category by slug ──────────────────────────────────────────
@@ -195,7 +188,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Press lock gratings are interlocked steel bars, made under high pressure, ensuring strength and versatility.',
     material: 'Carbon Steel / Stainless Steel', finish: 'Hot-Dip Galvanized / Plain', standard: 'BS 4592, DIN 24537',
     applications: 'Architectural Screens, Ventilation Covers, Access Floors, Platform Decking',
-    primary_image: makeProductImage(202, '/img/products/prod-press-lock.jpg', 'Press Lock Steel Grating Saudi Arabia'),
+    primary_image: makeProductImage(202, '/img/products/prod-press-lock-exact.jpg', 'Press Lock Interlocked Steel Grating Saudi Arabia'),
     is_featured: true, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -237,7 +230,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Stainless steel gratings, made from SS 304/316 grades, offer rust-resistant solutions with mill or polished finishes.',
     material: 'Stainless Steel SS304 / SS316', finish: 'Mill Finish / Electro-Polished', standard: 'ASTM A240, BS 4592',
     applications: 'Food Processing Plants, Pharmaceutical Facilities, Marine Decks, Coastal Splash Zones',
-    primary_image: makeProductImage(301, '/img/products/prod-ss-gratings.jpg', 'Stainless Steel Gratings Saudi Arabia'),
+    primary_image: makeProductImage(301, '/img/products/prod-ss-gratings-v2.jpg', 'Stainless Steel Gratings Saudi Arabia'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -329,7 +322,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Strong, corrosion-resistant stainless steel gratings offering slip resistance and durability for harsh industrial conditions.',
     material: 'Stainless Steel SS316', finish: 'Electro-Polished / Mill Finish', standard: 'BS 4592, ASTM A240',
     applications: 'Industrial Platforms, Marine Access, Chemical Facilities, Food Grade Applications',
-    primary_image: makeProductImage(406, '/img/products/prod-aluminium-ss-gratings.jpg', 'Stainless Steel Gratings Aluminium Range Saudi Arabia'),
+    primary_image: makeProductImage(406, '/img/products/prod-ss-gratings-v2.jpg', 'Stainless Steel Gratings Aluminium Range Saudi Arabia'),
     is_featured: false, is_active: true, sort_order: 5, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -400,10 +393,10 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     id: 601, name: 'SS/GI Grating Clamps', slug: 'ss-gi-clamps',
     product_code: 'AG-CL-SSGI',
     category_name: 'SS/GI Grating Clamps', category_slug: 'ss-gi-grating-clamps',
-    short_description: 'Our durable, quick, and easy-to-use grating clamps provide a cost-efficient and reliable solution for clamping.',
-    material: 'Stainless Steel SS316 / Galvanized Steel', finish: 'Acid Pickled / Zinc Plated', standard: 'ISO 4014 / DIN 934',
-    applications: 'Steel Grating Installation, GRP Panel Anchoring, Industrial Flooring, Platform Decking',
-    primary_image: makeProductImage(601, '/img/products/prod-ss-gi-clamps.jpg', 'SS GI Grating Clamps Saudi Arabia'),
+    short_description: 'Complete heavy-duty grating clamp assemblies (top saddle, lower beam flange hook bracket, and bolt) available in both HDG and SS316.',
+    material: 'Hot-Dip Galvanized (HDG) / Stainless Steel SS316 & SS304', finish: 'Hot-Dip Galvanized to ISO 1461 / Mill & Passivated', standard: 'BS EN ISO 1461, DIN 933, ISO 4014',
+    applications: 'Steel Grating Installation, Structural I-Beam Anchoring, Industrial Walkway Fixing, Offshore Platform Decking',
+    primary_image: makeProductImage(601, '/img/products/prod-ss-gi-clamps-v2.jpg', 'Complete Grating Clamp Assembly HDG and SS'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -419,17 +412,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
-  // ── Stud Products ─────────────────────────────────────────────────────────
-  {
-    id: 801, name: 'Shear Connectors', slug: 'shear-connector',
-    product_code: 'AG-ST-SHR',
-    category_name: 'Stud Products', category_slug: 'stud-products',
-    short_description: 'Shear studs and metal decking studs by Arabian Gratings are industry-leading, enabling through-deck welding and reinforced concrete bonding.',
-    material: 'Grade S235J2+C (EN 10025) / Mild Steel', finish: 'Black / Galvanized', standard: 'EN ISO 13918, BS EN 14399',
-    applications: 'Composite Steel-Concrete Beams, Metal Deck Floors, Bridge Decks, Multi-Storey Buildings',
-    primary_image: makeProductImage(801, '/img/products/prod-shear-connector.jpg', 'Shear Connectors Saudi Arabia'),
-    is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
-  },
+
 ];
 
 // ─── Full Product Detail shape (for /products/[slug] pages) ─────────────────
@@ -463,9 +446,9 @@ const detailDescriptions: Record<string, string> = {
   's-g-iron-ductile': 'Spheroidal Graphite Iron (SG Iron or Ductile Iron) products from Arabian Gratings offer superior impact toughness compared to grey cast iron. The graphite microstructure is spherical rather than flake-shaped, eliminating stress concentration points. This material is specified for heavy wheel load drainage products including gully grates, channel covers, and manhole frames.',
   'channel-gully-grating': 'Arabian Gratings channel and gully gratings are manufactured in ductile iron with hinged and non-hinged options. Our channel grating systems include full drainage channel systems with matching outlet units and end caps for complete surface water management. Class ratings from B125 pedestrian areas to D400 carriageway applications.',
   'carriageway-cover-and-frame': 'Heavy-duty carriageway covers for primary road applications are manufactured to Class E600 and F900 load ratings for heavy commercial vehicle and emergency service access. Arabian Gratings carriageway covers feature anti-slip patterns, double-sealed frame designs, and security bolt locking systems to prevent theft and vandalism.',
-  'ss-gi-clamps': 'Arabian Gratings M-Clip grating clamps are manufactured in SS316 stainless steel or hot-dip galvanized steel to anchor grating panels to structural support members without drilling. Each clamp applies a compression force to the grating bearing bar, resisting both uplift and lateral movement under dynamic loads. Rated to applicable BS and EN standards.',
+  'ss-gi-clamps': 'Arabian Gratings complete grating clamp assemblies provide a secure, non-destructive fastening system to lock steel and FRP grating panels directly to structural steel beam flanges without on-site welding or drilling. Each complete unit includes a stamped top saddle clip (M-clip) with curved retaining wings, a high-tensile threaded bolt with locking nut, and a heavy-duty lower clamping bracket (bottom J-hook / flange jaw) that securely hooks beneath the beam flange. Available in both Hot-Dip Galvanized (HDG to BS EN ISO 1461) and Stainless Steel (SS304 / SS316) for extreme durability in industrial and marine environments.',
   'pvc-gi-ss': 'Arabian Gratings step iron range covers three material variants: PVC-encapsulated ductile iron for chemical sewage environments, hot-dip galvanized iron for general utility shafts, and stainless steel SS316 for food grade and marine environments. All types meet BS EN 13101 requirements for pull-out resistance and anti-slip performance.',
-  'shear-connector': 'Arabian Gratings headed shear studs are manufactured from grade S235J2+C steel and are used in composite steel-concrete construction to transfer shear forces between steel beams and concrete slabs. Through-deck welding capability allows installation through metal decking without pre-drilling. Our studs are supplied with BS EN ISO 13918 certification.',
+
 };
 
 const detailFeatures: Record<string, string> = {
@@ -498,9 +481,9 @@ const detailFeatures: Record<string, string> = {
   's-g-iron-ductile': 'Superior impact toughness\nSpherical graphite microstructure\nHigh tensile strength\nAll EN 124 load classes available\nLong-term durability',
   'channel-gully-grating': 'Hinged and non-hinged options\nComplete drainage channel systems\nClass B125 to D400 ratings\nMatching outlet and end caps\nCorrosion resistant coating',
   'carriageway-cover-and-frame': 'Class E600 and F900 ratings\nAnti-slip chequered surface\nDouble sealed frame design\nSecurity bolt locking system\nAnti-theft protection',
-  'ss-gi-clamps': 'No drilling required\nSS316 or galvanized options\nHigh vibration resistance\nFour clamps per panel minimum\nCompliant with BS and EN standards',
+  'ss-gi-clamps': 'Complete 3-piece assembly (Saddle + J-Hook + Bolt)\nAvailable in both HDG and Stainless Steel SS316\nNon-penetrating flange hook connection\nEliminates on-site drilling and hot-work welding\nHigh uplift and lateral vibration resistance\nHot-dip galvanized to BS EN ISO 1461 standards',
   'pvc-gi-ss': 'PVC encapsulated option for sewers\nGalvanized for general utilities\nSS316 for marine environments\nAnti-slip foot stops\nBS EN 13101 certified pull-out',
-  'shear-connector': 'Through-deck welding capability\nBS EN ISO 13918 certified\nHigh shear force transfer\nGrade S235J2+C steel standard\nHeaded stud and decking stud variants',
+
 };
 
 const detailSpecs: Record<string, { name: string; value: string }[]> = {
@@ -556,10 +539,12 @@ const detailSpecs: Record<string, { name: string; value: string }[]> = {
     { name: 'Coating', value: 'Bituminous Paint / Epoxy' },
   ],
   'ss-gi-clamps': [
-    { name: 'Material', value: 'SS316 / Galvanized Steel' },
-    { name: 'Material Thickness', value: '2.0 mm heavy-duty gauge' },
-    { name: 'Saddle Width', value: '38 mm standard mesh span' },
-    { name: 'Matching Bolt', value: 'M8 × 70 mm hex bolt with lock nut' },
+    { name: 'Assembly Components', value: 'Top Saddle Clip + Lower Beam Hook Bracket + Hex Bolt & Nut' },
+    { name: 'Material Grades', value: 'Hot-Dip Galvanized (HDG) / Stainless Steel (SS304 & SS316)' },
+    { name: 'Standards Compliance', value: 'BS EN ISO 1461, DIN 933, ISO 4014' },
+    { name: 'Matching Bolt Size', value: 'M8 × 70 mm / M8 × 90 mm (custom lengths on request)' },
+    { name: 'Flange Grip Range', value: '3 mm to 25 mm beam flange thickness' },
+    { name: 'Grating Pitch Compatibility', value: 'Suitable for 30 mm, 38 mm & 41 mm mesh bearing bar pitch' },
   ],
   'pvc-gi-ss': [
     { name: 'Step Width', value: '240 mm inside clearance' },
@@ -567,12 +552,7 @@ const detailSpecs: Record<string, { name: string; value: string }[]> = {
     { name: 'Pull-out Resistance', value: 'Certified up to 5.0 kN' },
     { name: 'Material Variants', value: 'PVC/PP Encapsulated / Hot-Dip GI / SS316' },
   ],
-  'shear-connector': [
-    { name: 'Stud Diameter', value: '13 mm / 16 mm / 19 mm / 22 mm / 25 mm' },
-    { name: 'Stud Height', value: '65 mm to 200 mm (custom)' },
-    { name: 'Head Diameter', value: '1.5× Stud Diameter' },
-    { name: 'Material Grade', value: 'S235J2+C to EN 10025' },
-  ],
+
 };
 
 export const STATIC_PRODUCTS_DETAIL: Product[] = STATIC_PRODUCTS.map(p => ({
@@ -585,9 +565,12 @@ export const STATIC_PRODUCTS_DETAIL: Product[] = STATIC_PRODUCTS.map(p => ({
   specifications: {},
   spec_rows: (detailSpecs[p.slug] || []).map((s, i) => ({ id: i, name: s.name, value: s.value, sort_order: i })),
   faq: [],
-  meta_keywords: `${p.name}, ${p.material}, Arabian Gratings, Saudi Arabia`,
-  product_images: p.primary_image ? [p.primary_image] : [],
-  documents: [],
+  product_images: p.slug === 'press-lock-type-gratings'
+    ? [
+        makeProductImage(202, '/img/products/prod-press-lock-exact.jpg', 'Press Lock Interlocked Flat-Bar Steel Grating 3D Schematic'),
+        makeProductImage(2021, '/img/products/prod-press-lock.jpg', 'Press Lock Interlocking Grid System'),
+      ]
+    : p.primary_image ? [p.primary_image] : [],
   related_products: [],
   updated_at: '2025-01-01T00:00:00Z',
 }));

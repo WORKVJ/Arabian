@@ -138,7 +138,6 @@ def seed():
         {"name": "Manhole",               "slug": "manhole",               "short": "Ductile iron and GRP heavy-load manhole access covers for roads and infrastructure.",                                    "img": "product-manhole-cover.jpg",    "count": 4},
         {"name": "SS/GI Grating Clamps",  "slug": "ss-gi-grating-clamps",  "short": "Durable, quick, and easy-to-use grating clamps for cost-efficient and reliable clamping.",                              "img": "product-grating-clamp.jpg",    "count": 1},
         {"name": "Step Iron",             "slug": "step-iron",             "short": "Ductile iron step irons, hot-dip galvanized to BS EN ISO 1461, with anti-slip secure designs.",                         "img": "product-step-iron.jpg",        "count": 1},
-        {"name": "Stud Products",         "slug": "stud-products",         "short": "Industry-leading shear studs and tactile studs for structural and pedestrian safety applications.",                      "img": "product-tactile-stud.jpg",     "count": 1},
     ]
 
     cat_objs = {}
@@ -745,28 +744,6 @@ def seed():
                 {"question": "What is the pull-out resistance requirement?", "answer": "BS EN 13101 requires step irons to withstand a minimum 5.0 kN pull-out force to ensure they cannot be dislodged from the shaft wall under operational loads."},
             ],
             "img": "prod-pvc-gi-ss-step-iron.jpg",
-        },
-
-        # ── Stud Products ──────────────────────────────────────────────────────
-        {
-            "category": "stud-products", "sort": 0, "featured": True,
-            "name": "Shear Connectors", "slug": "shear-connector", "code": "AG-ST-SHR",
-            "short": "Shear studs and metal decking studs by Arabian Gratings are industry-leading, enabling through-deck welding and reinforced concrete bonding.",
-            "desc": "Arabian Gratings headed shear studs are manufactured from grade S235J2+C steel and are used in composite steel-concrete construction to transfer shear forces between steel beams and concrete slabs. Through-deck welding capability allows installation through metal decking without pre-drilling. Supplied with BS EN ISO 13918 certification.",
-            "material": "Grade S235J2+C (EN 10025) / Mild Steel", "finish": "Black / Galvanized", "standard": "EN ISO 13918, BS EN 14399",
-            "applications": "Composite Steel-Concrete Beams, Metal Deck Floors, Bridge Decks, Multi-Storey Buildings",
-            "features": "Through-deck welding capability\nBS EN ISO 13918 certified\nHigh shear force transfer\nGrade S235J2+C steel standard\nHeaded stud and decking stud variants",
-            "specs": [
-                {"name": "Stud Diameter", "value": "13 / 16 / 19 / 22 / 25 mm"},
-                {"name": "Stud Height", "value": "65 mm to 200 mm (custom)"},
-                {"name": "Head Diameter", "value": "1.5× Stud Diameter"},
-                {"name": "Material Grade", "value": "S235J2+C to EN 10025"},
-            ],
-            "faqs": [
-                {"question": "What is through-deck welding?", "answer": "Through-deck welding allows shear studs to be welded through the metal decking sheet directly to the steel beam flange below, eliminating the need to pre-drill holes in the decking."},
-                {"question": "What shear stud diameter is most commonly used?", "answer": "19mm diameter headed shear studs are the most commonly specified size in composite beam construction, offering the best balance of shear capacity and weldability."},
-            ],
-            "img": "prod-shear-connector.jpg",
         },
     ]
 

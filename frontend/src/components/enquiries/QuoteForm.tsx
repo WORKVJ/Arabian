@@ -16,7 +16,6 @@ const FALLBACK_PRODUCTS = [
   'Ductile Iron Double Sealed Manhole Cover',
   'M-Clip Grating Fastening Clamp',
   'Ductile Iron Plastic Encapsulated Step Iron',
-  'Stainless Steel Tactile Stud',
 ];
 
 export default function QuoteForm({ initialProduct }: { initialProduct?: string }) {

@@ -48,7 +48,6 @@ export default function Header() {
     { name: 'Manhole Covers', href: '/products/manhole' },
     { name: 'SS/GI Grating Clamps', href: '/products/ss-gi-grating-clamps' },
     { name: 'Step Irons', href: '/products/step-iron' },
-    { name: 'Tactile Studs', href: '/products/stud-products' },
   ];
 
   return (

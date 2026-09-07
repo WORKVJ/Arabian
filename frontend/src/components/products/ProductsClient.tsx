@@ -22,7 +22,6 @@ const CATEGORY_FALLBACKS: Record<string, string> = {
   'manhole': '/product-manhole-cover.jpg',
   'ss-gi-grating-clamps': '/product-grating-clamp.jpg',
   'step-iron': '/product-step-iron.jpg',
-  'stud-products': '/product-tactile-stud.jpg',
 };
 
 const DEFAULT_FALLBACK = '/product-steel-grating.jpg';
@@ -133,7 +132,6 @@ const DEFAULT_CATEGORIES: ProductCategory[] = [
   { id: 5, name: 'Manhole Covers', slug: 'manhole', short_description: 'Ductile iron double-sealed manhole covers for urban infrastructure and road applications.', description: '', image: null, is_active: true, sort_order: 5, product_count: 0, no_index: false },
   { id: 6, name: 'SS / GI Grating Clamps', slug: 'ss-gi-grating-clamps', short_description: 'M-clip stainless and galvanized grating fastening clamps for secure installation.', description: '', image: null, is_active: true, sort_order: 6, product_count: 0, no_index: false },
   { id: 7, name: 'Step Iron', slug: 'step-iron', short_description: 'Ductile iron plastic-encapsulated step irons for manhole and utility access shafts.', description: '', image: null, is_active: true, sort_order: 7, product_count: 0, no_index: false },
-  { id: 8, name: 'Stud Products', slug: 'stud-products', short_description: 'Tactile warning studs and pavement guidance systems for pedestrian safety compliance.', description: '', image: null, is_active: true, sort_order: 8, product_count: 0, no_index: false },
 ];
 
 // ─── Main Client Component ────────────────────────────────────────────────────

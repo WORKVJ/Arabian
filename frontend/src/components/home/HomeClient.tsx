@@ -132,11 +132,6 @@ const productSpecs: Record<string, { label: string; value: string }[]> = {
     { label: 'CORE', value: 'STRUCTURAL STEEL / DUCTILE IRON' },
     { label: 'ENCAPSULATION', value: 'VIRGIN POLYPROPYLENE PLASTIC' },
     { label: 'STANDARDS', value: 'BS EN 13101 COMPLIANT' }
-  ],
-  'stud-products': [
-    { label: 'MATERIAL', value: 'STAINLESS STEEL SS316L' },
-    { label: 'PATTERN', value: 'TACTILE DOME / CONCENTRIC RING' },
-    { label: 'STEM', value: 'PIN STEM FOR ADHESIVE INJECTION' }
   ]
 };
 const industryImages = ['/img/real2/new (12).jpeg', '/img/real1/img (8).jpeg', '/img/real1/img (13).jpeg', '/img/real2/new (2).jpeg'];
@@ -262,8 +257,9 @@ function CtaSection() {
 
 
 const heroSlides = [
-  { src: '/img/img1.png', label: 'OFFSHORE & INDUSTRIAL // ACCESS SYSTEMS', alt: 'Arabian Gratings industrial walkway and offshore access' },
-  { src: '/img/img2.png', label: 'TESTED STANDARDS // ISO 9001 CERTIFIED', alt: 'Arabian Gratings testing standards and stair tread installations' },
+  { src: '/hero-steel.jpg', label: 'OFFSHORE & INDUSTRIAL // ACCESS SYSTEMS', alt: 'Arabian Gratings heavy-duty galvanized steel grating and stair access systems' },
+  { src: '/facility-overview.jpg', label: 'TESTED STANDARDS // ISO 9001 CERTIFIED', alt: 'Arabian Gratings fabrication facility and ISO certified quality inspection' },
+  { src: '/project-refinery.jpg', label: 'PETROCHEMICAL & ENERGY // ACCESS DECKS', alt: 'Industrial grating walkways installed in petrochemical refinery' },
 ];
 
 export default function HomeClient({ categories: rawCategories, industries: rawIndustries, projects: rawProjects, posts: rawPosts }: HomeClientProps) {
@@ -1236,8 +1232,8 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
               <FadeUp delay={0.38}>
                 <div className="mt-8 relative w-full aspect-[16/10] overflow-hidden bg-[#0D0F12] border border-[#D9DDE1] shadow-sm group">
                   <Image
-                    src="/img/real2/new (8).jpeg"
-                    alt="Real ISO 1461 zinc coating thickness verification on steel grating"
+                    src="/facility-overview.jpg"
+                    alt="Arabian Gratings ISO 9001 certified manufacturing quality inspection and load verification"
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -1245,9 +1241,9 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0D0F12]/80 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                     <span className="font-mono text-[9px] text-[#E8612C] uppercase tracking-widest font-bold bg-[#0D0F12]/90 px-2 py-0.5 border border-[#E8612C]/30">
-                      QA // 139 µm COATING TEST
+                      QA // PRECISION INSPECTION
                     </span>
-                    <span className="font-mono text-white/70 text-[9px]">BS EN ISO 1461</span>
+                    <span className="font-mono text-white/70 text-[9px]">ISO 9001 / BS EN 14122</span>
                   </div>
                 </div>
               </FadeUp>

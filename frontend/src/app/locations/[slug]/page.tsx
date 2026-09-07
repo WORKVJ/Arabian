@@ -37,12 +37,12 @@ const LOCATIONS: Record<string, LocationData> = {
     products: [
       { name: 'Aluminium Access Grating Walkway', slug: 'landscape-aluminium', desc: 'Lightweight, non-sparking walkways ideal for architectural facades and sunscreens.' },
       { name: 'Stainless Steel SS316 Floor Grating', slug: 'stainless-steel-ss316-floor-grating', desc: 'Hygienic, corrosion-resistant SS316 grids for commercial kitchens and high-end facades.' },
-      { name: 'Stainless Steel Tactile Stud', slug: 'stainless-steel-tactile-stud', desc: 'Compliant tactile warning studs for pedestrian accessibility in metro zones and transit ports.' }
+      { name: 'M-Clip Grating Fastening Clamp', slug: 'ss-gi-grating-clamp-m-clip', desc: 'Secure 316 stainless steel and galvanized M-clips engineered for vibration-proof grating attachment.' }
     ],
     faqs: [
       {
-        question: 'Are tactile studs compliant with Dubai Universal Design Code?',
-        "answer": 'Yes. Our stainless steel tactile warning studs are fully tested to conform to ISO 23599 and the Dubai Universal Design Code guidelines, ensuring compliant visual and tactile contrast at platform edges and stairwells.'
+        question: 'Are Arabian Gratings products compliant with Dubai Municipality specifications?',
+        "answer": 'Yes. All our steel gratings, stainless steel panels, and GRP meshes strictly adhere to BS EN ISO 1461 galvanizing and Dubai Municipality structural building regulations.'
       },
       {
         question: 'What is the delivery timeline for projects in Dubai JAFZA or DAFZA?',

@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/stud-products",
-        destination: "/products/category/stud-products",
+        destination: "/products",
         permanent: true,
       },
       {
