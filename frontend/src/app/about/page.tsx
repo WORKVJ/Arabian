@@ -41,7 +41,7 @@ export default function AboutPage() {
                 {/* Key Metrics */}
                 <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#D9DDE1]">
                   <div>
-                    <span className="text-xl sm:text-2xl font-display font-black text-[#111318] block">15+</span>
+                    <span className="text-xl sm:text-2xl font-display font-black text-[#111318] block">10+</span>
                     <span className="text-[10px] font-mono text-[#E8612C] uppercase font-bold block">Years Experience</span>
                     <span className="text-[11px] text-[#6B7280]">GCC Industrial Supply</span>
                   </div>
