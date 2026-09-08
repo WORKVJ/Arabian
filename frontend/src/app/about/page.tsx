@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/animations/Reveal';
-import { ArrowRight, ShieldCheck, Award, Users, HardHat, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Award, Users, HardHat, CheckCircle2, Quote } from 'lucide-react';
 import { defaultMetadata } from '@/lib/seo/config';
 
 export const metadata: Metadata = {
@@ -137,12 +137,118 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Leadership / General Manager's Message */}
+      <section className="py-24 border-t border-[#D9DDE1] bg-[#0E1117] text-white relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(#E8612C 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Executive Portrait */}
+            <div className="lg:col-span-5">
+              <Reveal direction="left" delay={0.1}>
+                <div className="relative border border-white/10 bg-[#151921] p-2 sm:p-3 shadow-2xl group">
+                  <div className="relative aspect-[4/3] sm:aspect-[3/2] w-full overflow-hidden bg-[#0A0C10]">
+                    <Image
+                      src="/img/othman-almoudi.png"
+                      alt="Othman Almoudi - General Manager, Arabian Gratings"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E1117]/80 via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Identification Card */}
+                  <div className="pt-4 pb-2 px-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-white/10 mt-3">
+                    <div>
+                      <h3 className="text-base sm:text-lg font-display font-black text-white uppercase tracking-tight">
+                        Othman Almoudi
+                      </h3>
+                      <p className="text-xs font-mono font-bold text-[#E8612C] tracking-wide uppercase">
+                        General Manager
+                      </p>
+                    </div>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-white/50 bg-white/5 px-2.5 py-1 border border-white/10 shrink-0 self-start sm:self-auto">
+                      ARABIAN GRATINGS // KSA
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right Column: Executive Message & Values */}
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal direction="right" delay={0.15}>
+                <span className="text-[10px] font-mono font-bold text-[#E8612C] tracking-[0.3em] uppercase block mb-3">
+                  02 // Leadership & Executive Vision
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-display font-black text-white uppercase tracking-tight leading-tight">
+                  Driving Industrial Ambition Across the Kingdom
+                </h2>
+              </Reveal>
+
+              <Reveal direction="up" delay={0.2}>
+                <div className="relative pl-6 sm:pl-8 border-l-2 border-[#E8612C] space-y-4">
+                  <Quote className="w-8 h-8 text-[#E8612C]/30 absolute -top-2 left-0 -translate-x-full hidden sm:block" />
+                  <p className="text-sm sm:text-base text-[#D1D5DB] leading-relaxed font-sans italic">
+                    &ldquo;At Arabian Gratings, our journey is defined by an uncompromising commitment to structural integrity, safety, and the long-term industrial vision of the Kingdom of Saudi Arabia.&rdquo;
+                  </p>
+                  <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed font-sans">
+                    In an era of unprecedented infrastructure expansion under Saudi Vision 2030, our clients require access flooring and grating systems that perform flawlessly under extreme environmental, corrosive, and heavy-load demands. We take pride in manufacturing world-class electroforged steel, stainless steel, and composite GRP solutions that protect operational personnel and advance regional projects.
+                  </p>
+                  <p className="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed font-sans">
+                    Every grating panel delivered from our facilities carries the collective expertise of our engineering team and our steadfast promise of certified reliability.
+                  </p>
+                </div>
+              </Reveal>
+
+              {/* Leadership Pillars */}
+              <Reveal direction="up" delay={0.25}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                  <div className="bg-white/5 border border-white/10 p-4">
+                    <span className="text-[10px] font-mono text-[#E8612C] uppercase font-bold block mb-1">
+                      Vision 2030
+                    </span>
+                    <p className="text-xs text-white/90 font-medium">
+                      Aligned with national industrial self-reliance & infrastructure mega-projects.
+                    </p>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 p-4">
+                    <span className="text-[10px] font-mono text-[#E8612C] uppercase font-bold block mb-1">
+                      Zero-Compromise Safety
+                    </span>
+                    <p className="text-xs text-white/90 font-medium">
+                      Rigorous load-deflection verifications matching BS EN ISO standards.
+                    </p>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 p-4">
+                    <span className="text-[10px] font-mono text-[#E8612C] uppercase font-bold block mb-1">
+                      Regional Trust
+                    </span>
+                    <p className="text-xs text-white/90 font-medium">
+                      Reliable distribution and technical advisory across Saudi Arabia and the GCC.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Real Operations & Verification Gallery */}
       <section className="py-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#D9DDE1]">
         <div className="mb-14">
           <Reveal direction="up" delay={0.05}>
             <span className="text-[9px] font-mono text-[#E8612C] tracking-widest uppercase block mb-3">
-              02 // Field Operations & Verification
+              03 // Field Operations & Verification
             </span>
             <h2 className="text-3xl sm:text-4xl font-display font-black text-[#111318] uppercase tracking-tight leading-none">
               Client Sites & Certified Quality
