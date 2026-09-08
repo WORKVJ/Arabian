@@ -198,7 +198,7 @@ export default function ProductsClient({ categories }: ProductsClientProps) {
           >
             {[
               { value: displayCategories.length.toString(), label: 'Product Categories' },
-              { value: '321+', label: 'Projects Delivered' },
+              { value: '500+', label: 'Projects Delivered' },
               { value: 'ISO 9001', label: 'Quality Certified' },
               { value: 'Saudi / GCC', label: 'Regional Coverage' },
             ].map((stat) => (

@@ -51,30 +51,32 @@ export default function Footer() {
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Engineered access solutions. High-performance steel, aluminum, and FRP/GRP gratings for industrial and civil infrastructure installations in Saudi Arabia and Middle East.
             </p>
-            <div className="space-y-3 text-xs text-slate-400">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                <div>
-                  <strong>Head Office:</strong> Jeddah, Saudi Arabia<br />
-                  Othman Bin Afan Street, Jeddah 22234
+            <div className="space-y-4 text-sm sm:text-[15px] text-slate-300">
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-[#E8612C] shrink-0 mt-0.5" />
+                <div className="leading-snug">
+                  <strong className="text-white font-bold text-[15px] sm:text-base block mb-0.5">Head Office:</strong>
+                  <span className="text-slate-200">Jeddah, Saudi Arabia</span><br />
+                  <span className="text-slate-400 text-xs sm:text-sm">Othman Bin Afan Street, Jeddah 22234</span>
                 </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                <div>
-                  <strong>Branch:</strong> Dammam, Saudi Arabia<br />
-                  Petromin Business Center, Dammam 32214
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-[#E8612C] shrink-0 mt-0.5" />
+                <div className="leading-snug">
+                  <strong className="text-white font-bold text-[15px] sm:text-base block mb-0.5">Branch:</strong>
+                  <span className="text-slate-200">Dammam, Saudi Arabia</span><br />
+                  <span className="text-slate-400 text-xs sm:text-sm">Petromin Business Center, Dammam 32214</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-white shrink-0" />
-                <a href="mailto:sales@arabiangratings.com" className="hover:text-accent transition-colors">
+              <div className="flex items-center space-x-3 pt-1">
+                <Mail className="w-5 h-5 text-[#E8612C] shrink-0" />
+                <a href="mailto:sales@arabiangratings.com" className="text-slate-200 hover:text-[#E8612C] transition-colors text-sm sm:text-[15px]">
                   sales@arabiangratings.com
                 </a>
               </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-mono font-bold text-white shrink-0 w-4">TEL</span>
-                <a href="tel:+966126576896" className="hover:text-accent transition-colors font-mono">
+              <div className="flex items-center space-x-3">
+                <span className="text-xs font-mono font-bold text-[#E8612C] shrink-0 w-5">TEL</span>
+                <a href="tel:+966126576896" className="text-slate-200 hover:text-[#E8612C] transition-colors font-mono text-sm sm:text-[15px]">
                   +966 12 657 6896
                 </a>
               </div>

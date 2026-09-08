@@ -498,7 +498,7 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                   {[
                     { value: '10+', label: 'Years in Saudi' },
                     { value: 'ISO 9001', label: 'Quality Certified' },
-                    { value: '321+', label: 'Projects Delivered' },
+                    { value: '500+', label: 'Projects Delivered' },
                     { value: 'Saudi / GCC', label: 'Regional Coverage' },
                   ].map((stat, idx) => {
                     const isHighlighted = (isHoveredStat !== null ? isHoveredStat === idx : activeStatIndex === idx) && !noMotion;
@@ -507,8 +507,8 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                     const lineColor = noMotion ? '#D9DDE1' : (isHighlighted ? '#E8612C' : '#D9DDE1');
                     const lineHeight = isHighlighted ? '2px' : '1px';
 
-                    const isNumeric = stat.value === '10+' || stat.value === '500+' || stat.value === '321+';
-                    const targetVal = stat.value === '10+' ? 10 : (stat.value === '500+' || stat.value === '321+') ? 321 : 0;
+                    const isNumeric = stat.value === '10+' || stat.value === '500+';
+                    const targetVal = stat.value === '10+' ? 10 : stat.value === '500+' ? 500 : 0;
 
                     return (
                       <motion.div
@@ -1157,7 +1157,7 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
           >
             {[
               { num: '10+', target: 10, suffix: '+', label: 'Years in Saudi Arabia' },
-              { num: '321+', target: 321, suffix: '+', label: 'Projects Delivered' },
+              { num: '500+', target: 500, suffix: '+', label: 'Projects Delivered' },
               { num: '4', target: 4, suffix: '', label: 'Core Industries Served' },
               { num: 'ISO', target: 0, suffix: '', label: '9001 Certified Quality' },
             ].map((stat, idx) => {
