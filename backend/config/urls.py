@@ -20,6 +20,7 @@ urlpatterns = [
         path('projects/', include('apps.projects.urls')),
         path('blog/', include('apps.blog.urls')),
         path('enquiries/', include('apps.enquiries.urls')),
+        path('auth/', include('apps.auth_admin.urls')),
     ])),
 ]
 

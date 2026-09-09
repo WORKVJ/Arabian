@@ -51,3 +51,25 @@ class BlogPostDetailSerializer(serializers.ModelSerializer):
             'related_products', 'related_industries', 'related_posts',
             'seo_title', 'seo_description', 'canonical_url', 'og_title', 'og_description', 'og_image', 'no_index',
         ]
+
+class BlogPostAdminSerializer(serializers.ModelSerializer):
+    from apps.products.models import Media
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=BlogCategory.objects.all(), source='category', write_only=True, required=False
+    )
+    featured_image_id = serializers.PrimaryKeyRelatedField(
+        queryset=Media.objects.all(), source='featured_image', write_only=True, required=False, allow_null=True
+    )
+    category = BlogCategorySerializer(read_only=True)
+    featured_image = MediaSerializer(read_only=True)
+    author = AuthorSerializer(read_only=True)
+
+    class Meta:
+        model = BlogPost
+        fields = [
+            'id', 'title', 'slug', 'excerpt', 'content', 'featured_image', 'featured_image_id',
+            'category', 'category_id', 'author', 'status', 'is_featured', 'published_at',
+            'created_at', 'updated_at', 'seo_title', 'seo_description', 'canonical_url',
+        ]
+        read_only_fields = ['created_at', 'updated_at']
+

@@ -20,10 +20,12 @@ def validate_uploaded_file(file):
     return file
 
 class ContactEnquirySerializer(serializers.ModelSerializer):
+    status = serializers.CharField(required=False, default='NEW')
+
     class Meta:
         model = ContactEnquiry
         fields = ['id', 'name', 'company', 'email', 'phone', 'message', 'status', 'created_at']
-        read_only_fields = ['status', 'created_at']
+        read_only_fields = ['created_at']
 
     def validate_phone(self, value):
         if not value:
@@ -38,6 +40,7 @@ class QuoteAttachmentSerializer(serializers.ModelSerializer):
 class QuoteRequestSerializer(serializers.ModelSerializer):
     attachments = QuoteAttachmentSerializer(many=True, read_only=True)
     drawing = serializers.FileField(required=False, allow_null=True, validators=[validate_uploaded_file])
+    status = serializers.CharField(required=False, default='NEW')
 
     class Meta:
         model = QuoteRequest
@@ -46,7 +49,7 @@ class QuoteRequestSerializer(serializers.ModelSerializer):
             'material', 'quantity', 'dimensions', 'project_requirements', 
             'drawing', 'message', 'status', 'attachments', 'created_at'
         ]
-        read_only_fields = ['status', 'created_at']
+        read_only_fields = ['created_at']
 
     def create(self, validated_data):
         # Extract files from request

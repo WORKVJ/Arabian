@@ -33,8 +33,27 @@ class ProjectDetailSerializer(serializers.ModelSerializer):
             'featured_image', 'project_images', 'products_used', 'project_date', 'is_featured', 'is_active',
             'created_at', 'updated_at', 'seo_title', 'seo_description', 'canonical_url', 'og_title', 'og_description', 'og_image', 'no_index'
         ]
+
+class ProjectAdminSerializer(serializers.ModelSerializer):
+    from apps.products.models import Media
+    featured_image_id = serializers.PrimaryKeyRelatedField(
+        queryset=Media.objects.all(), source='featured_image', write_only=True, required=False, allow_null=True
+    )
+    featured_image = MediaSerializer(read_only=True)
+
+    class Meta:
+        model = Project
+        fields = [
+            'id', 'title', 'slug', 'location', 'description',
+            'featured_image', 'featured_image_id', 'project_date',
+            'is_featured', 'is_active', 'created_at', 'updated_at',
+            'seo_title', 'seo_description'
+        ]
+        read_only_fields = ['created_at', 'updated_at']
+
 class ProjectImageDetailSerializer(serializers.ModelSerializer):
     media = MediaSerializer(read_only=True)
     class Meta:
         model = ProjectImage
         fields = ['id', 'media', 'sort_order']
+

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     
     # Third party packages
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'django_filters',
     'storages',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'apps.projects',
     'apps.blog',
     'apps.enquiries',
+    'apps.auth_admin',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST Framework configurations
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
