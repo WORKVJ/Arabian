@@ -48,6 +48,7 @@ def seed():
         "prod-pultruded-gratings.jpg",
         "prod-pultruded-handrails.jpg",
         "prod-pultruded-ladders.jpg",
+        "cable-trays.jpg",
         "prod-cable-trays.jpg",
         "prod-platform-structures.jpg",
         "prod-grp-manhole-covers.jpg",
@@ -249,7 +250,7 @@ def seed():
             "faqs": [
                 {"question": "What is the fire rating of GRP cable trays?", "answer": "Our GRP cable trays carry NEMA FG-1 flame retardant classification and optional Halogen-Free grades for marine and tunnel applications."},
             ],
-            "img": "prod-cable-trays.jpg",
+            "img": "cable-trays.jpg",
         },
         {
             "category": "frp-grp-products", "sort": 5, "featured": False,

@@ -136,7 +136,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Built to NEMA FG-1, IEC 61537, ASTM, and UL standards for unmatched cable management durability and safety.',
     material: 'Fiberglass Reinforced Plastic (GRP)', finish: 'Smooth Gel Coat / UV Stabilized', standard: 'NEMA FG-1, IEC 61537',
     applications: 'Petrochemical Plants, Data Centres, Marine Electrical Systems, Power Distribution',
-    primary_image: makeProductImage(105, '/img/products/prod-cable-trays.jpg', 'GRP Cable Trays Saudi Arabia'),
+    primary_image: makeProductImage(105, '/img/products/cable-trays.jpg', 'FRP GRP Cable Trays Cable Ladders Saudi Arabia'),
     is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
