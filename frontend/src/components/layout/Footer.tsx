@@ -4,12 +4,9 @@ import Image from 'next/image';
 
 const footerLinks = {
   company: [
-    { name: 'About Us', href: '/about' },
     { name: 'Company Profile', href: '/about#company' },
-    { name: 'Manufacturing', href: '/about#manufacturing' },
-    { name: 'Quality Policy', href: '/about#quality' },
-    { name: 'Certifications', href: '/about#certifications' },
-    { name: 'Our Projects', href: '/projects' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Projects', href: '/projects' },
   ],
   products: [
     { name: 'All Products', href: '/products' },
