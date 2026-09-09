@@ -12,7 +12,7 @@ import { stripHtml } from '@/lib/seo/stripHtml';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { BlogPost, BlogCategory, PaginatedResponse } from '@/types';
 
-export const revalidate = 86400; // ISR for 24 hours
+export const dynamic = 'force-dynamic';
 
 interface BlogPageProps {
   searchParams: Promise<{

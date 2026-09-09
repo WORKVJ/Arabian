@@ -178,7 +178,7 @@ export async function getProjects(params?: {
     
     const queryString = query.toString() ? `?${query.toString()}` : '';
     return await fetchFromAPI<PaginatedResponse<Project>>(`/projects/${queryString}`, {
-      next: { tags: ['projects'], revalidate: 86400 }
+      cache: 'no-store'
     });
   } catch (error) {
     console.warn("getProjects backend failed, falling back to static data", error);
@@ -198,7 +198,7 @@ export async function getProjects(params?: {
 export async function getProject(slug: string): Promise<Project> {
   try {
     return await fetchFromAPI<Project>(`/projects/${slug}/`, {
-      next: { tags: [`project-${slug}`], revalidate: 86400 }
+      cache: 'no-store'
     });
   } catch (error) {
     console.warn(`getProject backend for slug: ${slug} failed, falling back to static data`, error);
@@ -233,7 +233,7 @@ export async function getBlogPosts(params?: {
 
     const queryString = query.toString() ? `?${query.toString()}` : '';
     return await fetchFromAPI<PaginatedResponse<BlogPost>>(`/blog/${queryString}`, {
-      next: { tags: ['blog'], revalidate: 86400 }
+      cache: 'no-store'
     });
   } catch (error) {
     console.warn("getBlogPosts backend failed, falling back to static data", error);
@@ -257,7 +257,7 @@ export async function getBlogPosts(params?: {
 export async function getBlogPost(slug: string): Promise<BlogPost> {
   try {
     return await fetchFromAPI<BlogPost>(`/blog/${slug}/`, {
-      next: { tags: [`blog-${slug}`], revalidate: 86400 }
+      cache: 'no-store'
     });
   } catch (error) {
     console.warn(`getBlogPost backend for slug: ${slug} failed, falling back to static data`, error);

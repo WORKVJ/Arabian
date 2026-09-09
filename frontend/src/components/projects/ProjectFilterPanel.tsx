@@ -32,28 +32,34 @@ export default function ProjectFilterPanel({ industries, products }: ProjectFilt
   const clearAll = () => router.push('/projects', { scroll: false });
 
   return (
-    <div className="space-y-6">
-      {/* Industry filter */}
+    <div className="space-y-4">
+      {/* Industry Sector Filter */}
       {industries.length > 0 && (
         <div>
-          <span className="text-[10px] font-mono font-bold text-slate-grey uppercase tracking-wider block mb-2">
-            Filter by Industry Sector
-          </span>
-          <div className="flex flex-wrap gap-2 relative" role="group" aria-label="Filter by industry">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest">
+              Industry Sector
+            </span>
+            {isFiltered && (
+              <button
+                onClick={clearAll}
+                className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-amber-600 hover:text-amber-700 transition cursor-pointer"
+              >
+                <X className="w-3.5 h-3.5" />
+                Reset Filters
+              </button>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by industry">
             <button
               onClick={() => setParam('industry', '')}
               aria-pressed={!currentIndustry}
-              className={`relative px-4 py-2 rounded-sm text-[10px] font-mono font-bold uppercase tracking-wider transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent z-10 cursor-pointer ${
-                !currentIndustry ? 'text-white' : 'text-slate-650 bg-white border border-border-color hover:bg-slate-50'
+              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                !currentIndustry
+                  ? 'bg-amber-500 text-slate-950 font-bold shadow-sm shadow-amber-500/20'
+                  : 'bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 border border-slate-200'
               }`}
             >
-              {!currentIndustry && (
-                <motion.span
-                  layoutId="activeIndustryBg"
-                  className="absolute inset-0 bg-accent rounded-sm z-[-1]"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
               All Sectors
             </button>
             {industries.map((ind) => (
@@ -61,17 +67,12 @@ export default function ProjectFilterPanel({ industries, products }: ProjectFilt
                 key={ind.id}
                 onClick={() => setParam('industry', currentIndustry === ind.slug ? '' : ind.slug)}
                 aria-pressed={currentIndustry === ind.slug}
-                className={`relative px-4 py-2 rounded-sm text-[10px] font-mono font-bold uppercase tracking-wider transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent z-10 cursor-pointer ${
-                  currentIndustry === ind.slug ? 'text-white' : 'text-slate-650 bg-white border border-border-color hover:bg-slate-50'
+                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  currentIndustry === ind.slug
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm shadow-amber-500/20'
+                    : 'bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 border border-slate-200'
                 }`}
               >
-                {currentIndustry === ind.slug && (
-                  <motion.span
-                    layoutId="activeIndustryBg"
-                    className="absolute inset-0 bg-accent rounded-sm z-[-1]"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
                 {ind.name}
               </button>
             ))}
@@ -79,62 +80,39 @@ export default function ProjectFilterPanel({ industries, products }: ProjectFilt
         </div>
       )}
 
-      {/* Product filter */}
+      {/* Product Category Filter (Sleek dropdown + quick pills) */}
       {products.length > 0 && (
-        <div>
-          <span className="text-[10px] font-mono font-bold text-slate-grey uppercase tracking-wider block mb-2">
-            Filter by Product Range
+        <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center gap-3">
+          <span className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest whitespace-nowrap">
+            Product Line:
           </span>
-          <div className="flex flex-wrap gap-2 relative" role="group" aria-label="Filter by product">
-            <button
-              onClick={() => setParam('product', '')}
-              aria-pressed={!currentProduct}
-              className={`relative px-4 py-2 rounded-sm text-[10px] font-mono font-bold uppercase tracking-wider transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent z-10 cursor-pointer ${
-                !currentProduct ? 'text-white' : 'text-slate-650 bg-white border border-border-color hover:bg-slate-50'
-              }`}
+          <div className="relative min-w-[240px] max-w-xs">
+            <select
+              value={currentProduct}
+              onChange={(e) => setParam('product', e.target.value)}
+              className="w-full px-3.5 py-2 bg-slate-50 hover:bg-slate-100/80 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition cursor-pointer"
             >
-              {!currentProduct && (
-                <motion.span
-                  layoutId="activeProductBg"
-                  className="absolute inset-0 bg-accent rounded-sm z-[-1]"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-              All Products
-            </button>
-            {products.map((prod) => (
-              <button
-                key={prod.id}
-                onClick={() => setParam('product', currentProduct === prod.slug ? '' : prod.slug)}
-                aria-pressed={currentProduct === prod.slug}
-                className={`relative px-4 py-2 rounded-sm text-[10px] font-mono font-bold uppercase tracking-wider transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent z-10 cursor-pointer ${
-                  currentProduct === prod.slug ? 'text-white' : 'text-slate-650 bg-white border border-border-color hover:bg-slate-50'
-                }`}
-              >
-                {currentProduct === prod.slug && (
-                  <motion.span
-                    layoutId="activeProductBg"
-                    className="absolute inset-0 bg-accent rounded-sm z-[-1]"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                {prod.name}
-              </button>
-            ))}
+              <option value="">All Products ({products.length} categories)</option>
+              {products.map((prod) => (
+                <option key={prod.id} value={prod.slug}>
+                  {prod.name}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-      )}
 
-      {/* Clear Filters indicator */}
-      {isFiltered && (
-        <div className="pt-2 border-t border-border-color">
-          <button
-            onClick={clearAll}
-            className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-accent hover:text-accent-hover uppercase tracking-wider cursor-pointer"
-          >
-            <X className="w-3.5 h-3.5" />
-            Clear All Active Filters
-          </button>
+          {currentProduct && (
+            <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 rounded-lg text-xs font-medium text-amber-800">
+              <span>{products.find(p => p.slug === currentProduct)?.name || currentProduct}</span>
+              <button
+                onClick={() => setParam('product', '')}
+                className="hover:text-rose-600 transition p-0.5"
+                title="Remove product filter"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

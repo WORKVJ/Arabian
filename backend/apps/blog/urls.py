@@ -4,6 +4,7 @@ from .views import BlogPostViewSet, BlogCategoryViewSet
 
 router = DefaultRouter()
 router.register('categories', BlogCategoryViewSet, basename='blog-category')
+router.register('posts', BlogPostViewSet, basename='blog-post-admin')
 router.register('', BlogPostViewSet, basename='blog-post')
 
 urlpatterns = [
