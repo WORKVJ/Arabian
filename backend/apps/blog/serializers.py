@@ -72,4 +72,7 @@ class BlogPostAdminSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'seo_title', 'seo_description', 'canonical_url',
         ]
         read_only_fields = ['created_at', 'updated_at']
+        extra_kwargs = {
+            'slug': {'required': False, 'allow_blank': True}
+        }
 

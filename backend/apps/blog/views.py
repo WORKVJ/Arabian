@@ -71,7 +71,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         title = serializer.validated_data.get('title', '')
-        slug = serializer.validated_data.get('slug', '').strip()
+        slug = (serializer.validated_data.get('slug') or '').strip()
         if not slug:
             base_slug = slugify(title)
             slug = base_slug

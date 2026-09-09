@@ -50,6 +50,9 @@ class ProjectAdminSerializer(serializers.ModelSerializer):
             'seo_title', 'seo_description'
         ]
         read_only_fields = ['created_at', 'updated_at']
+        extra_kwargs = {
+            'slug': {'required': False, 'allow_blank': True}
+        }
 
 class ProjectImageDetailSerializer(serializers.ModelSerializer):
     media = MediaSerializer(read_only=True)
