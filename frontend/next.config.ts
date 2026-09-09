@@ -71,6 +71,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/about/company",
+        destination: "/about#company",
+        permanent: true,
+      },
+      {
+        source: "/about/manufacturing",
+        destination: "/about#manufacturing",
+        permanent: true,
+      },
+      {
+        source: "/about/quality",
+        destination: "/about#quality",
+        permanent: true,
+      },
+      {
+        source: "/about/certifications",
+        destination: "/about#certifications",
+        permanent: true,
+      },
+      {
         source: "/service",
         destination: "/services",
         permanent: true,

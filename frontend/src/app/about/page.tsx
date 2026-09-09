@@ -15,7 +15,7 @@ export default function AboutPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Editorial Hero with General Manager Showcase */}
-      <section className="pt-28 pb-16 border-b border-[#D9DDE1] relative overflow-hidden bg-[#FBFBFB]">
+      <section id="company" className="pt-28 pb-16 border-b border-[#D9DDE1] relative overflow-hidden bg-[#FBFBFB]">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -107,7 +107,7 @@ export default function AboutPage() {
       </section>
 
       {/* Corporate Pillars */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section id="quality" className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       {/* Editorial Content Block with Real Plant Image */}
-      <section className="border-t border-[#D9DDE1] py-20 bg-[#F7F8F9]">
+      <section id="manufacturing" className="border-t border-[#D9DDE1] py-20 bg-[#F7F8F9]">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
@@ -206,7 +206,7 @@ export default function AboutPage() {
       </section>
 
       {/* Real Operations & Verification Gallery */}
-      <section className="py-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#D9DDE1]">
+      <section id="certifications" className="py-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#D9DDE1]">
         <div className="mb-14">
           <Reveal direction="up" delay={0.05}>
             <span className="text-[9px] font-mono text-[#E8612C] tracking-widest uppercase block mb-3">

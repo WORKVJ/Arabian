@@ -4,26 +4,31 @@ import Image from 'next/image';
 
 const footerLinks = {
   company: [
-    { name: 'Company Profile', href: '/about/company' },
-    { name: 'Manufacturing', href: '/about/manufacturing' },
-    { name: 'Quality Policy', href: '/about/quality' },
-    { name: 'Certifications', href: '/about/certifications' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Company Profile', href: '/about#company' },
+    { name: 'Manufacturing', href: '/about#manufacturing' },
+    { name: 'Quality Policy', href: '/about#quality' },
+    { name: 'Certifications', href: '/about#certifications' },
+    { name: 'Our Projects', href: '/projects' },
   ],
   products: [
-    { name: 'FRP Gratings', href: '/products' },
-    { name: 'Steel Gratings', href: '/products' },
-    { name: 'Stair Treads', href: '/products' },
-    { name: 'Grating Clamps', href: '/products' },
+    { name: 'All Products', href: '/products' },
+    { name: 'Steel Gratings', href: '/products/steel-gratings' },
+    { name: 'FRP / GRP Products', href: '/products/frp-grp-products' },
+    { name: 'Stainless Steel Products', href: '/products/stainless-steel-products' },
+    { name: 'Aluminium Solutions', href: '/products/aluminium' },
+    { name: 'Grating Clamps', href: '/products/ss-gi-grating-clamps' },
   ],
   industries: [
-    { name: 'Oil & Gas', href: '/industries' },
-    { name: 'Water & Wastewater', href: '/industries' },
-    { name: 'Marine & Offshore', href: '/industries' },
-    { name: 'Infrastructure', href: '/industries' },
+    { name: 'Oil & Gas', href: '/industries/oil-gas' },
+    { name: 'Water & Wastewater', href: '/industries/water-treatment' },
+    { name: 'Marine & Offshore', href: '/industries/marine-offshore' },
+    { name: 'Infrastructure', href: '/industries/infrastructure' },
   ],
   resources: [
     { name: 'Knowledge Hub', href: '/blog' },
     { name: 'Contact Us', href: '/contact' },
+    { name: 'Request a Quote', href: '/quote' },
   ]
 };
 
@@ -137,15 +142,11 @@ export default function Footer() {
 
         </div>
 
-        {/* Copyright & Legal Bar */}
+        {/* Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p className="mb-4 sm:mb-0">
+          <p>
             &copy; {currentYear} Arabian Gratings Saudi Arabia. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link href="/privacy-policy" className="hover:text-slate-400">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="hover:text-slate-400">Terms of Service</Link>
-          </div>
         </div>
 
       </div>
