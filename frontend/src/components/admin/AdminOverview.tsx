@@ -154,8 +154,10 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
           onClick={() => onNavigateTab('blogs')}
           className="flex items-center gap-3.5 p-5 bg-white border border-slate-200 hover:border-amber-500/60 hover:shadow-md rounded-2xl transition group text-left cursor-pointer shadow-2xs"
         >
-          <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl group-hover:scale-110 transition">
-            ✍️
+          <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
           </div>
           <div>
             <div className="text-sm font-bold text-slate-900 group-hover:text-amber-700 transition">Write New Article</div>
@@ -167,8 +169,10 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
           onClick={() => onNavigateTab('projects')}
           className="flex items-center gap-3.5 p-5 bg-white border border-slate-200 hover:border-amber-500/60 hover:shadow-md rounded-2xl transition group text-left cursor-pointer shadow-2xs"
         >
-          <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl group-hover:scale-110 transition">
-            🏗️
+          <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
           </div>
           <div>
             <div className="text-sm font-bold text-slate-900 group-hover:text-amber-700 transition">Add Installation Project</div>
@@ -180,8 +184,10 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
           onClick={() => onNavigateTab('enquiries')}
           className="flex items-center gap-3.5 p-5 bg-white border border-slate-200 hover:border-amber-500/60 hover:shadow-md rounded-2xl transition group text-left cursor-pointer shadow-2xs"
         >
-          <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl group-hover:scale-110 transition">
-            📬
+          <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
           </div>
           <div>
             <div className="text-sm font-bold text-slate-900 group-hover:text-amber-700 transition">Manage All RFQs & Leads</div>
