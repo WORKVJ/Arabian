@@ -130,15 +130,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # Django Admin
-    location /admin/ {
-        proxy_pass http://127.0.0.1:8000/admin/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
+    # Django Secure Admin (Django backend admin)
     location /secure-admin/ {
         proxy_pass http://127.0.0.1:8000/secure-admin/;
         proxy_set_header Host $host;
