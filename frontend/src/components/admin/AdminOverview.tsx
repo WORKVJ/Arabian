@@ -30,7 +30,7 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
   return (
     <div className="space-y-6">
       {/* Executive KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         {/* Contact Enquiries */}
         <div
           onClick={() => onNavigateTab('enquiries')}
@@ -51,33 +51,6 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
             {stats && stats.unread_enquiries > 0 ? (
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 border border-amber-300">
                 {stats.unread_enquiries} New
-              </span>
-            ) : (
-              <span className="text-[11px] font-medium text-slate-400">Total</span>
-            )}
-          </div>
-        </div>
-
-        {/* RFQ Quotes */}
-        <div
-          onClick={() => onNavigateTab('enquiries')}
-          className="cursor-pointer bg-white hover:border-amber-400 border border-slate-200 rounded-2xl p-5 transition group shadow-xs"
-        >
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">RFQ Quote Requests</span>
-            <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:bg-amber-50 group-hover:border-amber-300 group-hover:text-amber-800 transition">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-          </div>
-          <div className="mt-3 flex items-baseline justify-between">
-            <span className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              {isLoading ? '...' : stats?.total_quotes ?? 0}
-            </span>
-            {stats && stats.unread_quotes > 0 ? (
-              <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
-                {stats.unread_quotes} Pending
               </span>
             ) : (
               <span className="text-[11px] font-medium text-slate-400">Total</span>
