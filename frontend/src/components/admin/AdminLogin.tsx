@@ -30,38 +30,38 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 relative overflow-hidden">
-      {/* Subtle Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen flex items-center justify-center bg-slate-100/90 px-4 relative overflow-hidden">
+      {/* Subtle Warm Background Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative w-full max-w-md bg-slate-900/90 border border-slate-800 backdrop-blur-xl rounded-2xl p-8 shadow-2xl shadow-black/80">
+      <div className="relative w-full max-w-md bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-slate-300/60">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-black text-2xl mb-4 shadow-inner">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-black text-2xl mb-4 shadow-lg shadow-amber-500/25">
             AG
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
             Client Portal Admin
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             Arabian Gratings Content & Lead Management
           </p>
         </div>
 
         {/* Error Alert */}
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm flex items-start gap-3">
-            <svg className="w-5 h-5 flex-shrink-0 text-rose-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-start gap-3 shadow-2xs">
+            <svg className="w-5 h-5 flex-shrink-0 text-rose-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>{error}</span>
+            <span className="font-medium">{error}</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
               Username or Email
             </label>
             <input
@@ -71,12 +71,12 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="e.g. admin"
               autoComplete="username"
-              className="w-full px-4 py-3 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition text-sm"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition text-sm font-medium shadow-2xs"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
               Password
             </label>
             <div className="relative">
@@ -87,12 +87,12 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
                 autoComplete="current-password"
-                className="w-full px-4 py-3 bg-slate-800/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition text-sm pr-11"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition text-sm font-medium pr-11 shadow-2xs"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600"
               >
                 {showPassword ? (
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,7 +111,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide shadow-lg shadow-amber-500/25 hover:shadow-amber-500/35 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {isLoading ? (
               <>
@@ -127,8 +127,8 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-slate-800/80 text-center">
-          <p className="text-xs text-slate-500">
+        <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+          <p className="text-xs text-slate-400 font-medium">
             Protected Staff Area • Arabian Gratings KSA & UAE
           </p>
         </div>

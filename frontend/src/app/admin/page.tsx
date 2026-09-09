@@ -53,10 +53,10 @@ export default function AdminPortalPage() {
 
   if (isCheckingAuth) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-amber-400"></div>
-          <p className="text-xs text-slate-400 mt-4 tracking-wider uppercase">Loading Portal...</p>
+          <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-amber-600"></div>
+          <p className="text-xs text-slate-500 font-semibold mt-4 tracking-wider uppercase">Loading Portal...</p>
         </div>
       </div>
     );
@@ -68,21 +68,21 @@ export default function AdminPortalPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-amber-500 selection:text-white">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo & Portal Branding */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black text-sm shadow-md shadow-amber-500/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-slate-950 font-black text-sm shadow-md shadow-amber-500/20">
               AG
             </div>
             <div>
-              <div className="text-sm font-black text-white tracking-wide uppercase">
+              <div className="text-sm font-black text-slate-900 tracking-wide uppercase">
                 Arabian Gratings
               </div>
-              <div className="text-[10px] text-amber-400 font-semibold tracking-wider uppercase">
-                Content & Lead Management
+              <div className="text-[10px] text-amber-700 font-bold tracking-wider uppercase">
+                Client Management Portal
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function AdminPortalPage() {
               href="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition border border-slate-700"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-semibold rounded-lg text-slate-700 hover:text-slate-900 transition border border-slate-200 shadow-2xs"
             >
               <span>Preview Live Site</span>
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -101,19 +101,19 @@ export default function AdminPortalPage() {
               </svg>
             </a>
 
-            <div className="flex items-center gap-2 pl-3 border-l border-slate-800">
-              <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold text-xs">
+            <div className="flex items-center gap-2.5 pl-3 border-l border-slate-200">
+              <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center font-bold text-xs shadow-2xs">
                 {user.username.charAt(0).toUpperCase()}
               </div>
               <div className="hidden md:block text-left">
-                <div className="text-xs font-bold text-white">{user.username}</div>
-                <div className="text-[10px] text-slate-400">{user.is_superuser ? 'Super Administrator' : 'Staff Editor'}</div>
+                <div className="text-xs font-bold text-slate-900">{user.username}</div>
+                <div className="text-[10px] text-slate-500 font-medium">{user.is_superuser ? 'Super Administrator' : 'Staff Editor'}</div>
               </div>
             </div>
 
             <button
               onClick={handleLogout}
-              className="p-2 hover:bg-rose-500/10 text-slate-400 hover:text-rose-400 rounded-lg transition"
+              className="p-2 hover:bg-rose-50 text-slate-500 hover:text-rose-600 rounded-lg transition"
               title="Sign Out"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,43 +124,43 @@ export default function AdminPortalPage() {
         </div>
 
         {/* Navigation Tabs Bar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-4 overflow-x-auto no-scrollbar">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-2 sm:space-x-4 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
+            className={`py-3 px-3.5 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
               activeTab === 'overview'
-                ? 'border-amber-400 text-amber-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-amber-600 text-amber-700 bg-amber-50/50'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
             }`}
           >
             📊 Dashboard Overview
           </button>
           <button
             onClick={() => setActiveTab('enquiries')}
-            className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
+            className={`py-3 px-3.5 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
               activeTab === 'enquiries'
-                ? 'border-amber-400 text-amber-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-amber-600 text-amber-700 bg-amber-50/50'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
             }`}
           >
             📬 Leads & Inquiries
           </button>
           <button
             onClick={() => setActiveTab('blogs')}
-            className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
+            className={`py-3 px-3.5 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
               activeTab === 'blogs'
-                ? 'border-amber-400 text-amber-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-amber-600 text-amber-700 bg-amber-50/50'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
             }`}
           >
             ✍️ Blog & Articles
           </button>
           <button
             onClick={() => setActiveTab('projects')}
-            className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
+            className={`py-3 px-3.5 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition cursor-pointer ${
               activeTab === 'projects'
-                ? 'border-amber-400 text-amber-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-amber-600 text-amber-700 bg-amber-50/50'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
             }`}
           >
             🏗️ Showcase Projects
