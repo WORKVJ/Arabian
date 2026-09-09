@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  skipTrailingSlashRedirect: true,
   images: {
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
@@ -22,6 +23,14 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/portal",
+        destination: "/admin",
+      },
+    ];
   },
   async redirects() {
     return [
