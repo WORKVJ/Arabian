@@ -86,7 +86,6 @@ echo ">>> [5/6] Setting up Next.js Frontend..."
 cd /var/www/arabian/Arabian_gratings/frontend
 
 cat << 'EOF' > .env.production
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api
 NODE_ENV=production
 EOF
 

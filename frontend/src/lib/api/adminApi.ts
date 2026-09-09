@@ -127,14 +127,15 @@ export function setStoredUser(user: AdminUser): void {
 }
 
 export function getApiUrl(): string {
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
-  }
   if (typeof window !== 'undefined') {
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      return 'http://127.0.0.1:8000/api/v1';
+    // If running in browser on a remote server/IP (e.g. 161.35.211.116 or production domain)
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      return `${window.location.origin}/api/v1`;
     }
-    return `${window.location.origin}/api/v1`;
+    return 'http://127.0.0.1:8000/api/v1';
+  }
+  if (process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.includes('127.0.0.1')) {
+    return process.env.NEXT_PUBLIC_API_URL;
   }
   return 'http://127.0.0.1:8000/api/v1';
 }

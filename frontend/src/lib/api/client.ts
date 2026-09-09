@@ -15,11 +15,31 @@ import { STATIC_PROJECTS } from '@/lib/data/projects';
 import { STATIC_BLOG_POSTS, STATIC_BLOG_CATEGORIES } from '@/lib/data/blog';
 import { STATIC_SOLUTIONS, STATIC_SERVICES } from '@/lib/data/services';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api/v1';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') || 'http://127.0.0.1:8000';
+export function getClientApiUrl(): string {
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      return `${window.location.origin}/api/v1`;
+    }
+    return 'http://127.0.0.1:8000/api/v1';
+  }
+  if (process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.includes('127.0.0.1')) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  return 'http://127.0.0.1:8000/api/v1';
+}
+
+export function getClientApiBaseUrl(): string {
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      return window.location.origin;
+    }
+    return 'http://127.0.0.1:8000';
+  }
+  return 'http://127.0.0.1:8000';
+}
 
 async function fetchFromAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const url = `${API_URL}${endpoint}`;
+  const url = `${getClientApiUrl()}${endpoint}`;
   const res = await fetch(url, options);
   if (!res.ok) {
     let data: any = null;
@@ -34,7 +54,7 @@ async function fetchFromAPI<T>(endpoint: string, options?: RequestInit): Promise
 export function getImageUrl(path: string | null | undefined): string | null {
   if (!path) return null;
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  if (path.startsWith('/media/')) return `${API_BASE_URL}${path}`;
+  if (path.startsWith('/media/')) return `${getClientApiBaseUrl()}${path}`;
   return path;
 }
 
