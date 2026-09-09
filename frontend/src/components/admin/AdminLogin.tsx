@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { adminLogin, AdminUser } from '@/lib/api/adminApi';
 
 interface AdminLoginProps {
@@ -38,14 +39,21 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
       <div className="relative w-full max-w-md bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-slate-300/60">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-black text-2xl mb-4 shadow-lg shadow-amber-500/25">
-            AG
+          <div className="inline-flex items-center justify-center mb-4">
+            <Image
+              src="/img/logo.png"
+              alt="Arabian Gratings Logo"
+              width={180}
+              height={42}
+              className="h-9 w-auto object-contain brightness-0"
+              priority
+            />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
             Client Portal Admin
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            Arabian Gratings Content & Lead Management
+          <p className="text-xs text-slate-500 mt-1">
+            Sign in with administrative credentials
           </p>
         </div>
 
