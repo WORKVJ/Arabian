@@ -26,6 +26,18 @@ class BlogCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = BlogCategorySerializer
     lookup_field = 'slug'
 
+    def get_queryset(self):
+        if BlogCategory.objects.count() == 0:
+            defaults = [
+                {'name': 'Technical Standards', 'slug': 'technical-standards', 'description': 'Industry specifications, deflection limits, and compliance guides.'},
+                {'name': 'Material Engineering', 'slug': 'material-engineering', 'description': 'Resin selection, alloy comparisons, and material science deep-dives.'},
+                {'name': 'Project Insights', 'slug': 'project-insights', 'description': 'Behind-the-scenes case studies from Arabian Gratings installations.'},
+                {'name': 'Company News', 'slug': 'company-news', 'description': 'Corporate updates, expansions, and industry events.'},
+            ]
+            for d in defaults:
+                BlogCategory.objects.get_or_create(slug=d['slug'], defaults={'name': d['name'], 'description': d['description'], 'is_active': True})
+        return BlogCategory.objects.all()
+
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [permissions.AllowAny()]
@@ -85,8 +97,20 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         if status_val == 'PUBLISHED' and not published_at:
             published_at = timezone.now()
 
+        category = serializer.validated_data.get('category')
+        if not category:
+            category = BlogCategory.objects.first()
+            if not category:
+                category = BlogCategory.objects.create(
+                    name='Technical Standards',
+                    slug='technical-standards',
+                    description='Industry specifications and technical guides.',
+                    is_active=True
+                )
+
         serializer.save(
             author=self.request.user,
+            category=category,
             slug=slug,
             published_at=published_at
         )

@@ -55,7 +55,7 @@ class BlogPostDetailSerializer(serializers.ModelSerializer):
 class BlogPostAdminSerializer(serializers.ModelSerializer):
     from apps.products.models import Media
     category_id = serializers.PrimaryKeyRelatedField(
-        queryset=BlogCategory.objects.all(), source='category', write_only=True, required=False
+        queryset=BlogCategory.objects.all(), source='category', write_only=True, required=False, allow_null=True
     )
     featured_image_id = serializers.PrimaryKeyRelatedField(
         queryset=Media.objects.all(), source='featured_image', write_only=True, required=False, allow_null=True
@@ -73,6 +73,7 @@ class BlogPostAdminSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['created_at', 'updated_at']
         extra_kwargs = {
-            'slug': {'required': False, 'allow_blank': True}
+            'slug': {'required': False, 'allow_blank': True},
+            'category': {'required': False, 'allow_null': True},
         }
 

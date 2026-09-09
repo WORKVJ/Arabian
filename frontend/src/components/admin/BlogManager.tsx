@@ -156,7 +156,7 @@ export default function BlogManager() {
       const payload = {
         title: formData.title,
         slug: finalSlug,
-        category_id: formData.category_id,
+        category_id: formData.category_id && formData.category_id > 0 ? formData.category_id : undefined,
         excerpt: formData.excerpt,
         content: formData.content,
         status: formData.status,
@@ -425,19 +425,26 @@ export default function BlogManager() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Category
+                    Article Category
                   </label>
                   <select
                     value={formData.category_id}
                     onChange={e => setFormData(prev => ({ ...prev, category_id: Number(e.target.value) }))}
                     className="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 font-medium focus:outline-none focus:border-amber-500 transition cursor-pointer"
                   >
-                    {categories.map(cat => (
-                      <option key={cat.id} value={cat.id}>
-                        {cat.name}
-                      </option>
-                    ))}
+                    {categories.length === 0 ? (
+                      <option value={0}>Technical Standards (Default)</option>
+                    ) : (
+                      categories.map(cat => (
+                        <option key={cat.id} value={cat.id}>
+                          {cat.name}
+                        </option>
+                      ))
+                    )}
                   </select>
+                  <p className="text-[10px] text-slate-500 mt-1">
+                    Topic section on the public blog
+                  </p>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
