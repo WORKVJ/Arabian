@@ -61,6 +61,7 @@ def seed():
         "prod-ss-floor-drains.jpg",
         "prod-ss-ladders.jpg",
         "prod-ablution-gratings.jpg",
+        "prod-ss-cable-trays.jpg",
         "prod-landscape-aluminium.jpg",
         "prod-aluminium-handrail.jpg",
         "prod-aluminium-cage-ladder.jpg",
@@ -133,7 +134,7 @@ def seed():
     categories_data = [
         {"name": "FRP/GRP Products",     "slug": "frp-grp-products",     "short": "Corrosion-resistant fiberglass reinforced plastic floor grids and structural products for extreme chemical environments.", "img": "product-frp-grating.jpg",      "count": 8},
         {"name": "Steel Gratings",        "slug": "steel-gratings",        "short": "Heavy-duty electroforge welded carbon steel floor gratings galvanized for extreme load spans.",                           "img": "product-steel-grating.jpg",    "count": 5},
-        {"name": "Stainless Steel Products","slug": "stainless-steel-products","short": "Premium hygiene-safe SS304/SS316 grating panels for food processing and marine decks.",                              "img": "product-ss-grating.jpg",       "count": 4},
+        {"name": "Stainless Steel Products","slug": "stainless-steel-products","short": "Premium hygiene-safe SS304/SS316 grating panels for food processing and marine decks.",                              "img": "product-ss-grating.jpg",       "count": 5},
         {"name": "Aluminium",             "slug": "aluminium",             "short": "Lightweight, non-sparking walkways, access grates, handrails, ladders, and stair steps.",                                "img": "product-aluminium-grating.jpg","count": 8},
         {"name": "Manhole",               "slug": "manhole",               "short": "Ductile iron and GRP heavy-load manhole access covers for roads and infrastructure.",                                    "img": "product-manhole-cover.jpg",    "count": 4},
         {"name": "SS/GI Grating Clamps",  "slug": "ss-gi-grating-clamps",  "short": "Durable, quick, and easy-to-use grating clamps for cost-efficient and reliable clamping.",                              "img": "product-grating-clamp.jpg",    "count": 1},
@@ -476,6 +477,28 @@ def seed():
                 {"question": "What slot width is recommended for ablution areas?", "answer": "We recommend a maximum 8mm slot width for ablution areas to prevent bare feet and toes from becoming trapped, complying with accessibility safety guidelines."},
             ],
             "img": "prod-ablution-gratings.jpg",
+        },
+        {
+            "category": "stainless-steel-products", "sort": 4, "featured": False,
+            "name": "SS Cable Trays / Cable Ladders", "slug": "ss-cable-trays", "code": "AG-SS-CBL",
+            "short": "Heavy-duty stainless steel cable trays and ladders engineered to IEC 61537 and NEMA VE 1 for superior corrosion resistance in harsh industrial environments.",
+            "desc": "Arabian Gratings Stainless Steel Cable Trays and Cable Ladders are fabricated from high-grade SS304 and marine-grade SS316/316L for demanding industrial and offshore environments. Engineered to IEC 61537 and NEMA VE 1 specifications, our stainless steel cable management systems offer maximum structural rigidity, high load-bearing capacity, and ultimate resistance to aggressive chemical fumes, saline atmospheres, and moisture.",
+            "material": "Stainless Steel SS304 / SS316 / SS316L", "finish": "Pickled & Passivated / Electro-Polished / Mill Finish", "standard": "IEC 61537, NEMA VE 1, BS EN 61537",
+            "applications": "Petrochemical Plants, Offshore Rigs, Food & Pharma Facilities, Marine Decks, Data Centres",
+            "features": "Marine grade SS304 / SS316 / SS316L options\nHigh load capacity to IEC 61537 and NEMA VE 1\nSuperior resistance to pitting and crevice corrosion\nSmooth deburred edges to protect cable insulation\nFull range of matching stainless fittings and brackets\nIdeal for offshore, chemical, and hygienic installations",
+            "specs": [
+                {"name": "Material Grade", "value": "Stainless Steel SS304 / SS316 / SS316L"},
+                {"name": "Standard Compliance", "value": "IEC 61537, NEMA VE 1, BS EN 61537"},
+                {"name": "Side Rail Height", "value": "50 mm / 75 mm / 100 mm / 150 mm"},
+                {"name": "Width Range", "value": "50 mm to 900 mm"},
+                {"name": "Finish", "value": "Pickled & Passivated / Electro-Polished / Mill Finish"},
+                {"name": "Sheet Thickness", "value": "1.2 mm / 1.5 mm / 2.0 mm"},
+            ],
+            "faqs": [
+                {"question": "When should stainless steel cable trays be specified over galvanized or GRP trays?", "answer": "Stainless steel (especially SS316) is specified where high mechanical strength must be combined with extreme chemical resistance, high temperature tolerance, or stringent hygiene cleaning requirements, such as in offshore platforms, chemical corridors, and food processing plants."},
+                {"question": "Are matching stainless steel covers and fittings available?", "answer": "Yes, we supply complete systems including solid or ventilated covers, bends, tees, crosses, reducers, and SS316 hardware."},
+            ],
+            "img": "prod-ss-cable-trays.jpg",
         },
 
         # ── Aluminium ──────────────────────────────────────────────────────────

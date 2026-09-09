@@ -30,9 +30,9 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
   {
     id: 3, name: 'Stainless Steel Products', slug: 'stainless-steel-products',
     short_description: 'Premium hygiene-safe SS304/SS316 grating panels for food processing and marine decks.',
-    description: 'Arabian Gratings Stainless Steel Products cover SS gratings, floor drains, ladders, and ablution gratings in SS304/SS316 grades for Saudi Arabia and GCC industrial applications.',
+    description: 'Arabian Gratings Stainless Steel Products cover SS gratings, floor drains, ladders, ablution gratings, and cable trays / ladders in SS304/SS316 grades for Saudi Arabia and GCC industrial applications.',
     image: makeMedia(3, '/product-ss-grating.jpg', 'Stainless Steel Products Saudi Arabia'),
-    is_active: true, sort_order: 2, product_count: 4,
+    is_active: true, sort_order: 2, product_count: 5,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
   {
@@ -263,6 +263,16 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     primary_image: makeProductImage(304, '/img/products/prod-ablution-gratings.jpg', 'SS Ablution Gratings Saudi Arabia'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
+  {
+    id: 305, name: 'SS Cable Trays / Cable Ladders', slug: 'ss-cable-trays',
+    product_code: 'AG-SS-CBL',
+    category_name: 'Stainless Steel Products', category_slug: 'stainless-steel-products',
+    short_description: 'Heavy-duty stainless steel cable trays and ladders engineered to IEC 61537 and NEMA VE 1 for superior corrosion resistance in harsh industrial environments.',
+    material: 'Stainless Steel SS304 / SS316 / SS316L', finish: 'Pickled & Passivated / Electro-Polished / Mill Finish', standard: 'IEC 61537, NEMA VE 1, BS EN 61537',
+    applications: 'Petrochemical Plants, Offshore Rigs, Food & Pharma Facilities, Marine Decks, Data Centres',
+    primary_image: makeProductImage(305, '/img/products/prod-ss-cable-trays.jpg', 'Stainless Steel Cable Trays Saudi Arabia'),
+    is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
+  },
 
   // ── Aluminium ─────────────────────────────────────────────────────────────
   {
@@ -434,6 +444,8 @@ const detailDescriptions: Record<string, string> = {
   'ss-floor-drains': 'Our stainless steel floor drain range covers square, round, and channel-type drain bodies with adjustable heights, deep-seal water traps, and removable grating tops. SS316 grade standard for chemical and coastal environments. Available with tile-in or standard flanged frames in various flow rates.',
   'ss-ladders': 'Arabian Gratings SS316 ladders offer excellent corrosion resistance in marine and chemical environments. Constructed with tubular side rails and solid round rungs, our ladders meet EN ISO 14122-4 requirements for fixed permanent ladders. Custom heights and configurations including landing platforms and safety cages available.',
   'ablution-gratings': 'Designed specifically for mosques, prayer halls, and ablution areas, our SS ablution gratings provide hygienic and efficient drainage in wet prayer washing areas. The narrow slot pattern prevents bare feet from slipping and trapping toes while maintaining high flow rates. Available in standard and custom sizes with matching drain bodies.',
+  'ss-cable-trays': 'Arabian Gratings Stainless Steel Cable Trays and Cable Ladders are fabricated from high-grade SS304 and marine-grade SS316/316L for demanding industrial and offshore environments. Engineered to IEC 61537 and NEMA VE 1 specifications, our stainless steel cable management systems offer maximum structural rigidity, high load-bearing capacity, and ultimate resistance to aggressive chemical fumes, saline atmospheres, and moisture. Available in perforated cable tray, solid bottom, and heavy-duty ladder configurations with a comprehensive suite of stainless steel bends, tees, reducers, and splice couplers.',
+  'ss-cable-trays-cable-ladders': 'Arabian Gratings Stainless Steel Cable Trays and Cable Ladders are fabricated from high-grade SS304 and marine-grade SS316/316L for demanding industrial and offshore environments. Engineered to IEC 61537 and NEMA VE 1 specifications, our stainless steel cable management systems offer maximum structural rigidity, high load-bearing capacity, and ultimate resistance to aggressive chemical fumes, saline atmospheres, and moisture.',
   'landscape-aluminium': 'Arabian Gratings aluminium landscape structures combine elegant aesthetics with engineering durability for outdoor public spaces. Our range includes tree guards, urban grating panels, cycle rack bases, and landscape drainage systems that enhance streetscapes while providing practical functionality.',
   'aluminium-ss-handrail': 'Our aluminium and SS316 handrail systems are engineered for commercial and public space applications where both aesthetics and structural performance are critical. Modular component design enables flexible configurations for stairs, ramps, balconies, and terraces with consistent jointing details.',
   'aluminium-ss-ladder-with-safety-cage': 'Safety cage ladders protect users during ascent and descent on tall structures such as silos, tanks, and industrial towers. Arabian Gratings fabricates complete cage ladder assemblies with 800mm cage diameter, anti-slip rungs, and intermediate rest platforms to OSHA and EN 14122-4 requirements.',
@@ -469,6 +481,8 @@ const detailFeatures: Record<string, string> = {
   'ss-floor-drains': 'Adjustable height body\nDeep seal water trap\nRemovable grating top\nTile-in or flanged frames\nHigh flow rate designs',
   'ss-ladders': 'Marine grade SS316 standard\nTubular side rails and solid rungs\nSafety cage compatible\nCustom height configurations\nCorrosion-free maintenance-free',
   'ablution-gratings': 'Narrow slot anti-trap design\nHigh flow rate drainage\nHygienic cleanable surface\nMatching drain body supply\nSS304 or SS316 options',
+  'ss-cable-trays': 'Marine grade SS304 / SS316 / SS316L options\nHigh load capacity to IEC 61537 and NEMA VE 1\nSuperior resistance to pitting and crevice corrosion\nSmooth deburred edges to protect cable insulation\nFull range of matching stainless fittings and brackets\nIdeal for offshore, chemical, and hygienic installations',
+  'ss-cable-trays-cable-ladders': 'Marine grade SS304 / SS316 / SS316L options\nHigh load capacity to IEC 61537 and NEMA VE 1\nSuperior resistance to pitting and crevice corrosion\nSmooth deburred edges to protect cable insulation',
   'landscape-aluminium': 'Aesthetic anodized finishes\nWeatherproof all-year performance\nRecyclable green material\nLightweight installation\nBespoke design service',
   'aluminium-ss-handrail': 'Modular component system\nStructural compliance to BS 6180\nAnodized or polished finishes\nFlexible configuration options\nAll mounting hardware included',
   'aluminium-ss-ladder-with-safety-cage': '800mm cage diameter\nAnti-slip rung surfaces\nIntermediate rest platforms\nOSHA and EN 14122-4 compliant\nFull assembly packages available',
@@ -524,6 +538,20 @@ const detailSpecs: Record<string, { name: string; value: string }[]> = {
     { name: 'Bearing Bar Size', value: '25 × 5 mm (standard)' },
     { name: 'Cross Rod Pitch', value: '50 mm' },
     { name: 'Finish', value: 'Pickled & Passivated / Electro-Polished' },
+  ],
+  'ss-cable-trays': [
+    { name: 'Material Grade', value: 'Stainless Steel SS304 / SS316 / SS316L' },
+    { name: 'Standard Compliance', value: 'IEC 61537, NEMA VE 1, BS EN 61537' },
+    { name: 'Side Rail Height', value: '50 mm / 75 mm / 100 mm / 150 mm' },
+    { name: 'Width Range', value: '50 mm to 900 mm' },
+    { name: 'Finish', value: 'Pickled & Passivated / Electro-Polished / Mill Finish' },
+    { name: 'Sheet Thickness', value: '1.2 mm / 1.5 mm / 2.0 mm' },
+  ],
+  'ss-cable-trays-cable-ladders': [
+    { name: 'Material Grade', value: 'Stainless Steel SS304 / SS316 / SS316L' },
+    { name: 'Standard Compliance', value: 'IEC 61537, NEMA VE 1, BS EN 61537' },
+    { name: 'Side Rail Height', value: '50 mm / 75 mm / 100 mm / 150 mm' },
+    { name: 'Width Range', value: '50 mm to 900 mm' },
   ],
   'aluminium-gratings-standard': [
     { name: 'Alloy', value: 'Aluminium 6063-T6 / 6061-T6' },
