@@ -15,6 +15,8 @@ export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return [
+    { slug: 'jeddah-red-seaport-project' },
+    { slug: 'saudi-energy-project' },
     { slug: 'jazan-refinery-platform-gratings' },
     { slug: 'swcc-desalination-grp-walkways' },
     { slug: 'king-abdulaziz-port-marine-gratings' },

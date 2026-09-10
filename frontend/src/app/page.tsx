@@ -3,7 +3,7 @@ import HomeClient from '@/components/home/HomeClient';
 import { getProductCategories, getIndustries, getProjects, getBlogPosts } from '@/lib/api/client';
 import { ProductCategory, Industry, Project, BlogPost } from '@/types';
 
-export const revalidate = 86400; // Cache page for 24 hours
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   // Fetch data from Django API with try/catch to handle fallback cases gracefully
