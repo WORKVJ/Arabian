@@ -34,39 +34,85 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Old category and product URLs indexed in Google
+      {
+        source: "/products/category/gratings",
+        destination: "/products/steel-gratings",
+        permanent: true,
+      },
+      {
+        source: "/products/category/ss-gratings",
+        destination: "/products/stainless-steel-products",
+        permanent: true,
+      },
+      {
+        source: "/products/category/grp-products",
+        destination: "/products/frp-grp-products",
+        permanent: true,
+      },
+      {
+        source: "/products/category/:slug",
+        destination: "/products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/product-category/:slug",
+        destination: "/products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/category/:slug",
+        destination: "/products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/product/:slug",
+        destination: "/products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/gratings",
+        destination: "/products/steel-gratings",
+        permanent: true,
+      },
+      {
+        source: "/ss-gratings",
+        destination: "/products/stainless-steel-products",
+        permanent: true,
+      },
       {
         source: "/grp-products",
-        destination: "/products/category/frp-grp-products",
+        destination: "/products/frp-grp-products",
         permanent: true,
       },
       {
         source: "/steel-gratings",
-        destination: "/products/category/steel-gratings",
+        destination: "/products/steel-gratings",
         permanent: true,
       },
       {
         source: "/stainless-steel-products",
-        destination: "/products/category/stainless-steel-products",
+        destination: "/products/stainless-steel-products",
         permanent: true,
       },
       {
         source: "/aluminium",
-        destination: "/products/category/aluminium",
+        destination: "/products/aluminium",
         permanent: true,
       },
       {
         source: "/manhole",
-        destination: "/products/category/manhole",
+        destination: "/products/manhole",
         permanent: true,
       },
       {
         source: "/ss-gi-grating-clamps",
-        destination: "/products/category/ss-gi-grating-clamps",
+        destination: "/products/ss-gi-grating-clamps",
         permanent: true,
       },
       {
         source: "/step-iron",
-        destination: "/products/category/step-iron",
+        destination: "/products/step-iron",
         permanent: true,
       },
       {
