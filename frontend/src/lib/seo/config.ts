@@ -36,7 +36,16 @@ export const defaultMetadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  }
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export function generatePageMetadata(seoData: SEOData | null | undefined, fallback: {
