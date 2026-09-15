@@ -36,6 +36,36 @@ const nextConfig: NextConfig = {
     return [
       // Old category and product URLs indexed in Google
       {
+        source: "/product",
+        destination: "/products",
+        permanent: true,
+      },
+      {
+        source: "/grp-manhole-covers",
+        destination: "/products/grp-frp-manhole-covers",
+        permanent: true,
+      },
+      {
+        source: "/frp-manhole-covers",
+        destination: "/products/grp-frp-manhole-covers",
+        permanent: true,
+      },
+      {
+        source: "/manhole-covers",
+        destination: "/products/manhole",
+        permanent: true,
+      },
+      {
+        source: "/products/gratings",
+        destination: "/products/steel-gratings",
+        permanent: true,
+      },
+      {
+        source: "/products/ss-gratings",
+        destination: "/products/stainless-steel-products",
+        permanent: true,
+      },
+      {
         source: "/products/category/gratings",
         destination: "/products/steel-gratings",
         permanent: true,
