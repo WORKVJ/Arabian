@@ -13,11 +13,11 @@ import {
 
 const CATEGORY_TABS = [
   { id: 'all', label: 'All Pages' },
-  { id: 'core', label: 'Core Pages' },
-  { id: 'product', label: 'Products' },
-  { id: 'industry', label: 'Industries' },
-  { id: 'location', label: 'Locations' },
-  { id: 'other', label: 'Other' },
+  { id: 'Core Pages', label: 'Core Pages' },
+  { id: 'Products', label: 'Products' },
+  { id: 'Industries', label: 'Industries' },
+  { id: 'Locations', label: 'Locations' },
+  { id: 'Other', label: 'Other' },
 ] as const;
 
 export default function SEOManager() {
@@ -43,7 +43,7 @@ export default function SEOManager() {
   const [formData, setFormData] = useState<{
     path: string;
     page_name: string;
-    category: 'core' | 'product' | 'industry' | 'location' | 'other';
+    category: string;
     meta_title: string;
     meta_description: string;
     meta_keywords: string;
@@ -56,7 +56,7 @@ export default function SEOManager() {
   }>({
     path: '',
     page_name: '',
-    category: 'core',
+    category: 'Core Pages',
     meta_title: '',
     meta_description: '',
     meta_keywords: '',
@@ -120,7 +120,7 @@ export default function SEOManager() {
     setFormData({
       path: '/',
       page_name: '',
-      category: 'core',
+      category: 'Core Pages',
       meta_title: '',
       meta_description: '',
       meta_keywords: '',
@@ -380,13 +380,13 @@ export default function SEOManager() {
 
                     <span
                       className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                        page.category === 'core'
+                        page.category?.toLowerCase().includes('core')
                           ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                          : page.category === 'product'
+                          : page.category?.toLowerCase().includes('prod')
                           ? 'bg-amber-50 text-amber-800 border border-amber-200'
-                          : page.category === 'industry'
+                          : page.category?.toLowerCase().includes('ind')
                           ? 'bg-purple-50 text-purple-700 border border-purple-200'
-                          : page.category === 'location'
+                          : page.category?.toLowerCase().includes('loc')
                           ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                           : 'bg-slate-100 text-slate-700 border border-slate-200'
                       }`}
@@ -494,11 +494,12 @@ export default function SEOManager() {
                       onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 bg-white"
                     >
-                      <option value="core">Core Page</option>
-                      <option value="product">Product</option>
-                      <option value="industry">Industry</option>
-                      <option value="location">Location</option>
-                      <option value="other">Other</option>
+                      <option value="Core Pages">Core Page</option>
+                      <option value="Products">Product</option>
+                      <option value="Industries">Industry</option>
+                      <option value="Locations">Location</option>
+                      <option value="Services">Service</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>

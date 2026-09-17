@@ -9,10 +9,29 @@ class PageSEOViewSet(viewsets.ModelViewSet):
     queryset = PageSEO.objects.select_related('og_image').all()
     pagination_class = None
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['category', 'no_index']
+    filterset_fields = ['no_index']
     search_fields = ['page_name', 'path', 'meta_title', 'meta_description', 'meta_keywords']
     ordering_fields = ['page_name', 'path', 'category', 'updated_at']
     ordering = ['category', 'page_name']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category = self.request.query_params.get('category', '').strip()
+        if category and category.lower() != 'all':
+            cat_lower = category.lower()
+            if 'core' in cat_lower:
+                queryset = queryset.filter(category='Core Pages')
+            elif 'prod' in cat_lower:
+                queryset = queryset.filter(category='Products')
+            elif 'ind' in cat_lower:
+                queryset = queryset.filter(category='Industries')
+            elif 'loc' in cat_lower:
+                queryset = queryset.filter(category='Locations')
+            elif 'serv' in cat_lower:
+                queryset = queryset.filter(category='Services')
+            else:
+                queryset = queryset.filter(category__icontains=category)
+        return queryset
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve', 'lookup']:
