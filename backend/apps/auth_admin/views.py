@@ -7,6 +7,7 @@ from apps.products.models import Media
 from apps.enquiries.models import ContactEnquiry, QuoteRequest
 from apps.blog.models import BlogPost
 from apps.projects.models import Project
+from apps.seo.models import PageSEO
 
 User = get_user_model()
 
@@ -108,6 +109,7 @@ class DashboardStatsView(APIView):
         total_blogs = BlogPost.objects.count()
         published_blogs = BlogPost.objects.filter(status='PUBLISHED').count()
         total_projects = Project.objects.count()
+        total_seo = PageSEO.objects.count()
 
         recent_enquiries = [
             {
@@ -133,6 +135,7 @@ class DashboardStatsView(APIView):
                 'total_blogs': total_blogs,
                 'published_blogs': published_blogs,
                 'total_projects': total_projects,
+                'total_seo': total_seo,
             },
             'recent_enquiries': recent_enquiries,
         })

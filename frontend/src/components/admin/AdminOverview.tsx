@@ -119,10 +119,10 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <span className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              26+
+              {isLoading ? '...' : (stats?.total_seo ?? 0)}
             </span>
             <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-              Live Meta
+              {stats?.total_seo ? `${stats.total_seo} Live Meta` : 'Configured'}
             </span>
           </div>
         </div>

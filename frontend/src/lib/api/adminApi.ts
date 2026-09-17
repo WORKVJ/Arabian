@@ -22,6 +22,7 @@ export interface DashboardStats {
   total_blogs: number;
   published_blogs: number;
   total_projects: number;
+  total_seo?: number;
 }
 
 export interface ContactLead {
