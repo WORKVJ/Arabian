@@ -12,10 +12,23 @@ interface ProductDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 86400;
+import { getPageSEO } from '@/lib/seo/getPageSEO';
+import { fetchPageSEO } from '@/lib/api/client';
+
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const path = `/products/${slug}`;
+
+  // Check if admin custom SEO exists for this path
+  const customSEO = await fetchPageSEO(path);
+  if (customSEO && (customSEO.meta_title || customSEO.meta_description)) {
+    return await getPageSEO(path, {
+      title: customSEO.meta_title,
+      description: customSEO.meta_description,
+    });
+  }
   
   // 1. Try category first
   try {

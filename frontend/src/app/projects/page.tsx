@@ -6,17 +6,18 @@ import ProjectFilterPanel from '@/components/projects/ProjectFilterPanel';
 import { getProjects, getIndustries, getProducts } from '@/lib/api/client';
 import { Project, Industry, ProductListItem, PaginatedResponse } from '@/types';
 import { ChevronRight, MapPin, Calendar } from 'lucide-react';
-import { defaultMetadata } from '@/lib/seo/config';
 import { Metadata } from 'next';
-import { stripHtml } from '@/lib/seo/stripHtml';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Projects & Case Studies | Arabian Gratings Saudi Arabia',
-  description: 'Browse the Arabian Gratings project portfolio — engineering case studies spanning industrial grating installations, walkway systems, and access flooring solutions.'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/projects', {
+    title: 'Projects & Case Studies | Arabian Gratings Saudi Arabia',
+    description: 'Browse the Arabian Gratings project portfolio — engineering case studies spanning industrial grating installations, walkway systems, and access flooring solutions across KSA.',
+    keywords: ['gratings projects saudi arabia', 'industrial catwalks ksa', 'drainage grating case studies'],
+  });
+}
 
 interface ProjectsPageProps {
   searchParams: Promise<{ industry?: string; product?: string }>;

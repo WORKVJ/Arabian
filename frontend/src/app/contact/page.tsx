@@ -1,15 +1,19 @@
 import { Metadata } from 'next';
-import { defaultMetadata } from '@/lib/seo/config';
 import ContactForm from '@/components/enquiries/ContactForm';
 import ContactMap from '@/components/contact/ContactMap';
 import Reveal from '@/components/animations/Reveal';
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Contact Us | Arabian Gratings Saudi Arabia',
-  description: 'Get in touch with Arabian Gratings Saudi Arabia. Contact our engineering office in Saudi Arabia for sales enquiries, product layout specifications, and support.',
-};
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/contact', {
+    title: 'Contact Us | Arabian Gratings Saudi Arabia',
+    description: 'Get in touch with Arabian Gratings Saudi Arabia. Contact our engineering office in Saudi Arabia for sales enquiries, product layout specifications, and support.',
+    keywords: ['contact arabian gratings', 'grating quote saudi arabia', 'gratings manufacturer phone riyadh'],
+  });
+}
 
 export default function ContactPage() {
   return (

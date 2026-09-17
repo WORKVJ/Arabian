@@ -14,16 +14,18 @@ import {
   Factory,
   type LucideIcon,
 } from 'lucide-react';
-import { defaultMetadata } from '@/lib/seo/config';
 import { Metadata } from 'next';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Industries Served | Arabian Gratings Saudi Arabia',
-  description: 'Arabian Gratings supplies industrial grating solutions across Oil & Gas, Water Treatment, Power, Infrastructure, and other demanding sectors across Saudi Arabia and GCC.'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/industries', {
+    title: 'Industries Served | Arabian Gratings Saudi Arabia',
+    description: 'Arabian Gratings supplies industrial grating solutions across Oil & Gas, Water Treatment, Power, Infrastructure, and other demanding sectors across Saudi Arabia and GCC.',
+    keywords: ['gratings industries saudi arabia', 'oil and gas gratings', 'marine gratings ksa'],
+  });
+}
 
 /** Maps an industry name to a representative sector icon. Falls back to a generic factory icon. */
 function getIndustryIcon(name: string): LucideIcon {

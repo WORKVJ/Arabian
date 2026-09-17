@@ -3,13 +3,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/animations/Reveal';
 import { ArrowRight, ShieldCheck, Award, Users, HardHat, CheckCircle2, Quote } from 'lucide-react';
-import { defaultMetadata } from '@/lib/seo/config';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'About Arabian Gratings | Industrial Grating Manufacturer Saudi Arabia',
-  description: 'Arabian Gratings is a premier manufacturer and supplier of heavy-duty metal and FRP/GRP grating systems in Saudi Arabia and wider GCC region.',
-};
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/about', {
+    title: 'About Arabian Gratings | Industrial Grating Manufacturer Saudi Arabia',
+    description: 'Arabian Gratings is a premier manufacturer and supplier of heavy-duty metal and FRP/GRP grating systems in Saudi Arabia and wider GCC region.',
+    keywords: ['about arabian gratings', 'grating manufacturer saudi arabia', 'industrial grating supplier ksa'],
+  });
+}
 
 export default function AboutPage() {
   return (

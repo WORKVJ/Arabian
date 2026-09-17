@@ -2,28 +2,19 @@ import { Suspense } from 'react';
 // Force reload cache for images audit
 import { Metadata } from 'next';
 import { getProducts, getProductCategories } from '@/lib/api/client';
-import { defaultMetadata } from '@/lib/seo/config';
 import { ProductListItem, ProductCategory, PaginatedResponse } from '@/types';
 import ProductsClient from '@/components/products/ProductsClient';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Industrial Grating Systems | Product Catalog Saudi Arabia | Arabian Gratings',
-  description:
-    'Explore Arabian Gratings\' complete range of industrial grating systems — steel, FRP, aluminium, stainless steel, stair treads, access covers and more. Engineered for Saudi, Jeddah, Dammam and GCC industrial applications.',
-  alternates: {
-    canonical: '/products',
-  },
-  openGraph: {
-    ...defaultMetadata.openGraph,
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/products', {
     title: 'Industrial Grating Systems | Product Catalog Saudi Arabia | Arabian Gratings',
-    description:
-      'Steel, FRP, aluminium and stainless steel grating solutions for oil & gas, infrastructure, marine and industrial projects across Saudi Arabia and GCC.',
-    url: '/products',
-  },
-};
+    description: "Explore Arabian Gratings' complete range of industrial grating systems — steel, FRP, aluminium, stainless steel, stair treads, access covers and more. Engineered for Saudi, Jeddah, Dammam and GCC industrial applications.",
+    keywords: ['industrial grating systems', 'gratings catalog saudi arabia', 'steel gratings', 'grp gratings'],
+  });
+}
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 

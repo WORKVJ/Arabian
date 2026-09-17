@@ -15,11 +15,12 @@ import AdminOverview from '@/components/admin/AdminOverview';
 import EnquiriesManager from '@/components/admin/EnquiriesManager';
 import BlogManager from '@/components/admin/BlogManager';
 import ProjectManager from '@/components/admin/ProjectManager';
+import SEOManager from '@/components/admin/SEOManager';
 
 export default function AdminPortalPage() {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-  const [activeTab, setActiveTab] = useState<'overview' | 'enquiries' | 'blogs' | 'projects'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'enquiries' | 'blogs' | 'projects' | 'seo'>('overview');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -104,6 +105,15 @@ export default function AdminPortalPage() {
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+    },
+    {
+      id: 'seo' as const,
+      label: 'SEO & Meta Tags',
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
         </svg>
       ),
     },
@@ -251,6 +261,7 @@ export default function AdminPortalPage() {
                   {activeTab === 'enquiries' && 'Leads & RFQ Inquiries'}
                   {activeTab === 'blogs' && 'Blog & Article Management'}
                   {activeTab === 'projects' && 'Showcase Installations'}
+                  {activeTab === 'seo' && 'SEO & Meta Tag Management'}
                 </h1>
               </div>
             </div>
@@ -285,6 +296,7 @@ export default function AdminPortalPage() {
           {activeTab === 'enquiries' && <EnquiriesManager />}
           {activeTab === 'blogs' && <BlogManager />}
           {activeTab === 'projects' && <ProjectManager />}
+          {activeTab === 'seo' && <SEOManager />}
         </main>
       </div>
     </div>

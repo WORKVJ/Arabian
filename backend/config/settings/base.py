@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.enquiries',
     'apps.auth_admin',
+    'apps.seo',
 ]
 
 MIDDLEWARE = [

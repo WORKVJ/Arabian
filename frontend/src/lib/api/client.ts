@@ -348,3 +348,34 @@ export async function submitQuoteRequest(formData: FormData): Promise<any> {
     return { success: true, fallback: true };
   }
 }
+
+// ─── PUBLIC SEO LOOKUP ────────────────────────────────────────────
+
+export interface PublicPageSEO {
+  path: string;
+  page_name: string;
+  category: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  canonical_url: string;
+  og_title: string;
+  og_description: string;
+  og_image: string | null;
+  no_index: boolean;
+}
+
+export async function fetchPageSEO(path: string): Promise<PublicPageSEO | null> {
+  try {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    const url = `${getClientApiUrl()}/seo/lookup/?path=${encodeURIComponent(cleanPath)}`;
+    const res = await fetch(url, {
+      cache: 'no-store',
+    });
+    if (!res.ok) return null;
+    return await res.json() as PublicPageSEO;
+  } catch {
+    return null;
+  }
+}
+

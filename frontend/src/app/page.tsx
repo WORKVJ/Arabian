@@ -1,9 +1,19 @@
+import { Metadata } from 'next';
 import HomeClient from '@/components/home/HomeClient';
 // Force reload cache for images audit
 import { getProductCategories, getIndustries, getProjects, getBlogPosts } from '@/lib/api/client';
 import { ProductCategory, Industry, Project, BlogPost } from '@/types';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/', {
+    title: 'Arabian Gratings | Premium Gratings & Industrial Flooring in Saudi Arabia',
+    description: 'Leading Saudi manufacturer of heavy-duty steel, stainless steel, aluminum, and GRP/FRP gratings engineered to ASTM & ISO standards across KSA.',
+    keywords: ['gratings saudi arabia', 'steel gratings riyadh', 'grp gratings jeddah', 'industrial flooring ksa'],
+  });
+}
 
 export default async function Home() {
   // Fetch data from Django API with try/catch to handle fallback cases gracefully

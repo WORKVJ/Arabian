@@ -22,6 +22,8 @@ interface BlogPageProps {
   }>;
 }
 
+import { getPageSEO } from '@/lib/seo/getPageSEO';
+
 export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
   const params = await searchParams;
   const page = parseInt(params.page || '1', 10);
@@ -44,11 +46,12 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
       description: `Browse engineering insights and articles related to ${params.category}.`,
     };
   }
-  return {
-    ...defaultMetadata,
+
+  return await getPageSEO('/blog', {
     title: 'Engineering Insights & Knowledge Hub | Arabian Gratings Saudi Arabia',
     description: 'Read technical articles, installation guides, and manufacturing insights on industrial steel and FRP gratings by Arabian Gratings.',
-  };
+    keywords: ['gratings engineering blog', 'steel grating specifications', 'frp installation guides'],
+  });
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {

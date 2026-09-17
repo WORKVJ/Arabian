@@ -3,11 +3,24 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight, ArrowLeft, MapPin, Building } from 'lucide-react';
 import Reveal from '@/components/animations/Reveal';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return Object.keys(LOCATIONS).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const loc = LOCATIONS[slug];
+  const title = loc?.title || `${slug} Industrial Gratings | Arabian Gratings Saudi Arabia`;
+  const description = loc?.seoDescription || `Premium industrial grating systems delivered across ${slug} and surrounding industrial zones.`;
+  return await getPageSEO(`/locations/${slug}`, {
+    title,
+    description,
+    keywords: [`gratings ${slug}`, `${slug} industrial flooring`, `steel gratings ${slug}`],
+  });
 }
 
 interface LocationData {

@@ -368,3 +368,57 @@ export async function deleteAdminProject(slugOrId: string | number): Promise<voi
     method: 'DELETE',
   });
 }
+
+// ─── SEO & META TAGS ──────────────────────────────────────────────
+
+export interface PageSEOItem {
+  id: number;
+  path: string;
+  page_name: string;
+  category: 'core' | 'product' | 'industry' | 'location' | 'other';
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  canonical_url: string;
+  og_title: string;
+  og_description: string;
+  og_image: string | null;
+  og_image_id?: number | null;
+  no_index: boolean;
+  updated_at: string;
+}
+
+export async function getAdminPageSEOs(params?: { search?: string; category?: string; page?: number }): Promise<{ count: number; results: PageSEOItem[] }> {
+  const query = new URLSearchParams();
+  if (params?.search) query.set('search', params.search);
+  if (params?.category && params.category !== 'all') query.set('category', params.category);
+  if (params?.page) query.set('page', String(params.page));
+
+  const qs = query.toString() ? `?${query.toString()}` : '';
+  return await adminFetch(`/seo/pages/${qs}`);
+}
+
+export async function getAdminPageSEO(id: number): Promise<PageSEOItem> {
+  return await adminFetch(`/seo/pages/${id}/`);
+}
+
+export async function updateAdminPageSEO(id: number, data: Partial<PageSEOItem> & { og_image_id?: number | null }): Promise<PageSEOItem> {
+  return await adminFetch(`/seo/pages/${id}/`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createAdminPageSEO(data: Partial<PageSEOItem> & { og_image_id?: number | null }): Promise<PageSEOItem> {
+  return await adminFetch('/seo/pages/', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteAdminPageSEO(id: number): Promise<void> {
+  await adminFetch(`/seo/pages/${id}/`, {
+    method: 'DELETE',
+  });
+}
+

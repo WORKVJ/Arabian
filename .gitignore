@@ -1,0 +1,13 @@
+Arabian_gratings/
+.tempmediaStorage/
+.user_uploaded/
+__pycache__/
+*.pyc
+.env
+.env.local
+node_modules/
+.next/
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/

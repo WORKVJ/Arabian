@@ -1,0 +1,302 @@
+from django.core.management.base import BaseCommand
+from apps.seo.models import PageSEO
+
+DEFAULT_PAGES = [
+    # Core Pages
+    {
+        'path': '/',
+        'page_name': 'Homepage',
+        'category': 'Core Pages',
+        'meta_title': 'Arabian Gratings | Premier Industrial Gratings Supplier Saudi Arabia',
+        'meta_description': 'Leading manufacturer of industrial steel, GRP/FRP, stainless steel, and aluminium grating systems in Saudi Arabia & GCC. Certified to ASTM & ISO standards.',
+        'meta_keywords': 'arabian gratings, steel grating saudi arabia, frp gratings jeddah, metal floor walkways, groyne grates, industrial gratings gcc',
+        'og_title': 'Arabian Gratings — Heavy-Duty Industrial Access & Grating Solutions',
+        'og_description': 'High-performance steel, GRP, and architectural metal grating systems engineered for Saudi Arabia and the GCC.',
+    },
+    {
+        'path': '/about',
+        'page_name': 'About Us',
+        'category': 'Core Pages',
+        'meta_title': 'About Arabian Gratings | Industrial Grating Manufacturer Saudi Arabia',
+        'meta_description': 'Discover Arabian Gratings — Saudi Arabia’s trusted fabrication partner delivering certified steel, FRP, and aluminum grating access systems across the Middle East.',
+        'meta_keywords': 'about arabian gratings, grating manufacturer saudi arabia, jeddah metal fabrication, iso certified grating supplier',
+        'og_title': 'About Arabian Gratings — Engineering Excellence in Saudi Arabia',
+        'og_description': 'Learn about our fabrication facility, quality standards, and decades of engineering service across the GCC.',
+    },
+    {
+        'path': '/products',
+        'page_name': 'Products Directory',
+        'category': 'Core Pages',
+        'meta_title': 'Industrial Grating Products & Systems | Arabian Gratings Saudi Arabia',
+        'meta_description': 'Explore our complete catalog of industrial grating solutions: Heavy-duty steel gratings, FRP/GRP fiberglass panels, stainless steel drains, and manhole covers.',
+        'meta_keywords': 'industrial grating catalog, steel grating types, frp grating prices, manhole covers saudi arabia, stair treads jeddah',
+        'og_title': 'Industrial Floor Grating Products — Arabian Gratings',
+        'og_description': 'Heavy-duty steel, GRP fiberglass, aluminium walkways, and trench covers engineered for extreme industrial environments.',
+    },
+    {
+        'path': '/industries',
+        'page_name': 'Industries Overview',
+        'category': 'Core Pages',
+        'meta_title': 'Industrial Sectors Served | Arabian Gratings Saudi Arabia',
+        'meta_description': 'Specialized grating solutions engineered for Oil & Gas, Marine & Offshore, Desalination, and Infrastructure projects across Saudi Arabia and the GCC.',
+        'meta_keywords': 'oil gas grating, marine offshore floor plates, desalination plant grates, infrastructure trench covers',
+        'og_title': 'Sectors & Applications — Arabian Gratings',
+        'og_description': 'Certified flooring and access solutions for petrochemical facilities, offshore rigs, and utility infrastructure.',
+    },
+    {
+        'path': '/projects',
+        'page_name': 'Projects Portfolio',
+        'category': 'Core Pages',
+        'meta_title': 'Engineering Projects & Case Studies | Arabian Gratings KSA',
+        'meta_description': 'View our featured industrial installations including Jeddah Red Seaport Project, Saudi Energy Project, Jazan Refinery, and SWCC Desalination.',
+        'meta_keywords': 'arabian gratings projects, jeddah red seaport project, saudi energy project, jazan refinery gratings',
+        'og_title': 'Featured Installations & Case Studies — Arabian Gratings',
+        'og_description': 'Proven engineering track record across premier Saudi Arabia industrial and marine infrastructure projects.',
+    },
+    {
+        'path': '/services',
+        'page_name': 'Services & Engineering',
+        'category': 'Core Pages',
+        'meta_title': 'Fabrication & Engineering Services | Arabian Gratings',
+        'meta_description': 'Turnkey grating engineering services: Custom fabrication, load deflection testing, site surveys, and technical consultation in Saudi Arabia.',
+        'meta_keywords': 'grating fabrication services, custom grating cutting, site survey saudi arabia, deflection load testing',
+        'og_title': 'Engineering & Fabrication Services — Arabian Gratings',
+        'og_description': 'Comprehensive engineering support from custom fabrication and hot-dip galvanizing to technical site surveys.',
+    },
+    {
+        'path': '/solutions',
+        'page_name': 'Turnkey Solutions',
+        'category': 'Core Pages',
+        'meta_title': 'Engineered Flooring Solutions | Arabian Gratings KSA',
+        'meta_description': 'Engineered floor access systems: Industrial floor grating, heavy-duty drainage trench covers, and gas-tight manhole access safety systems.',
+        'meta_keywords': 'industrial flooring solutions, trench covers saudi arabia, manhole access safety, pedestrian walkways',
+        'og_title': 'Turnkey Industrial Solutions — Arabian Gratings',
+        'og_description': 'Engineered access and safety systems tailored for extreme chemical and heavy wheel-load applications.',
+    },
+    {
+        'path': '/contact',
+        'page_name': 'Contact Us',
+        'category': 'Core Pages',
+        'meta_title': 'Contact Arabian Gratings | Sales Desk & Engineering Jeddah',
+        'meta_description': 'Get in touch with Arabian Gratings sales and engineering teams in Jeddah, Saudi Arabia. Rapid RFQ quotes, technical queries, and branch assistance.',
+        'meta_keywords': 'contact arabian gratings, jeddah grating supplier, sales inquiry arabian gratings, rfq grating saudi arabia',
+        'og_title': 'Contact Arabian Gratings Sales & Engineering Desk',
+        'og_description': 'Request quotations, technical specifications, and project consultations with our Saudi engineering team.',
+    },
+    {
+        'path': '/quote',
+        'page_name': 'Request a Quote',
+        'category': 'Core Pages',
+        'meta_title': 'Request a Fast Quotation | Arabian Gratings Saudi Arabia',
+        'meta_description': 'Submit your grating specifications, span drawings, and material requirements for a rapid, competitive quote within 24 hours.',
+        'meta_keywords': 'request quotation grating, grating cost saudi arabia, steel grating quote jeddah, rfq industrial grating',
+        'og_title': 'Instant RFQ & Project Quotation — Arabian Gratings',
+        'og_description': 'Upload your drawings and dimensions for certified weight deflection analysis and prompt commercial pricing.',
+    },
+    {
+        'path': '/blog',
+        'page_name': 'Technical Blog & Reports',
+        'category': 'Core Pages',
+        'meta_title': 'Technical Insights & Engineering Reports | Arabian Gratings',
+        'meta_description': 'Technical papers, corrosion protection guidelines, galvanizing standards, and resin matrix selection guides by Arabian Gratings specialists.',
+        'meta_keywords': 'grating engineering blog, hot dip galvanizing standards, frp resin selection, deflection calculation guide',
+        'og_title': 'Technical Insights & Standards — Arabian Gratings',
+        'og_description': 'In-depth engineering articles on metallurgical coatings, polymer matrices, and international grating standards.',
+    },
+
+    # Product Categories
+    {
+        'path': '/products/frp-grp-products',
+        'page_name': 'FRP / GRP Products',
+        'category': 'Products',
+        'meta_title': 'FRP / GRP Gratings & Composite Products | Arabian Gratings KSA',
+        'meta_description': 'Corrosion-proof fiberglass reinforced plastic (FRP/GRP) molded and pultruded gratings, handrails, ladders, and cable trays for chemical and marine plants.',
+        'meta_keywords': 'frp grating saudi arabia, grp molded gratings, fiberglass floor grids, vinyl ester gratings jeddah',
+        'og_title': 'FRP / GRP Products — Arabian Gratings Saudi Arabia',
+        'og_description': 'Chemical-resistant composite grating solutions engineered with isophthalic and vinyl ester resin matrices.',
+    },
+    {
+        'path': '/products/steel-gratings',
+        'page_name': 'Steel Gratings',
+        'category': 'Products',
+        'meta_title': 'Electroforged & Heavy Duty Steel Gratings | Arabian Gratings',
+        'meta_description': 'High-strength carbon steel gratings hot-dip galvanized to ISO 1461. Electro-forged, press lock, heavy-duty wheel-load panels, and stair treads.',
+        'meta_keywords': 'steel grating saudi arabia, electroforged grating, press lock steel grates, heavy duty floor grids',
+        'og_title': 'Heavy-Duty Steel Gratings — Arabian Gratings',
+        'og_description': 'ASTM structural steel gratings with ISO 1461 hot-dip galvanizing for industrial floors and platforms.',
+    },
+    {
+        'path': '/products/stainless-steel-products',
+        'page_name': 'Stainless Steel Products',
+        'category': 'Products',
+        'meta_title': 'Stainless Steel Gratings & Drains (SS304/SS316) | Arabian Gratings',
+        'meta_description': 'Hygienic, corrosion-immune SS304 and SS316 stainless steel floor gratings, trench drains, marine ladders, and ablution grids.',
+        'meta_keywords': 'stainless steel grating saudi arabia, ss316 gratings, ss floor drains jeddah, marine grade ss ladders',
+        'og_title': 'Stainless Steel Products — Arabian Gratings',
+        'og_description': 'Premium SS304/SS316 gratings and drainage channels for food processing, pharma, and marine environments.',
+    },
+    {
+        'path': '/products/aluminium',
+        'page_name': 'Aluminium Solutions',
+        'category': 'Products',
+        'meta_title': 'Aluminium Gratings & Architectural Walkways | Arabian Gratings',
+        'meta_description': 'Lightweight, non-sparking aluminium 6063-T6 floor gratings, rooftop walkways, heel-proof pedestrian grates, handrails, and safety ladders.',
+        'meta_keywords': 'aluminium grating saudi arabia, heel proof grates, architectural walkways jeddah, aluminium safety ladders',
+        'og_title': 'Aluminium Grating Solutions — Arabian Gratings',
+        'og_description': 'Non-sparking, lightweight structural aluminium gratings and walkways for commercial and industrial architecture.',
+    },
+    {
+        'path': '/products/manhole',
+        'page_name': 'Manhole Covers & Gully Grates',
+        'category': 'Products',
+        'meta_title': 'Ductile Iron & GRP Manhole Covers | Arabian Gratings KSA',
+        'meta_description': 'Heavy-load carriageway covers, ductile iron manhole assemblies, gully gratings, and GRP chamber lids tested to BS EN 124 D400/E600.',
+        'meta_keywords': 'manhole covers saudi arabia, ductile iron covers d400, gully gratings jeddah, carriageway cover frame',
+        'og_title': 'Manhole Covers & Gully Gratings — Arabian Gratings',
+        'og_description': 'Heavy traffic rated ductile iron and GRP access covers conforming to EN 124 specifications.',
+    },
+    {
+        'path': '/products/ss-gi-grating-clamps',
+        'page_name': 'SS/GI Grating Clamps',
+        'category': 'Products',
+        'meta_title': 'Grating Clamps & Fixing Clips (M-Clips & Saddle) | Arabian Gratings',
+        'meta_description': 'Complete grating fixing assemblies including M-clips, saddle clamps, lower flange hooks, and M8 fasteners in HDG and SS316.',
+        'meta_keywords': 'grating clamps saudi arabia, m-clips grating, saddle clamps jeddah, stainless steel fixing fasteners',
+        'og_title': 'Grating Fasteners & Clamps — Arabian Gratings',
+        'og_description': 'High-torque structural grating clips and saddle clamp systems for steel and composite grating installations.',
+    },
+    {
+        'path': '/products/step-iron',
+        'page_name': 'Step Irons',
+        'category': 'Products',
+        'meta_title': 'Manhole Safety Step Irons (PVC & Ductile Iron) | Arabian Gratings',
+        'meta_description': 'Ductile iron and virgin polypropylene encapsulated step irons conforming to BS EN 13101 for sewer and utility chamber access.',
+        'meta_keywords': 'step irons saudi arabia, pvc encapsulated step iron, manhole ladder rungs jeddah, en 13101 rungs',
+        'og_title': 'Safety Step Irons — Arabian Gratings',
+        'og_description': 'Corrosion-resistant encapsulated safety rungs and ductile iron step irons for utility shafts.',
+    },
+
+    # Industries
+    {
+        'path': '/industries/oil-gas',
+        'page_name': 'Industry: Oil & Gas',
+        'category': 'Industries',
+        'meta_title': 'Oil & Gas Platform Gratings | Arabian Gratings Saudi Arabia',
+        'meta_description': 'API and ISO compliant grating systems for offshore drilling platforms, refineries, and sulfur handling yards across Saudi Aramco supply chains.',
+        'meta_keywords': 'oil gas grating saudi arabia, offshore platform flooring, refinery walkways jeddah, h2s resistant grp',
+        'og_title': 'Oil & Gas Sector Solutions — Arabian Gratings',
+        'og_description': 'Engineered floor plates and GRP access systems for high H2S and severe thermal petrochemical environments.',
+    },
+    {
+        'path': '/industries/marine-offshore',
+        'page_name': 'Industry: Marine & Offshore',
+        'category': 'Industries',
+        'meta_title': 'Marine & Offshore Jetties Gratings | Arabian Gratings KSA',
+        'meta_description': 'Seawater splash-zone resistant steel and GRP floor grids for coastal ports, vessel gangways, floating docks, and offshore barges.',
+        'meta_keywords': 'marine offshore gratings, jetty access walkways, coastal splash zone grates, port platform decking',
+        'og_title': 'Marine & Offshore Access Systems — Arabian Gratings',
+        'og_description': 'Salt-spray immune flooring and stainless floor plates for port infrastructure and offshore vessels.',
+    },
+    {
+        'path': '/industries/water-treatment',
+        'page_name': 'Industry: Desalination & Water',
+        'category': 'Industries',
+        'meta_title': 'Desalination & Water Treatment Grating Systems | Arabian Gratings',
+        'meta_description': 'Chlorine and acid resistant vinyl ester GRP walkways for RO desalination facilities, brine disposal decks, and municipal water utilities.',
+        'meta_keywords': 'desalination plant grating, ro plant walkways saudi arabia, chlorine resistant grp, water utility gratings',
+        'og_title': 'Water & Desalination Solutions — Arabian Gratings',
+        'og_description': 'Acid-immune composite walkways with gritted safety surfaces for water treatment and SWCC plants.',
+    },
+    {
+        'path': '/industries/infrastructure',
+        'page_name': 'Industry: Infrastructure',
+        'category': 'Industries',
+        'meta_title': 'Infrastructure & Municipal Trench Covers | Arabian Gratings',
+        'meta_description': 'Heavy wheel-load rated ductile iron covers, drainage channels, and airport apron trench grates for municipal infrastructure.',
+        'meta_keywords': 'infrastructure trench covers, municipal drainage grates saudi arabia, airport apron gratings jeddah',
+        'og_title': 'Infrastructure & Civil Works — Arabian Gratings',
+        'og_description': 'Heavy-duty wheel-load certified trench covers and drainage grates for GCC civil infrastructure projects.',
+    },
+
+    # GCC Locations
+    {
+        'path': '/locations/jeddah',
+        'page_name': 'Location: Jeddah, KSA',
+        'category': 'Locations',
+        'meta_title': 'Industrial Gratings Manufacturer Jeddah | Arabian Gratings KSA',
+        'meta_description': 'Direct manufacturer and supplier of steel and GRP gratings in Jeddah, Western Province. Rapid fabrication, local delivery, and custom cutting.',
+        'meta_keywords': 'grating manufacturer jeddah, steel grating jeddah, frp grating jeddah saudi arabia, metal fabrication jeddah',
+        'og_title': 'Arabian Gratings Jeddah — Local Fabrication & Supply',
+        'og_description': 'Serving Jeddah industrial city, Red Sea Port, and Western Province with certified grating solutions.',
+    },
+    {
+        'path': '/locations/riyadh',
+        'page_name': 'Location: Riyadh, KSA',
+        'category': 'Locations',
+        'meta_title': 'Industrial Gratings Supplier Riyadh | Arabian Gratings Saudi Arabia',
+        'meta_description': 'Premium steel and composite grating distribution across Riyadh, Central Province. Supplying giga-projects, warehouses, and municipal works.',
+        'meta_keywords': 'steel grating riyadh, frp gratings riyadh, industrial flooring riyadh, trench covers riyadh saudi arabia',
+        'og_title': 'Arabian Gratings Riyadh — Giga-Project Flooring Partner',
+        'og_description': 'Fast logistics and direct engineering supply across Riyadh industrial zones and capital developments.',
+    },
+    {
+        'path': '/locations/dammam',
+        'page_name': 'Location: Dammam & Eastern Province',
+        'category': 'Locations',
+        'meta_title': 'Steel & GRP Gratings Dammam & Jubail | Arabian Gratings',
+        'meta_description': 'Certified grating systems for petrochemical facilities, ports, and industrial complexes in Dammam, Jubail, and Khobar.',
+        'meta_keywords': 'dammam steel grating, jubail industrial gratings, eastern province frp supplier, khobar grating contractor',
+        'og_title': 'Arabian Gratings Eastern Province — Dammam & Jubail',
+        'og_description': 'Corrosion-proof access grids and structural platforms for Eastern Province industrial hubs.',
+    },
+    {
+        'path': '/locations/dubai',
+        'page_name': 'Location: Dubai, UAE',
+        'category': 'Locations',
+        'meta_title': 'Industrial Gratings Supplier Dubai UAE | Arabian Gratings',
+        'meta_description': 'High-performance steel, GRP, and architectural aluminium floor gratings distributed across Dubai, JAFZA, and the Northern Emirates.',
+        'meta_keywords': 'steel grating dubai, grp gratings uae, industrial walkways jafza, floor grates dubai',
+        'og_title': 'Arabian Gratings Dubai & UAE Distribution',
+        'og_description': 'Delivering ASTM certified metal and fiberglass grating systems across Dubai and the UAE.',
+    },
+    {
+        'path': '/locations/abu-dhabi',
+        'page_name': 'Location: Abu Dhabi, UAE',
+        'category': 'Locations',
+        'meta_title': 'Industrial & Offshore Gratings Abu Dhabi | Arabian Gratings',
+        'meta_description': 'Heavy-duty steel platforms and marine composite gratings for energy complexes, ports, and refineries in Abu Dhabi and Ruwais.',
+        'meta_keywords': 'abu dhabi grating supplier, ruwais grating platforms, offshore grids uae, kizad steel gratings',
+        'og_title': 'Arabian Gratings Abu Dhabi & Ruwais',
+        'og_description': 'Heavy-load and chemical-resistant access flooring engineered for Abu Dhabi energy infrastructure.',
+    },
+]
+
+class Command(BaseCommand):
+    help = 'Pre-populate default SEO metadata for all website pages'
+
+    def handle(self, *args, **options):
+        created_count = 0
+        updated_count = 0
+
+        for page in DEFAULT_PAGES:
+            obj, created = PageSEO.objects.get_or_create(
+                path=page['path'],
+                defaults={
+                    'page_name': page['page_name'],
+                    'category': page['category'],
+                    'meta_title': page['meta_title'],
+                    'meta_description': page['meta_description'],
+                    'meta_keywords': page['meta_keywords'],
+                    'og_title': page['og_title'],
+                    'og_description': page['og_description'],
+                    'no_index': False,
+                }
+            )
+            if created:
+                created_count += 1
+            else:
+                updated_count += 1
+
+        self.stdout.write(self.style.SUCCESS(
+            f"Successfully seeded SEO pages! Created: {created_count}, Existing: {updated_count}, Total: {len(DEFAULT_PAGES)}"
+        ))

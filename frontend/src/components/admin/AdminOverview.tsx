@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { getDashboardStats, DashboardStats } from '@/lib/api/adminApi';
 
 interface AdminOverviewProps {
-  onNavigateTab: (tab: 'enquiries' | 'blogs' | 'projects') => void;
+  onNavigateTab: (tab: 'enquiries' | 'blogs' | 'projects' | 'seo') => void;
 }
 
 export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
@@ -30,7 +30,7 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
   return (
     <div className="space-y-6">
       {/* Executive KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Contact Enquiries */}
         <div
           onClick={() => onNavigateTab('enquiries')}
@@ -100,6 +100,29 @@ export default function AdminOverview({ onNavigateTab }: AdminOverviewProps) {
             </span>
             <span className="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
               Active
+            </span>
+          </div>
+        </div>
+
+        {/* SEO & Meta Tags */}
+        <div
+          onClick={() => onNavigateTab('seo')}
+          className="cursor-pointer bg-white hover:border-amber-400 border border-slate-200 rounded-2xl p-5 transition group shadow-xs"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">SEO & Meta Tags</span>
+            <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:bg-amber-50 group-hover:border-amber-300 group-hover:text-amber-800 transition">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+          </div>
+          <div className="mt-3 flex items-baseline justify-between">
+            <span className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              26+
+            </span>
+            <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+              Live Meta
             </span>
           </div>
         </div>
