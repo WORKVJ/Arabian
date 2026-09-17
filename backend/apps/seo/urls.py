@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import PageSEOViewSet
 
 router = DefaultRouter()
+router.register('pages', PageSEOViewSet, basename='page-seo-pages')
 router.register('', PageSEOViewSet, basename='page-seo')
 
 urlpatterns = [

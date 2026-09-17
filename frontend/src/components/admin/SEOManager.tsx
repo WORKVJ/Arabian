@@ -76,11 +76,12 @@ export default function SEOManager() {
   const fetchPages = useCallback(async () => {
     try {
       setIsLoading(true);
-      const data = await getAdminPageSEOs({
+      const data: any = await getAdminPageSEOs({
         category: selectedCategory,
         search: searchQuery || undefined,
       });
-      setSeoPages(data.results || []);
+      const list = Array.isArray(data) ? data : (data?.results || []);
+      setSeoPages(list);
     } catch (err) {
       console.error('Failed to load SEO pages:', err);
       showToast('Failed to load SEO pages. Please refresh.', 'error');

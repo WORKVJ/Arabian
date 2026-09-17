@@ -7,6 +7,7 @@ from .serializers import PageSEOSerializer, PageSEOAdminSerializer
 
 class PageSEOViewSet(viewsets.ModelViewSet):
     queryset = PageSEO.objects.select_related('og_image').all()
+    pagination_class = None
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'no_index']
     search_fields = ['page_name', 'path', 'meta_title', 'meta_description', 'meta_keywords']
