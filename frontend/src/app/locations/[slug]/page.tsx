@@ -11,18 +11,6 @@ export async function generateStaticParams() {
   return Object.keys(LOCATIONS).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const loc = LOCATIONS[slug];
-  const title = loc?.title || `${slug} Industrial Gratings | Arabian Gratings Saudi Arabia`;
-  const description = loc?.seoDescription || `Premium industrial grating systems delivered across ${slug} and surrounding industrial zones.`;
-  return await getPageSEO(`/locations/${slug}`, {
-    title,
-    description,
-    keywords: [`gratings ${slug}`, `${slug} industrial flooring`, `steel gratings ${slug}`],
-  });
-}
-
 interface LocationData {
   name: string;
   title: string;
@@ -239,20 +227,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!location) {
     return { title: 'Industrial Gratings Saudi Arabia' };
   }
-  return {
+  return await getPageSEO(`/locations/${slug}`, {
     title: location.title,
     description: location.seoDescription,
-    alternates: {
-      canonical: `/locations/${slug}`,
-    },
-    openGraph: {
-      title: location.title,
-      description: location.seoDescription,
-      url: `/locations/${slug}`,
-      locale: 'en_SA',
-      type: 'website',
-    }
-  };
+    keywords: [`gratings ${location.name.toLowerCase()}`, `${location.name.toLowerCase()} industrial flooring`, `steel gratings ${location.name.toLowerCase()}`],
+  });
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
