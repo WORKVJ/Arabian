@@ -375,7 +375,7 @@ export interface PageSEOItem {
   id: number;
   path: string;
   page_name: string;
-  category: 'core' | 'product' | 'industry' | 'location' | 'other';
+  category: string;
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
