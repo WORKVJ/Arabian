@@ -8,6 +8,7 @@ import { Project, Industry, ProductListItem, PaginatedResponse } from '@/types';
 import { ChevronRight, MapPin, Calendar } from 'lucide-react';
 import { Metadata } from 'next';
 import { getPageSEO } from '@/lib/seo/getPageSEO';
+import { stripHtml } from '@/lib/seo/stripHtml';
 
 export const dynamic = 'force-dynamic';
 
