@@ -57,6 +57,9 @@ export async function getPageSEO(
     alternates: {
       canonical,
     },
+    verification: {
+      google: 'zgiWyXeHgPHmCv9VJuttjcKiftoMpO7JTwz1o4Isdvs',
+    },
     openGraph: {
       title: ogTitle,
       description: ogDescription,

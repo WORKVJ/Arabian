@@ -46,6 +46,9 @@ export const defaultMetadata: Metadata = {
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
+  verification: {
+    google: 'zgiWyXeHgPHmCv9VJuttjcKiftoMpO7JTwz1o4Isdvs',
+  },
 };
 
 export function generatePageMetadata(seoData: SEOData | null | undefined, fallback: {
@@ -82,6 +85,9 @@ export function generatePageMetadata(seoData: SEOData | null | undefined, fallba
     description: description,
     alternates: {
       canonical: canonical
+    },
+    verification: {
+      google: 'zgiWyXeHgPHmCv9VJuttjcKiftoMpO7JTwz1o4Isdvs',
     },
     openGraph: {
       title: ogTitle,
