@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getProducts, getIndustries, getSolutions, getServices, getProjects } from '@/lib/api/client';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 
 export const revalidate = 86400;
 

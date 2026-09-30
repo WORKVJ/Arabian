@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { SEOData } from '@/types';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),

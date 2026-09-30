@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     }
   }
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 
   let relatedProjects: Project[] = [];
   if (project.associated_industries && project.associated_industries.length > 0) {

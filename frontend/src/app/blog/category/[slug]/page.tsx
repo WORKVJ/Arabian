@@ -85,7 +85,7 @@ export default async function BlogCategoryPage({ params, searchParams }: Categor
     return `/blog/category/${slug}${targetPage > 1 ? `?page=${targetPage}` : ''}`;
   };
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

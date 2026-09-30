@@ -48,7 +48,7 @@ export default async function SolutionDetailPage({ params }: SolutionDetailPageP
 
   if (!solution || !solution.is_active) notFound();
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

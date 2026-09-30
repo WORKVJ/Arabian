@@ -47,7 +47,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
     notFound();
   }
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
   const canonicalUrl = post.canonical_url || `${SITE_URL}/blog/${post.slug}`;
 
   // Date formatting

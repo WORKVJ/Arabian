@@ -87,6 +87,7 @@ cd /var/www/arabian/Arabian_gratings/frontend
 
 cat << 'EOF' > .env.production
 NODE_ENV=production
+NEXT_PUBLIC_SITE_URL=https://arabiangratings.com
 EOF
 
 npm install --legacy-peer-deps

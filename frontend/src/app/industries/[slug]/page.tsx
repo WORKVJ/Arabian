@@ -73,7 +73,7 @@ export default async function IndustryDetailPage({ params }: IndustryDetailPageP
     console.warn('Failed to fetch related blog posts for industry detail.', error);
   }
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://arabiangratings.com';
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
