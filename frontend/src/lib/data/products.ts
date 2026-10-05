@@ -15,7 +15,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 1, name: 'FRP/GRP Products', slug: 'frp-grp-products',
     short_description: 'Corrosion-resistant fiberglass reinforced plastic floor grids and structural products for extreme chemical environments.',
     description: 'Arabian Gratings FRP/GRP products are engineered with isophthalic polyester or vinyl ester resin matrices for extreme chemical environments across Saudi Arabia and GCC. Our complete range covers moulded gratings, pultruded profiles, handrails, ladders, cable trays, platforms, manhole covers, and GRP sheets.',
-    image: makeMedia(1, '/product-frp-grating.jpg', 'FRP GRP Grating Products Saudi Arabia'),
+    image: makeMedia(1, '/frp-grating-manufacturer-saudi-arabia.jpg', 'frp-grating-manufacturer-saudi-arabia.jpg'),
     is_active: true, sort_order: 0, product_count: 8,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -23,7 +23,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 2, name: 'Steel Gratings', slug: 'steel-gratings',
     short_description: 'Heavy-duty electroforge welded carbon steel floor gratings galvanized for extreme load spans.',
     description: 'Arabian Gratings Steel Gratings are fabricated using ASTM A36 carbon steel, hot-dip galvanized to ISO 1461. Our range covers electro-forged, press lock, heavy-duty, trench/custom-made gratings, and stair treads for Saudi Arabia and GCC industrial projects.',
-    image: makeMedia(2, '/product-steel-grating.jpg', 'Steel Grating Products Saudi Arabia'),
+    image: makeMedia(2, '/steel-gratings-supplier-saudi-arabia.jpg', 'steel-gratings-supplier-saudi-arabia.jpg'),
     is_active: true, sort_order: 1, product_count: 5,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -31,7 +31,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 3, name: 'Stainless Steel Products', slug: 'stainless-steel-products',
     short_description: 'Premium hygiene-safe SS304/SS316 grating panels for food processing and marine decks.',
     description: 'Arabian Gratings Stainless Steel Products cover SS gratings, floor drains, ladders, ablution gratings, and cable trays / ladders in SS304/SS316 grades for Saudi Arabia and GCC industrial applications.',
-    image: makeMedia(3, '/product-ss-grating.jpg', 'Stainless Steel Products Saudi Arabia'),
+    image: makeMedia(3, '/stainless-steel-grating-suppliers.jpg', 'stainless-steel-grating-suppliers.jpg'),
     is_active: true, sort_order: 2, product_count: 5,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -39,7 +39,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 4, name: 'Aluminium', slug: 'aluminium',
     short_description: 'Lightweight, non-sparking walkways, access grates, handrails, ladders, and stair steps.',
     description: 'Arabian Gratings Aluminium products include landscape structures, handrails, ladders with safety cages, roof hatch covers, rooftop walkways, gratings, and heel-proof grating systems across Saudi Arabia and GCC.',
-    image: makeMedia(4, '/product-aluminium-grating.jpg', 'Aluminium Grating Products Saudi Arabia'),
+    image: makeMedia(4, '/aluminium-supplier-saudi-arabia.jpg', 'aluminium-supplier-saudi-arabia.jpg'),
     is_active: true, sort_order: 3, product_count: 8,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -47,7 +47,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 5, name: 'Manhole', slug: 'manhole',
     short_description: 'Ductile iron and GRP heavy-load manhole access covers for roads and infrastructure.',
     description: 'Arabian Gratings Manhole range covers ductile iron covers, S.G iron products, channel/gully gratings, and carriageway covers and frames — all designed for Saudi Arabia and GCC municipal and road infrastructure.',
-    image: makeMedia(5, '/product-manhole-cover.jpg', 'Manhole Cover Products Saudi Arabia'),
+    image: makeMedia(5, '/manhole-cover-supplier-saudi-arabia.jpg', 'manhole-cover-supplier-saudi-arabia.jpg'),
     is_active: true, sort_order: 4, product_count: 4,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -55,7 +55,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 6, name: 'SS/GI Grating Clamps', slug: 'ss-gi-grating-clamps',
     short_description: 'Durable, quick, and easy-to-use grating clamps for cost-efficient and reliable clamping.',
     description: 'Arabian Gratings SS/GI Grating Clamps provide secure anchoring solutions for steel and GRP grating panels on structural support members across Saudi Arabia and GCC industrial projects.',
-    image: makeMedia(6, '/product-grating-clamp.jpg', 'Grating Clamp Products Saudi Arabia'),
+    image: makeMedia(6, '/ss-gi-grating-clamps-supplier-saudi-arabia.jpg', 'ss-gi-grating-clamps-supplier-saudi-arabia.jpg'),
     is_active: true, sort_order: 5, product_count: 1,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -63,7 +63,7 @@ export const STATIC_CATEGORIES: ProductCategory[] = [
     id: 7, name: 'Step Iron', slug: 'step-iron',
     short_description: 'Ductile iron step irons, hot-dip galvanized to BS EN ISO 1461, with anti-slip secure designs.',
     description: 'Arabian Gratings Step Iron range includes PVC, GI, and SS step irons for safe manhole shaft and utility chamber descent across Saudi Arabia and GCC infrastructure projects.',
-    image: makeMedia(7, '/product-step-iron.jpg', 'Step Iron Products Saudi Arabia'),
+    image: makeMedia(7, '/step-iron-supplier-saudi-arabia.jpg', 'step-iron-supplier-saudi-arabia.jpg'),
     is_active: true, sort_order: 6, product_count: 1,
     no_index: false, seo_title: null, seo_description: null, canonical_url: null, og_title: null, og_description: null, og_image: null,
   },
@@ -96,7 +96,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Made with pre-tensioned glass fibers and chemical-resistant polyester for durable, one-piece interwoven structures.',
     material: 'Fiberglass Reinforced Plastic (GRP)', finish: 'Gritted Anti-Slip Surface', standard: 'ASTM E84, BS 476 Class 1',
     applications: 'Desalination Plants, Chemical Processing, Marine Access Walks, Refinery Drainage',
-    primary_image: makeProductImage(101, '/img/products/prod-molded-gratings.jpg', 'Molded GRP Grating Saudi Arabia'),
+    primary_image: makeProductImage(101, '/img/products/fiberglass-grating-saudi.jpg', 'fiberglass-grating-saudi.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -106,7 +106,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'FRP/GRP gratings with I/T-shaped bars, isophthalic or vinyl ester resins, mechanically assembled for heavy-duty applications.',
     material: 'Pultruded Fiberglass (GRP)', finish: 'Smooth or Gritted Surface', standard: 'ISO 14122, EN 13706',
     applications: 'Offshore Platforms, Chemical Plants, Food Processing, Water Treatment',
-    primary_image: makeProductImage(102, '/img/products/prod-pultruded-gratings.jpg', 'Pultruded GRP Gratings Saudi Arabia'),
+    primary_image: makeProductImage(102, '/img/products/frp-grating-ksa.jpg', 'frp-grating-ksa.jpg'),
     is_featured: true, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -116,7 +116,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Pultruded handrails with 70% fiberglass, ensure exceptional strength and durability, ideal for industrial and mechanical applications.',
     material: '70% Fiberglass Reinforced Polymer', finish: 'UV Resistant Gel Coat', standard: 'OSHA 29 CFR 1910.23',
     applications: 'Industrial Platforms, Offshore Walkways, Chemical Plants, Public Access Areas',
-    primary_image: makeProductImage(103, '/img/products/prod-pultruded-handrails.jpg', 'Pultruded GRP Handrails Saudi Arabia'),
+    primary_image: makeProductImage(103, '/img/products/grp-manufacturers-ksa.jpg', 'grp-manufacturers-ksa.jpg'),
     is_featured: false, is_active: true, sort_order: 2, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -126,7 +126,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Durable ladders with isophthalic resin profiles, ideal for fixed vertical use in corrosive environments.',
     material: 'Pultruded GRP / Fiberglass', finish: 'Gritted Anti-Slip Rungs', standard: 'ANSI A14.5, EN ISO 14122-4',
     applications: 'Refineries, Marine Vessels, Chemical Plants, Utility Chambers',
-    primary_image: makeProductImage(104, '/img/products/prod-pultruded-ladders.jpg', 'Pultruded GRP Ladders Saudi Arabia'),
+    primary_image: makeProductImage(104, '/img/products/frp-products-saudi-arabia.jpg', 'frp-products-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -136,7 +136,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Built to NEMA FG-1, IEC 61537, ASTM, and UL standards for unmatched cable management durability and safety.',
     material: 'Fiberglass Reinforced Plastic (GRP)', finish: 'Smooth Gel Coat / UV Stabilized', standard: 'NEMA FG-1, IEC 61537',
     applications: 'Petrochemical Plants, Data Centres, Marine Electrical Systems, Power Distribution',
-    primary_image: makeProductImage(105, '/img/products/cable-trays.jpg', 'FRP GRP Cable Trays Cable Ladders Saudi Arabia'),
+    primary_image: makeProductImage(105, '/img/products/grp-frp-manufacturer-gcc.jpg', 'grp-frp-manufacturer-gcc.jpg'),
     is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -146,7 +146,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'High strength, corrosion resistant GRP platforms with anti-slip surface, chemical resistance, and easy installation.',
     material: 'Glass Reinforced Plastic (GRP)', finish: 'Anti-Slip Grit Finish', standard: 'BS EN 13706, ISO 14122',
     applications: 'Offshore Platforms, Chemical Access Walkways, Water Treatment Plants, Industrial Mezzanines',
-    primary_image: makeProductImage(106, '/img/products/prod-platform-structures.jpg', 'GRP Platform Structures Saudi Arabia'),
+    primary_image: makeProductImage(106, '/img/products/frp-manufactures-saudi.jpg', 'frp-manufactures-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 5, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -156,7 +156,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Durable, reliable GRP/FRP manhole covers with decades of proven performance and trusted quality.',
     material: 'Glass Reinforced Plastic (GRP)', finish: 'Smooth Top / Chequered Surface', standard: 'BS EN 124, Class B125 / D400',
     applications: 'Roads, Municipal Infrastructure, Industrial Sites, Utility Access Points',
-    primary_image: makeProductImage(107, '/img/products/prod-grp-manhole-covers.jpg', 'GRP FRP Manhole Covers Saudi Arabia'),
+    primary_image: makeProductImage(107, '/img/products/fabrication-companies-in-saudi-arabia.jpg', 'fabrication-companies-in-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 6, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -166,7 +166,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Pioneers in GRP, we provide customized GRP/FRP sheets to meet diverse construction and application needs.',
     material: 'Glass Reinforced Plastic Laminate', finish: 'Smooth or Corrugated', standard: 'ASTM D256, BS 2782',
     applications: 'Roofing, Cladding, Tank Lining, Walkway Decking, Architectural Panels',
-    primary_image: makeProductImage(108, '/img/products/prod-grp-sheets.jpg', 'GRP FRP Sheets Saudi Arabia'),
+    primary_image: makeProductImage(108, '/img/products/frp-grating-dammam.jpg', 'frp-grating-dammam.jpg'),
     is_featured: false, is_active: true, sort_order: 7, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -178,7 +178,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Electro forged gratings are durable and strong steel bars welded together using high current and pressure for lasting performance.',
     material: 'ASTM A36 Carbon Steel', finish: 'Hot-Dip Galvanized to ISO 1461', standard: 'BS 4592 Part 1, ANSI/NAAMM MBG531',
     applications: 'Industrial Platforms, Power Plant Walkways, Cargo Loading Docks, Drainage Trenches',
-    primary_image: makeProductImage(201, '/img/products/prod-electro-forged.jpg', 'Electro Forged Steel Grating Saudi Arabia'),
+    primary_image: makeProductImage(201, '/img/products/industrial-gratings-suppliers-ksa.jpg', 'industrial-gratings-suppliers-ksa.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -188,7 +188,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Press lock gratings are interlocked steel bars, made under high pressure, ensuring strength and versatility.',
     material: 'Carbon Steel / Stainless Steel', finish: 'Hot-Dip Galvanized / Plain', standard: 'BS 4592, DIN 24537',
     applications: 'Architectural Screens, Ventilation Covers, Access Floors, Platform Decking',
-    primary_image: makeProductImage(202, '/img/products/prod-press-lock-exact.jpg', 'Press Lock Interlocked Steel Grating Saudi Arabia'),
+    primary_image: makeProductImage(202, '/img/products/steel-grating-supplier-saudi-arabia.jpg', 'steel-grating-supplier-saudi-arabia.jpg'),
     is_featured: true, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -198,7 +198,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Manually welded steel gratings are built to withstand heavy loads, ideal for highways, plant floors, and airports.',
     material: 'High-Strength Carbon Steel', finish: 'Hot-Dip Galvanized to BS EN ISO 1461', standard: 'BS EN 14122-2, EN 1337',
     applications: 'Highways, Airports, Plant Floors, Heavy Industrial Access, Vehicle Loading Bays',
-    primary_image: makeProductImage(203, '/img/products/prod-heavy-duty.jpg', 'Heavy Duty Steel Grating Saudi Arabia'),
+    primary_image: makeProductImage(203, '/img/products/steel-fabrication-companies-jeddah.jpg', 'steel-fabrication-companies-jeddah.jpg'),
     is_featured: false, is_active: true, sort_order: 2, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -208,7 +208,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Tailored grating solutions made to meet specific project requirements, ensuring functionality and application-based customization.',
     material: 'ASTM A36 Carbon Steel / SS316', finish: 'Galvanized / Painted / Plain', standard: 'BS 4592, Client Specification',
     applications: 'Drainage Trenches, Utility Ducts, Bespoke Platform Systems, Custom Access Floors',
-    primary_image: makeProductImage(204, '/img/products/prod-trench-gratings.jpg', 'Trench Custom Steel Grating Saudi Arabia'),
+    primary_image: makeProductImage(204, '/img/products/gi-grating-supplier-saudi.jpg', 'gi-grating-supplier-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -218,7 +218,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Durable steel stair treads with anti-slip nosing and end plates for secure bolting to stair stringers.',
     material: 'Carbon Steel / Aluminium', finish: 'Galvanized / Checkered Plate Nosing', standard: 'BS 4592 Part 5, OSHA 1910.24',
     applications: 'Industrial Stairways, Escape Routes, Mezzanine Platforms, Offshore Gangways',
-    primary_image: makeProductImage(205, '/img/products/prod-stair-treads.jpg', 'Steel Stair Treads Saudi Arabia'),
+    primary_image: makeProductImage(205, '/img/products/step-iron-supplier-saudi-arabia.jpg', 'step-iron-supplier-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -230,7 +230,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Stainless steel gratings, made from SS 304/316 grades, offer rust-resistant solutions with mill or polished finishes.',
     material: 'Stainless Steel SS304 / SS316', finish: 'Mill Finish / Electro-Polished', standard: 'ASTM A240, BS 4592',
     applications: 'Food Processing Plants, Pharmaceutical Facilities, Marine Decks, Coastal Splash Zones',
-    primary_image: makeProductImage(301, '/img/products/prod-ss-gratings-v2.jpg', 'Stainless Steel Gratings Saudi Arabia'),
+    primary_image: makeProductImage(301, '/img/products/stainless-steel-gratings-supplier-ksa.jpg', 'stainless-steel-gratings-supplier-ksa.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -240,7 +240,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Stainless steel floor drains, ideal for bathrooms and kitchens, offer durable, stylish solutions in various sizes and designs.',
     material: 'Stainless Steel SS304 / SS316', finish: 'Satin / Mirror Polished', standard: 'BS EN 1253, DIN 18195',
     applications: 'Bathrooms, Commercial Kitchens, Food Processing Facilities, Wet Areas',
-    primary_image: makeProductImage(302, '/img/products/prod-ss-floor-drains.jpg', 'Stainless Steel Floor Drains Saudi Arabia'),
+    primary_image: makeProductImage(302, '/img/products/stainless-steel-products-supplier-saudi-arabia.jpg', 'stainless-steel-products-supplier-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -250,7 +250,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'High-quality SS ladders are made for durability, cost-effectiveness and minimal environmental impact in harsh conditions.',
     material: 'Stainless Steel SS316', finish: 'Satin Polished / Mill Finish', standard: 'EN ISO 14122-4, ANSI A14.3',
     applications: 'Marine Vessels, Offshore Platforms, Chemical Plants, Swimming Pools',
-    primary_image: makeProductImage(303, '/img/products/prod-ss-ladders.jpg', 'Stainless Steel Ladders Saudi Arabia'),
+    primary_image: makeProductImage(303, '/img/products/step-iron-supplier.jpg', 'step-iron-supplier.jpg'),
     is_featured: false, is_active: true, sort_order: 2, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -260,7 +260,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Stainless steel ablution gratings provide efficient drainage solutions for ablution areas, showers, and wet rooms.',
     material: 'Stainless Steel SS304 / SS316', finish: 'Satin / Brushed', standard: 'BS EN 1253, ISO 1219',
     applications: 'Ablution Rooms, Prayer Halls, Shower Areas, Wet Rooms, Mosques',
-    primary_image: makeProductImage(304, '/img/products/prod-ablution-gratings.jpg', 'SS Ablution Gratings Saudi Arabia'),
+    primary_image: makeProductImage(304, '/img/products/ss-gratings-saudi-arabia.jpg', 'ss-gratings-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -270,7 +270,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Heavy-duty stainless steel cable trays and ladders engineered to IEC 61537 and NEMA VE 1 for superior corrosion resistance in harsh industrial environments.',
     material: 'Stainless Steel SS304 / SS316 / SS316L', finish: 'Pickled & Passivated / Electro-Polished / Mill Finish', standard: 'IEC 61537, NEMA VE 1, BS EN 61537',
     applications: 'Petrochemical Plants, Offshore Rigs, Food & Pharma Facilities, Marine Decks, Data Centres',
-    primary_image: makeProductImage(305, '/img/products/prod-ss-cable-trays.jpg', 'Stainless Steel Cable Trays Saudi Arabia'),
+    primary_image: makeProductImage(305, '/img/products/fabrication-companies-saudi-arabia.jpg', 'fabrication-companies-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -282,7 +282,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Durable Aluminium structures combining aesthetic appeal and weather resistance, enhancing outdoor spaces with safety and style.',
     material: 'Aluminium Alloy 6063-T5', finish: 'Anodized / Powder Coated', standard: 'BS EN 755, EN 1090',
     applications: 'Public Parks, Promenades, Streetscape, Landscape Walkways, Drainage Channels',
-    primary_image: makeProductImage(401, '/img/products/prod-landscape-aluminium.jpg', 'Aluminium Landscape Structures Saudi Arabia'),
+    primary_image: makeProductImage(401, '/img/products/aluminium-grating-jeddah.jpg', 'aluminium-grating-jeddah.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -292,7 +292,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Corrosion-resistant Aluminium and stainless steel handrails, offering safety and sleek design for commercial and residential areas.',
     material: 'Aluminium 6063-T6 / SS316', finish: 'Anodized / Mirror Polished', standard: 'BS 6180, EN 1090',
     applications: 'Commercial Balconies, Staircases, Walkways, Bridges, Pedestrian Zones',
-    primary_image: makeProductImage(402, '/img/products/prod-aluminium-handrail.jpg', 'Aluminium SS Handrail Saudi Arabia'),
+    primary_image: makeProductImage(402, '/img/products/aluminium-grating-walkway-saudi.jpg', 'aluminium-grating-walkway-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -302,7 +302,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Sturdy Aluminium and stainless steel ladders with safety cages, designed for secure access in industrial and commercial settings.',
     material: 'Aluminium 6061-T6 / SS316', finish: 'Mill Finish / Anodized', standard: 'EN ISO 14122-4, OSHA 1926.1053',
     applications: 'Industrial Towers, Silos, Storage Tanks, Rooftop Access, Utility Shafts',
-    primary_image: makeProductImage(403, '/img/products/prod-aluminium-cage-ladder.jpg', 'Aluminium Ladder Safety Cage Saudi Arabia'),
+    primary_image: makeProductImage(403, '/img/products/aluminium-access-ladder-saudi.jpg', 'aluminium-access-ladder-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 2, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -312,7 +312,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Weatherproof Aluminium and stainless steel roof hatch covers, providing safe, durable, and easy rooftop access.',
     material: 'Aluminium / SS316', finish: 'Anodized / Galvanized', standard: 'BS 5081, EN 14351',
     applications: 'Commercial Buildings, Industrial Rooftops, HVAC Access, Utility Shafts',
-    primary_image: makeProductImage(404, '/img/products/prod-roof-hatch-covers.jpg', 'Roof Hatch Covers Saudi Arabia'),
+    primary_image: makeProductImage(404, '/img/products/aluminium-roof-hatch-covers.jpg', 'aluminium-roof-hatch-covers.jpg'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -322,7 +322,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Lightweight, slip-resistant Aluminium walkways, protecting roofs and ensuring safe maintenance access in industrial environments.',
     material: 'Aluminium Alloy 6063-T6', finish: 'Anodized / Powder Coated', standard: 'BS 6399, EN 1090',
     applications: 'Rooftop HVAC Maintenance, Solar Panel Access, Industrial Roof Walkways',
-    primary_image: makeProductImage(405, '/img/products/prod-aluminium-roof-walkway.jpg', 'Aluminium Roof Top Walkway Saudi Arabia'),
+    primary_image: makeProductImage(405, '/img/products/aluminium-roof-walkway-saudi.jpg', 'aluminium-roof-walkway-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 4, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -332,7 +332,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Strong, corrosion-resistant stainless steel gratings offering slip resistance and durability for harsh industrial conditions.',
     material: 'Stainless Steel SS316', finish: 'Electro-Polished / Mill Finish', standard: 'BS 4592, ASTM A240',
     applications: 'Industrial Platforms, Marine Access, Chemical Facilities, Food Grade Applications',
-    primary_image: makeProductImage(406, '/img/products/prod-ss-gratings-v2.jpg', 'Stainless Steel Gratings Aluminium Range Saudi Arabia'),
+    primary_image: makeProductImage(406, '/img/products/aluminium-gratings-saudi-arabia.jpg', 'Aluminium-gratings-saudi-Arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 5, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -342,7 +342,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Lightweight Aluminium gratings, designed for safety, durability, and easy maintenance in walkways and platforms.',
     material: 'Aluminium Alloy 6063-T6 / 6061-T6', finish: 'Mill Finish / Clear Anodized', standard: 'ASTM B221, BS 4592',
     applications: 'Sewage Treatment, Architectural Screens, Volatile Gas Zones, Suspended Walkways',
-    primary_image: makeProductImage(407, '/img/products/prod-aluminium-gratings-standard.jpg', 'Aluminium Gratings Saudi Arabia'),
+    primary_image: makeProductImage(407, '/img/products/Aluminium-Supplier-in-Saudi-Arabia.jpg', 'Aluminium-Supplier-in-Saudi-Arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 6, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -352,7 +352,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Narrow-opening Aluminium or stainless steel gratings preventing heel traps while maintaining load capacity and durability.',
     material: 'Aluminium / Stainless Steel SS316', finish: 'Mill Finish / Anodized', standard: 'ISO 14122, ADA Compliant',
     applications: 'Shopping Centres, Airports, Pedestrian Walkways, Public Buildings, Retail Floors',
-    primary_image: makeProductImage(408, '/img/products/prod-heel-proof-grating.jpg', 'Heel Proof Grating Saudi Arabia'),
+    primary_image: makeProductImage(408, '/img/products/aluminium-grating-jeddah-heelproof.jpg', 'aluminium-grating-jeddah.jpg'),
     is_featured: false, is_active: true, sort_order: 7, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -364,7 +364,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Strong, corrosion-resistant ductile iron products ideal for heavy-load infrastructure like manhole covers and frames.',
     material: 'Ductile Iron GJS 500-7', finish: 'Bituminous Paint / Epoxy Coated', standard: 'BS EN 124-2 Class D400',
     applications: 'Main Roads, Highway Shoulders, Commercial Parking, Public Infrastructure',
-    primary_image: makeProductImage(501, '/img/products/prod-ductile-iron.jpg', 'Ductile Iron Manhole Covers Saudi Arabia'),
+    primary_image: makeProductImage(501, '/img/products/ductile-iron-gratings-saudi-arabia.jpg', 'ductile-iron-gratings-saudi-arabia.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -374,7 +374,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Tough spheroidal graphite and ductile iron materials for impact-resistant, durable drainage and manhole products.',
     material: 'Spheroidal Graphite Iron (SG) / Ductile Iron', finish: 'Black Bitumen Coated', standard: 'BS EN 124, EN 1561',
     applications: 'Drainage Channels, Municipal Roads, Utility Access, Industrial Yards',
-    primary_image: makeProductImage(502, '/img/products/prod-sg-iron-ductile.jpg', 'SG Iron Ductile Manhole Saudi Arabia'),
+    primary_image: makeProductImage(502, '/img/products/ductile-iron-gratings-saudi-arabia.jpg', 'ductile-iron-gratings-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 1, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -384,7 +384,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Efficient drainage gratings made from durable materials, ensuring debris-free water flow and safe walking surfaces.',
     material: 'Ductile Iron / Cast Iron', finish: 'Bituminous Paint', standard: 'BS EN 124, BS EN 1433',
     applications: 'Road Drainage, Car Parks, Pedestrian Areas, Shopping Centres, Industrial Sites',
-    primary_image: makeProductImage(503, '/img/products/prod-channel-gully-grating.jpg', 'Channel Gully Gratings Saudi Arabia'),
+    primary_image: makeProductImage(503, '/img/products/manhole-supplier-saudi-arabia.jpg', 'manhole-supplier-saudi-arabia.jpg'),
     is_featured: false, is_active: true, sort_order: 2, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
   {
@@ -394,7 +394,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Heavy-duty ductile iron carriageway covers and frames designed for secure access and high load-bearing capacity.',
     material: 'Ductile Iron GJS 500-7', finish: 'Epoxy Coated / Bituminous', standard: 'BS EN 124 Class E600 / F900',
     applications: 'Carriageways, Highway Verges, Bridge Decks, Heavy Traffic Areas',
-    primary_image: makeProductImage(504, '/img/products/prod-carriageway-cover.jpg', 'Carriageway Cover Frame Saudi Arabia'),
+    primary_image: makeProductImage(504, '/img/products/carriageway-manhole-cover-saudi.jpg', 'carriageway-manhole-cover-saudi.jpg'),
     is_featured: false, is_active: true, sort_order: 3, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -406,7 +406,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Complete heavy-duty grating clamp assemblies (top saddle, lower beam flange hook bracket, and bolt) available in both HDG and SS316.',
     material: 'Hot-Dip Galvanized (HDG) / Stainless Steel SS316 & SS304', finish: 'Hot-Dip Galvanized to ISO 1461 / Mill & Passivated', standard: 'BS EN ISO 1461, DIN 933, ISO 4014',
     applications: 'Steel Grating Installation, Structural I-Beam Anchoring, Industrial Walkway Fixing, Offshore Platform Decking',
-    primary_image: makeProductImage(601, '/img/products/prod-ss-gi-clamps-v2.jpg', 'Complete Grating Clamp Assembly HDG and SS'),
+    primary_image: makeProductImage(601, '/img/products/ss-grating-clamps-saudi.jpg', 'ss-grating-clamps-saudi.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -418,7 +418,7 @@ export const STATIC_PRODUCTS: ProductListItem[] = [
     short_description: 'Step irons are made from durable ductile iron, hot-dip galvanized to BS EN ISO 1461 and feature anti-slip, secure designs.',
     material: 'Ductile Iron / GI / SS316 / PVC Encapsulated', finish: 'PVC Coated / Hot-Dip Galvanized', standard: 'BS EN 13101, BS 1247',
     applications: 'Manhole Shafts, Sewer Chambers, Utility Inspection Pits, Storm Water Stations',
-    primary_image: makeProductImage(701, '/img/products/prod-pvc-gi-ss-step-iron.jpg', 'PVC GI SS Step Iron Saudi Arabia'),
+    primary_image: makeProductImage(701, '/img/products/step-iron-supplier-saudi-arabia.jpg', 'step-iron-supplier-saudi-arabia.jpg'),
     is_featured: true, is_active: true, sort_order: 0, created_at: '2025-01-01T00:00:00Z', ...seoDefaults,
   },
 
@@ -597,7 +597,7 @@ export const STATIC_PRODUCTS_DETAIL: Product[] = STATIC_PRODUCTS.map(p => ({
   documents: [],
   product_images: p.slug === 'press-lock-type-gratings'
     ? [
-        makeProductImage(202, '/img/products/prod-press-lock-exact.jpg', 'Press Lock Interlocked Flat-Bar Steel Grating 3D Schematic'),
+        makeProductImage(202, '/img/products/steel-grating-supplier-saudi-arabia.jpg', 'steel-grating-supplier-saudi-arabia.jpg'),
         makeProductImage(2021, '/img/products/prod-press-lock.jpg', 'Press Lock Interlocking Grid System'),
       ]
     : p.primary_image ? [p.primary_image] : [],

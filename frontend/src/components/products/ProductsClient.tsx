@@ -15,16 +15,16 @@ interface ProductsClientProps {
 
 // ─── Fallback images per category slug ───────────────────────────────────────
 const CATEGORY_FALLBACKS: Record<string, string> = {
-  'steel-gratings': '/product-steel-grating.jpg',
-  'frp-grp-products': '/product-frp-grating.jpg',
-  'aluminium': '/product-aluminium-grating.jpg',
-  'stainless-steel-products': '/product-ss-grating.jpg',
-  'manhole': '/product-manhole-cover.jpg',
-  'ss-gi-grating-clamps': '/product-grating-clamp.jpg',
-  'step-iron': '/product-step-iron.jpg',
+  'steel-gratings': '/steel-gratings-supplier-saudi-arabia.jpg',
+  'frp-grp-products': '/frp-grating-manufacturer-saudi-arabia.jpg',
+  'aluminium': '/aluminium-supplier-saudi-arabia.jpg',
+  'stainless-steel-products': '/stainless-steel-grating-suppliers.jpg',
+  'manhole': '/manhole-cover-supplier-saudi-arabia.jpg',
+  'ss-gi-grating-clamps': '/ss-gi-grating-clamps-supplier-saudi-arabia.jpg',
+  'step-iron': '/step-iron-supplier-saudi-arabia.jpg',
 };
 
-const DEFAULT_FALLBACK = '/product-steel-grating.jpg';
+const DEFAULT_FALLBACK = '/steel-gratings-supplier-saudi-arabia.jpg';
 
 // ─── Category Card ────────────────────────────────────────────────────────────
 function CategoryCard({ category, index }: { category: ProductCategory; index: number }) {

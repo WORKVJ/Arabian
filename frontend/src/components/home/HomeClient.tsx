@@ -96,7 +96,7 @@ const partnerLogos = [
   '/img/logo-12.png',
 ];
 
-const productImages = ['/product-steel-grating.jpg', '/product-frp-grating.jpg', '/product-steel-grating.jpg', '/product-frp-grating.jpg'];
+const productImages = ['/steel-gratings-supplier-saudi-arabia.jpg', '/frp-grating-manufacturer-saudi-arabia.jpg', '/steel-gratings-supplier-saudi-arabia.jpg', '/frp-grating-manufacturer-saudi-arabia.jpg'];
 const productSpecs: Record<string, { label: string; value: string }[]> = {
   'steel-gratings': [
     { label: 'MATERIAL', value: 'ASTM A36 CARBON STEEL' },
@@ -135,7 +135,7 @@ const productSpecs: Record<string, { label: string; value: string }[]> = {
   ]
 };
 const industryImages = ['/img/real2/new (12).jpeg', '/img/real1/img (8).jpeg', '/img/real1/img (13).jpeg', '/img/real2/new (2).jpeg'];
-const projectImages = ['/img/real1/img (1).jpeg', '/img/real2/new (10).jpeg'];
+const projectImages = ['/steel-gratings-industrial-project-saudi.jpg', '/industrial-grating-project-ksa.jpg'];
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const springCfg = { stiffness: 70, damping: 20, mass: 0.9 };
 
@@ -258,8 +258,8 @@ function CtaSection() {
 
 const heroSlides = [
   { src: '/hero-steel.jpg', label: 'OFFSHORE & INDUSTRIAL // ACCESS SYSTEMS', alt: 'Arabian Gratings heavy-duty galvanized steel grating and stair access systems' },
-  { src: '/facility-overview.jpg', label: 'TESTED STANDARDS // ISO 9001 CERTIFIED', alt: 'Arabian Gratings fabrication facility and ISO certified quality inspection' },
-  { src: '/project-refinery.jpg', label: 'PETROCHEMICAL & ENERGY // ACCESS DECKS', alt: 'Industrial grating walkways installed in petrochemical refinery' },
+  { src: '/industrial-gratings-suppliers-ksa.jpg', label: 'TESTED STANDARDS // ISO 9001 CERTIFIED', alt: 'industrial-gratings-suppliers-ksa.jpg' },
+  { src: '/industrial-gratings-refinery-saudi.jpg', label: 'PETROCHEMICAL & ENERGY // ACCESS DECKS', alt: 'industrial-gratings-refinery-saudi.jpg' },
 ];
 
 export default function HomeClient({ categories: rawCategories, industries: rawIndustries, projects: rawProjects, posts: rawPosts }: HomeClientProps) {

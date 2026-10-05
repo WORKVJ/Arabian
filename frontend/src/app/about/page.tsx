@@ -69,8 +69,8 @@ export default function AboutPage() {
                 <div className="border border-[#D9DDE1] bg-white p-3 shadow-lg group hover:border-[#E8612C] transition-colors duration-300">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#0D0F12]">
                     <Image
-                      src="/img/othman-almoudi.png"
-                      alt="Othman Almoudi - General Manager, Arabian Gratings"
+                      src="/img/ductile-iron-gratings-saudi-arabia.png"
+                      alt="ductile-iron-gratings-saudi-arabia-jpg"
                       fill
                       sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -225,21 +225,21 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              img: '/img/real1/img (8).jpeg',
+              img: '/ss-gratings-saudiarabia.jpg',
               tag: 'MARINE WALKWAYS',
               title: 'On-Site Catwalk Assessment',
               desc: 'Direct field inspection on heavy container crane catwalks installed over coastal seawater.',
               badge: 'KING ABDULAZIZ PORT',
             },
             {
-              img: '/img/real2/new (1).jpeg',
+              img: '/steel-fabrication-companies-in-ksa.jpg',
               tag: 'PRODUCTION CONTROL',
               title: 'Batch Coded Fabrication',
               desc: 'Every stack of hot-dip galvanized panels carries reference markings for complete project traceability.',
               badge: 'REF#01 // 40 PCS BUNDLES',
             },
             {
-              img: '/facility-overview.jpg',
+              img: '/industrial-gratings-suppliers-ksa.jpg',
               tag: 'QA / CERTIFIED VERIFICATION',
               title: 'Rigorous Load & QA Testing',
               desc: 'Engineering teams verify deflection thresholds, weld fusion, and dimensional tolerances before dispatch.',
