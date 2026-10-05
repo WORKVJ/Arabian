@@ -65,7 +65,8 @@ export function getImageUrl(path: string | null | undefined): string | null {
   if (!path) return null;
   if (path.includes('/media/')) {
     const idx = path.indexOf('/media/');
-    return path.substring(idx);
+    const mediaPath = path.substring(idx);
+    return `https://arabiangratings.com${mediaPath}`;
   }
   return path;
 }
