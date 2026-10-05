@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogPost } from '@/lib/api/client';
+import { getBlogPost, getImageUrl } from '@/lib/api/client';
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer';
 import RelatedArticles from '@/components/blog/RelatedArticles';
 import Reveal from '@/components/animations/Reveal';
@@ -174,7 +174,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
             <Reveal direction="none" delay={0.2}>
               <div className="relative w-full aspect-[21/9] overflow-hidden rounded-sm border border-border-color bg-slate-105">
                 <Image
-                  src={post.featured_image.file}
+                  src={getImageUrl(post.featured_image.file) || post.featured_image.file}
                   alt={post.featured_image.alt_text || post.title}
                   fill
                   priority

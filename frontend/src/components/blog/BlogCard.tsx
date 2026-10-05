@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BlogPost } from '@/types';
+import { getImageUrl } from '@/lib/api/client';
 import { stripHtml } from '@/lib/seo/stripHtml';
 import { ChevronRight } from 'lucide-react';
 import Reveal from '@/components/animations/Reveal';
@@ -27,7 +28,7 @@ export default function BlogCard({ post, index = 0, headingLevel: Heading = 'h3'
         <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
           {post.featured_image ? (
             <Image
-              src={post.featured_image.file}
+              src={getImageUrl(post.featured_image.file) || post.featured_image.file}
               alt={post.featured_image.alt_text || post.title}
               fill
               loading="lazy"

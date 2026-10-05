@@ -63,8 +63,10 @@ async function fetchFromAPI<T>(endpoint: string, options?: RequestInit): Promise
 
 export function getImageUrl(path: string | null | undefined): string | null {
   if (!path) return null;
-  if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  if (path.startsWith('/media/')) return `${getClientApiBaseUrl()}${path}`;
+  if (path.includes('/media/')) {
+    const idx = path.indexOf('/media/');
+    return path.substring(idx);
+  }
   return path;
 }
 

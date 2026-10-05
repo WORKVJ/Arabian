@@ -19,6 +19,26 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "arabiangratings.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "arabiangratings.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.arabiangratings.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "161.35.211.116",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "*.amazonaws.com",
         pathname: "/**",
       },
