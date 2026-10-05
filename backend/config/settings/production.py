@@ -5,8 +5,10 @@ from django.core.exceptions import ImproperlyConfigured
 # Force DEBUG=False in production
 DEBUG = False
 
-# Strict production hosts configuration
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+# Strict production hosts configuration + local loopback
+ALLOWED_HOSTS = list(set(env.list('ALLOWED_HOSTS', default=[]) + ['localhost', '127.0.0.1', 'arabiangratings.com', 'www.arabiangratings.com', '161.35.211.116']))
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Ensure DATABASE_URL is set and engine is PostgreSQL
 if 'DATABASE_URL' not in os.environ:

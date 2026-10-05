@@ -22,10 +22,17 @@ export function getClientApiUrl(): string {
     }
     return 'http://127.0.0.1:8000/api/v1';
   }
+  // Server-side SSR in Node.js
+  if (process.env.INTERNAL_API_URL) {
+    return process.env.INTERNAL_API_URL;
+  }
+  if (process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')) {
+    return `${process.env.NEXT_PUBLIC_SITE_URL}/api/v1`;
+  }
   if (process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.includes('127.0.0.1')) {
     return process.env.NEXT_PUBLIC_API_URL;
   }
-  return 'http://127.0.0.1:8000/api/v1';
+  return 'https://arabiangratings.com/api/v1';
 }
 
 export function getClientApiBaseUrl(): string {
@@ -35,7 +42,10 @@ export function getClientApiBaseUrl(): string {
     }
     return 'http://127.0.0.1:8000';
   }
-  return 'http://127.0.0.1:8000';
+  if (process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  return 'https://arabiangratings.com';
 }
 
 async function fetchFromAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
@@ -255,13 +265,14 @@ export async function getBlogPosts(params?: {
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost> {
+  const normalizedSlug = decodeURIComponent(slug).trim().toLowerCase().replace(/[\s_]+/g, '-');
   try {
-    return await fetchFromAPI<BlogPost>(`/blog/${slug}/`, {
+    return await fetchFromAPI<BlogPost>(`/blog/${normalizedSlug}/`, {
       cache: 'no-store'
     });
   } catch (error) {
-    console.warn(`getBlogPost backend for slug: ${slug} failed, falling back to static data`, error);
-    const post = STATIC_BLOG_POSTS.find(p => p.slug === slug);
+    console.warn(`getBlogPost backend for slug: ${slug} (${normalizedSlug}) failed, falling back to static data`, error);
+    const post = STATIC_BLOG_POSTS.find(p => p.slug === normalizedSlug || p.slug === slug);
     if (!post) throw new APIError(`Blog post not found: ${slug}`, 404);
     return post;
   }

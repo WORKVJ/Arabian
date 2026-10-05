@@ -17,8 +17,13 @@ interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
+function cleanSlug(slug: string): string {
+  return decodeURIComponent(slug).trim().toLowerCase().replace(/[\s_]+/g, '-');
+}
+
 export async function generateMetadata({ params }: ArticleDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = cleanSlug(rawSlug);
   try {
     const post = await getBlogPost(slug);
     return generatePageMetadata(post, {
@@ -33,7 +38,8 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
 }
 
 export default async function ArticleDetailPage({ params }: ArticleDetailPageProps) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = cleanSlug(rawSlug);
   let post: BlogPost | null = null;
 
   try {

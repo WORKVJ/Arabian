@@ -75,6 +75,72 @@ function renderBlock(block: ContentBlock, idx: number): React.ReactNode {
   }
 }
 
+function parseMarkdownToHtml(markdown: string): string {
+  if (!markdown) return '';
+  // If it already contains HTML tags (and not markdown ##), return as is
+  if (/<(h[1-6]|p|div|ul|ol|table)[\s\S]*>/i.test(markdown) && !markdown.includes('## ')) {
+    return markdown;
+  }
+
+  const lines = markdown.split('\n');
+  const htmlLines: string[] = [];
+  let inList = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i].trim();
+    if (!line) {
+      if (inList) {
+        htmlLines.push('</ul>');
+        inList = false;
+      }
+      continue;
+    }
+
+    // Markdown Headers
+    if (line.startsWith('### ')) {
+      if (inList) { htmlLines.push('</ul>'); inList = false; }
+      htmlLines.push(`<h3 class="text-lg font-bold text-foreground mt-6 mb-2">${line.slice(4)}</h3>`);
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      if (inList) { htmlLines.push('</ul>'); inList = false; }
+      htmlLines.push(`<h2 class="text-xl font-bold text-foreground mt-8 mb-3">${line.slice(3)}</h2>`);
+      continue;
+    }
+    if (line.startsWith('# ')) {
+      if (inList) { htmlLines.push('</ul>'); inList = false; }
+      htmlLines.push(`<h1 class="text-2xl font-bold text-foreground mt-8 mb-4">${line.slice(2)}</h1>`);
+      continue;
+    }
+
+    // Bullet lists (* or -)
+    if (line.startsWith('* ') || line.startsWith('- ')) {
+      if (!inList) {
+        htmlLines.push('<ul class="list-disc pl-5 my-3 space-y-1">');
+        inList = true;
+      }
+      const itemText = line.slice(2).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      htmlLines.push(`<li>${itemText}</li>`);
+      continue;
+    } else if (inList) {
+      htmlLines.push('</ul>');
+      inList = false;
+    }
+
+    // Bold text replacements
+    line = line.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+    // Paragraph
+    htmlLines.push(`<p class="mb-4 leading-relaxed">${line}</p>`);
+  }
+
+  if (inList) {
+    htmlLines.push('</ul>');
+  }
+
+  return htmlLines.join('\n');
+}
+
 export default function BlogContentRenderer({ content, contentBlocks }: BlogContentRendererProps) {
   // If content_blocks exist and are populated, prefer structured rendering
   if (contentBlocks && contentBlocks.length > 0) {
@@ -85,8 +151,9 @@ export default function BlogContentRenderer({ content, contentBlocks }: BlogCont
     );
   }
 
-  // Fallback: sanitize and render HTML content field
-  const cleanHtml = DOMPurify.sanitize(content, {
+  // Convert markdown if needed, then sanitize HTML
+  const parsedHtml = parseMarkdownToHtml(content);
+  const cleanHtml = DOMPurify.sanitize(parsedHtml, {
     ALLOWED_TAGS,
     ALLOWED_ATTR,
   });
