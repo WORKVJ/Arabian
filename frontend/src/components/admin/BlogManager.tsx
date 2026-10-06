@@ -13,6 +13,7 @@ import {
   getImageUrl
 } from '@/lib/api/adminApi';
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer';
+import { Edit3, Eye, Link2 } from 'lucide-react';
 
 const INTERNAL_LINK_PRESETS = [
   // Products
@@ -679,24 +680,26 @@ export default function BlogManager() {
                     <button
                       type="button"
                       onClick={() => setContentViewMode('edit')}
-                      className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold rounded-md transition cursor-pointer ${
                         contentViewMode === 'edit'
                           ? 'bg-white text-slate-900 shadow-2xs'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
-                      ✏️ Edit Content
+                      <Edit3 className="w-3 h-3 text-slate-700" />
+                      <span>Edit Content</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setContentViewMode('preview')}
-                      className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold rounded-md transition cursor-pointer ${
                         contentViewMode === 'preview'
                           ? 'bg-white text-amber-700 shadow-2xs'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
-                      👁️ Live Preview
+                      <Eye className="w-3 h-3 text-amber-700" />
+                      <span>Live Preview</span>
                     </button>
                   </div>
                 </div>
@@ -711,10 +714,8 @@ export default function BlogManager() {
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
                       title="Insert Internal Link to product, solution, or category"
                     >
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                      </svg>
-                      <span>🔗 Insert Internal Link</span>
+                      <Link2 className="w-3.5 h-3.5" />
+                      <span>Insert Internal Link</span>
                     </button>
 
                     <div className="h-4 w-px bg-slate-300 mx-1 hidden sm:block" />
