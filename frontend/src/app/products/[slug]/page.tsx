@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     const category = await getProductCategory(slug);
     const title = category.seo_title || `${category.name} Supplier Saudi Arabia | Arabian Gratings`;
     const description = category.seo_description || `${category.short_description} Premium quality engineered grids by Arabian Gratings Saudi Arabia. Delivering across Jeddah, Dammam, Riyadh and the GCC.`;
-    return generatePageMetadata(category, {
+    return await generatePageMetadata(category, {
       title,
       description: description.slice(0, 160),
       path: `/products/${category.slug}`,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       if (!product.seo_description && !description.includes('Saudi') && !description.includes('GCC')) {
         description = `${description} Premium industrial supply by Arabian Gratings Saudi Arabia, delivering across Jeddah, Dammam, Riyadh, and the GCC region.`;
       }
-      return generatePageMetadata(product, {
+      return await generatePageMetadata(product, {
         title,
         description: description.slice(0, 160),
         path: `/products/${product.slug}`,

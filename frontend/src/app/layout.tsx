@@ -51,6 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-ZJS72BQ6RY"
         />
+        {/* Google Analytics */}
         <Script
           id="google-analytics"
           strategy="afterInteractive"
@@ -62,6 +63,45 @@ gtag('config', 'G-ZJS72BQ6RY');`,
           }}
         />
         {/* End Google tag (gtag.js) */}
+
+        {/* Global Organization & WebSite Structured Data for Search Engines & SEO tools */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://arabiangratings.com/#organization",
+                  "name": "Arabian Gratings",
+                  "url": "https://arabiangratings.com",
+                  "logo": "https://arabiangratings.com/icon.png",
+                  "description": "Leading manufacturer and supplier of industrial gratings, FRP/GRP products, steel gratings, and access covers in Saudi Arabia and the GCC.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "SA",
+                    "addressRegion": "Riyadh & Eastern Province"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "sales",
+                    "email": "sales@arabiangratings.com"
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://arabiangratings.com/#website",
+                  "url": "https://arabiangratings.com",
+                  "name": "Arabian Gratings Saudi Arabia",
+                  "publisher": {
+                    "@id": "https://arabiangratings.com/#organization"
+                  }
+                }
+              ]
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         {/* Google Tag Manager (noscript) */}

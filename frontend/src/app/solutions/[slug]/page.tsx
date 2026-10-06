@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: SolutionDetailPageProps): Pro
   const { slug } = await params;
   try {
     const solution = await getSolution(slug);
-    return generatePageMetadata(solution, {
+    return await generatePageMetadata(solution, {
       title: `${solution.name} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(solution.description),
       path: `/solutions/${solution.slug}`,

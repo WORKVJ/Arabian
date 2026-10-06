@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
   const { slug } = await params;
   try {
     const project = await getProject(slug);
-    return generatePageMetadata(project, {
+    return await generatePageMetadata(project, {
       title: `${project.title} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(project.description),
       path: `/projects/${project.slug}`,

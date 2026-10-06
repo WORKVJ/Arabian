@@ -3,16 +3,17 @@ import Reveal from '@/components/animations/Reveal';
 import { getSolutions } from '@/lib/api/client';
 import { Solution, PaginatedResponse } from '@/types';
 import { ChevronRight } from 'lucide-react';
-import { defaultMetadata } from '@/lib/seo/config';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 import { Metadata } from 'next';
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Engineering Solutions | Arabian Gratings Saudi Arabia',
-  description: 'Explore Arabian Gratings engineering solutions for industrial access flooring, corrosion-resistant platforms, safety walkways, and structural grating systems.'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/solutions', {
+    title: 'Engineering Solutions | Arabian Gratings Saudi Arabia',
+    description: 'Explore Arabian Gratings engineering solutions for industrial access flooring, corrosion-resistant platforms, safety walkways, and structural grating systems.',
+  });
+}
 
 export default async function SolutionsPage() {
   let solutionsRes: PaginatedResponse<Solution> = { count: 0, next: null, previous: null, results: [] };

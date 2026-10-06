@@ -3,16 +3,17 @@ import Reveal from '@/components/animations/Reveal';
 import { getServices } from '@/lib/api/client';
 import { Service, PaginatedResponse } from '@/types';
 import { ChevronRight } from 'lucide-react';
-import { defaultMetadata } from '@/lib/seo/config';
+import { getPageSEO } from '@/lib/seo/getPageSEO';
 import { Metadata } from 'next';
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: 'Services | Arabian Gratings Saudi Arabia',
-  description: 'Arabian Gratings offers a range of industrial services including custom fabrication, layout coordination, technical drawing support, and project delivery assistance.'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return await getPageSEO('/services', {
+    title: 'Services | Arabian Gratings Saudi Arabia',
+    description: 'Arabian Gratings offers a range of industrial services including custom fabrication, layout coordination, technical drawing support, and project delivery assistance.',
+  });
+}
 
 export default async function ServicesPage() {
   let servicesRes: PaginatedResponse<Service> = { count: 0, next: null, previous: null, results: [] };

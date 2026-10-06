@@ -165,9 +165,14 @@ export default function SEOManager() {
 
     try {
       setIsSaving(true);
+      const cleanPath = formData.path.trim().startsWith('/') ? formData.path.trim() : `/${formData.path.trim()}`;
       const payload = {
         ...formData,
-        canonical_url: formData.canonical_url || `https://arabiangratings.com${formData.path.startsWith('/') ? formData.path : `/${formData.path}`}`,
+        path: cleanPath,
+        canonical_url: formData.canonical_url || `https://arabiangratings.com${cleanPath}`,
+        og_title: formData.og_title || formData.meta_title,
+        og_description: formData.og_description || formData.meta_description,
+        og_image: formData.og_image || 'https://arabiangratings.com/og-image.jpg',
       };
 
       if (isNewPage) {

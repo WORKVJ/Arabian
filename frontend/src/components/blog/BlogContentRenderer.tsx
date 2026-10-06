@@ -75,11 +75,27 @@ function renderBlock(block: ContentBlock, idx: number): React.ReactNode {
   }
 }
 
+function formatInlineMarkdown(text: string): string {
+  if (!text) return '';
+  return text
+    // Markdown Images ![alt](url)
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="w-full rounded-xl my-4 object-cover" loading="lazy" />')
+    // Markdown Links [text](url)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-amber-700 font-semibold underline hover:text-amber-800 transition">$1</a>')
+    // Bold **text**
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    // Italic *text*
+    .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>')
+    // Inline code `code`
+    .replace(/`([^`]+)`/g, '<code class="bg-slate-100 text-amber-700 px-1.5 py-0.5 rounded text-xs font-mono">$1</code>');
+}
+
 function parseMarkdownToHtml(markdown: string): string {
   if (!markdown) return '';
-  // If it already contains HTML tags (and not markdown ##), return as is
+  
+  // If it already contains HTML tags (and not markdown ##), format any inline markdown links and return
   if (/<(h[1-6]|p|div|ul|ol|table)[\s\S]*>/i.test(markdown) && !markdown.includes('## ')) {
-    return markdown;
+    return formatInlineMarkdown(markdown);
   }
 
   const lines = markdown.split('\n');
@@ -99,17 +115,24 @@ function parseMarkdownToHtml(markdown: string): string {
     // Markdown Headers
     if (line.startsWith('### ')) {
       if (inList) { htmlLines.push('</ul>'); inList = false; }
-      htmlLines.push(`<h3 class="text-lg font-bold text-foreground mt-6 mb-2">${line.slice(4)}</h3>`);
+      htmlLines.push(`<h3 class="text-lg font-bold text-foreground mt-6 mb-2">${formatInlineMarkdown(line.slice(4))}</h3>`);
       continue;
     }
     if (line.startsWith('## ')) {
       if (inList) { htmlLines.push('</ul>'); inList = false; }
-      htmlLines.push(`<h2 class="text-xl font-bold text-foreground mt-8 mb-3">${line.slice(3)}</h2>`);
+      htmlLines.push(`<h2 class="text-xl font-bold text-foreground mt-8 mb-3">${formatInlineMarkdown(line.slice(3))}</h2>`);
       continue;
     }
     if (line.startsWith('# ')) {
       if (inList) { htmlLines.push('</ul>'); inList = false; }
-      htmlLines.push(`<h1 class="text-2xl font-bold text-foreground mt-8 mb-4">${line.slice(2)}</h1>`);
+      htmlLines.push(`<h1 class="text-2xl font-bold text-foreground mt-8 mb-4">${formatInlineMarkdown(line.slice(2))}</h1>`);
+      continue;
+    }
+
+    // Blockquote
+    if (line.startsWith('> ')) {
+      if (inList) { htmlLines.push('</ul>'); inList = false; }
+      htmlLines.push(`<blockquote class="border-l-4 border-amber-600 pl-4 py-2 my-4 italic text-slate-600 text-sm">${formatInlineMarkdown(line.slice(2))}</blockquote>`);
       continue;
     }
 
@@ -119,7 +142,7 @@ function parseMarkdownToHtml(markdown: string): string {
         htmlLines.push('<ul class="list-disc pl-5 my-3 space-y-1">');
         inList = true;
       }
-      const itemText = line.slice(2).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      const itemText = formatInlineMarkdown(line.slice(2));
       htmlLines.push(`<li>${itemText}</li>`);
       continue;
     } else if (inList) {
@@ -127,11 +150,8 @@ function parseMarkdownToHtml(markdown: string): string {
       inList = false;
     }
 
-    // Bold text replacements
-    line = line.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-    // Paragraph
-    htmlLines.push(`<p class="mb-4 leading-relaxed">${line}</p>`);
+    // Paragraph with inline markdown links and styles
+    htmlLines.push(`<p class="mb-4 leading-relaxed">${formatInlineMarkdown(line)}</p>`);
   }
 
   if (inList) {

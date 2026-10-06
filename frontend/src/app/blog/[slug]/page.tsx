@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
   const slug = cleanSlug(rawSlug);
   try {
     const post = await getBlogPost(slug);
-    return generatePageMetadata(post, {
+    return await generatePageMetadata(post, {
       title: `${post.title} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(post.excerpt || post.content),
       path: `/blog/${post.slug}`,

@@ -51,7 +51,9 @@ export async function getPageSEO(
     : `${SITE_URL}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     keywords: keywords.length > 0 ? keywords : undefined,
     alternates: {
@@ -74,7 +76,7 @@ export async function getPageSEO(
         },
       ],
       type: 'website',
-      locale: 'en_US',
+      locale: 'en_SA',
     },
     twitter: {
       card: 'summary_large_image',
@@ -88,6 +90,9 @@ export async function getPageSEO(
       googleBot: {
         index: !noIndex,
         follow: !noIndex,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
   };

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
   const { slug } = await params;
   try {
     const service = await getService(slug);
-    return generatePageMetadata(service, {
+    return await generatePageMetadata(service, {
       title: `${service.name} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(service.description),
       path: `/services/${service.slug}`,

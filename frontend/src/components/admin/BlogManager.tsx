@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   AdminBlogItem,
   getAdminBlogPosts,
@@ -12,6 +12,47 @@ import {
   uploadMedia,
   getImageUrl
 } from '@/lib/api/adminApi';
+import BlogContentRenderer from '@/components/blog/BlogContentRenderer';
+
+const INTERNAL_LINK_PRESETS = [
+  // Products
+  { category: 'Products', label: 'Steel Gratings', path: '/products/steel-gratings', defaultText: 'heavy-duty steel gratings' },
+  { category: 'Products', label: 'FRP / GRP Products', path: '/products/frp-grp-products', defaultText: 'FRP/GRP grating solutions' },
+  { category: 'Products', label: 'Stainless Steel Products', path: '/products/stainless-steel-products', defaultText: 'stainless steel gratings' },
+  { category: 'Products', label: 'Aluminium Gratings', path: '/products/aluminium-gratings', defaultText: 'aluminium gratings' },
+  { category: 'Products', label: 'Grating Fixing Clamps', path: '/products/grating-fixing-clamps', defaultText: 'grating fixing clamps' },
+  { category: 'Products', label: 'Manhole Covers', path: '/products/manhole-covers', defaultText: 'industrial manhole covers' },
+  { category: 'Products', label: 'Safety Step Irons', path: '/products/safety-step-irons', defaultText: 'safety step irons' },
+  { category: 'Products', label: 'Tactile Warning Studs', path: '/products/tactile-warning-studs', defaultText: 'tactile warning studs' },
+  { category: 'Products', label: 'All Products Overview', path: '/products', defaultText: 'complete range of grating products' },
+
+  // Solutions
+  { category: 'Solutions', label: 'Industrial Floor Grating', path: '/solutions/industrial-floor-grating', defaultText: 'industrial floor grating solutions' },
+  { category: 'Solutions', label: 'Drainage Trench Covers', path: '/solutions/drainage-trench-covers', defaultText: 'drainage trench grating systems' },
+  { category: 'Solutions', label: 'Manhole Access Safety', path: '/solutions/manhole-access-safety', defaultText: 'manhole access safety systems' },
+  { category: 'Solutions', label: 'All Engineering Solutions', path: '/solutions', defaultText: 'engineered access solutions' },
+
+  // Industries
+  { category: 'Industries', label: 'Oil & Gas Sector', path: '/industries/oil-and-gas', defaultText: 'oil and gas grating applications' },
+  { category: 'Industries', label: 'Marine & Offshore', path: '/industries/marine-offshore', defaultText: 'marine and offshore flooring' },
+  { category: 'Industries', label: 'Chemical Processing', path: '/industries/chemical-processing', defaultText: 'chemical processing platforms' },
+  { category: 'Industries', label: 'Water Treatment', path: '/industries/water-treatment', defaultText: 'water treatment plants' },
+  { category: 'Industries', label: 'Power Generation', path: '/industries/power-generation', defaultText: 'power generation installations' },
+
+  // Locations
+  { category: 'Locations', label: 'Riyadh Supply & Projects', path: '/locations/riyadh', defaultText: 'grating supplier in Riyadh' },
+  { category: 'Locations', label: 'Jeddah Supply & Projects', path: '/locations/jeddah', defaultText: 'grating supply in Jeddah' },
+  { category: 'Locations', label: 'Dammam Supply & Projects', path: '/locations/dammam', defaultText: 'industrial grating in Dammam' },
+  { category: 'Locations', label: 'Al Jubail Industrial City', path: '/locations/al-jubail', defaultText: 'grating solutions in Jubail' },
+  { category: 'Locations', label: 'Yanbu Industrial City', path: '/locations/yanbu', defaultText: 'industrial access systems in Yanbu' },
+
+  // Core Pages
+  { category: 'Core Pages', label: 'Contact & RFQ Page', path: '/contact', defaultText: 'contact our sales engineering team' },
+  { category: 'Core Pages', label: 'Showcase Projects', path: '/projects', defaultText: 'our completed industrial projects' },
+  { category: 'Core Pages', label: 'Fabrication Services', path: '/services', defaultText: 'custom fabrication services' },
+  { category: 'Core Pages', label: 'About Arabian Gratings', path: '/about', defaultText: 'about Arabian Gratings' },
+  { category: 'Core Pages', label: 'Blog & Articles Index', path: '/blog', defaultText: 'technical knowledge base' },
+];
 
 const slugify = (text: string) => {
   return text
@@ -34,6 +75,17 @@ export default function BlogManager() {
   const [editingBlogId, setEditingBlogId] = useState<number | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  // Content Editor & Internal Link Inserter State
+  const contentTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const [contentViewMode, setContentViewMode] = useState<'edit' | 'preview'>('edit');
+  const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
+  const [linkCategoryFilter, setLinkCategoryFilter] = useState<string>('All');
+  const [linkFilterQuery, setLinkFilterQuery] = useState<string>('');
+  const [selectedLinkPath, setSelectedLinkPath] = useState<string>('/products/steel-gratings');
+  const [linkAnchorText, setLinkAnchorText] = useState<string>('');
+  const [isCustomPathMode, setIsCustomPathMode] = useState<boolean>(false);
+  const [customPathInput, setCustomPathInput] = useState<string>('');
 
   // Form fields
   const [formData, setFormData] = useState({
@@ -179,6 +231,94 @@ export default function BlogManager() {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  // Helper to insert markdown or text at current cursor location in content textarea
+  const insertTextAtCursor = (before: string, after: string = '', defaultMiddle: string = '') => {
+    const textarea = contentTextareaRef.current;
+    if (!textarea) {
+      setFormData(prev => ({ ...prev, content: (prev.content || '') + before + defaultMiddle + after }));
+      return;
+    }
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = textarea.value.substring(start, end) || defaultMiddle;
+    const replacement = before + selectedText + after;
+
+    const newContent = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+    setFormData(prev => ({ ...prev, content: newContent }));
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + before.length, start + before.length + selectedText.length);
+    }, 50);
+  };
+
+  const handleOpenLinkModal = () => {
+    const textarea = contentTextareaRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selected = textarea.value.substring(start, end).trim();
+      if (selected) {
+        setLinkAnchorText(selected);
+      } else {
+        const found = INTERNAL_LINK_PRESETS.find(p => p.path === selectedLinkPath);
+        setLinkAnchorText(found?.defaultText || 'learn more');
+      }
+    } else {
+      setLinkAnchorText('learn more');
+    }
+    setIsLinkModalOpen(true);
+  };
+
+  const handleInsertInternalLink = (path: string, anchorText: string) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    const cleanText = anchorText.trim() || 'learn more';
+    const linkMarkdown = `[${cleanText}](${cleanPath})`;
+
+    const textarea = contentTextareaRef.current;
+    if (!textarea) {
+      setFormData(prev => ({ ...prev, content: prev.content ? `${prev.content}\n${linkMarkdown}` : linkMarkdown }));
+      setIsLinkModalOpen(false);
+      return;
+    }
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const newContent = textarea.value.substring(0, start) + linkMarkdown + textarea.value.substring(end);
+    setFormData(prev => ({ ...prev, content: newContent }));
+
+    setIsLinkModalOpen(false);
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + linkMarkdown.length, start + linkMarkdown.length);
+    }, 50);
+  };
+
+  const handleQuickInsert = (preset: typeof INTERNAL_LINK_PRESETS[0]) => {
+    const textarea = contentTextareaRef.current;
+    let anchor = preset.defaultText;
+    if (textarea) {
+      const selected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd).trim();
+      if (selected) {
+        anchor = selected;
+      }
+    }
+    const linkMarkdown = `[${anchor}](${preset.path})`;
+    if (!textarea) {
+      setFormData(prev => ({ ...prev, content: prev.content ? `${prev.content} ${linkMarkdown}` : linkMarkdown }));
+      return;
+    }
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const newContent = textarea.value.substring(0, start) + linkMarkdown + textarea.value.substring(end);
+    setFormData(prev => ({ ...prev, content: newContent }));
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + linkMarkdown.length, start + linkMarkdown.length);
+    }, 50);
   };
 
   const handleDelete = async (blog: AdminBlogItem) => {
@@ -522,19 +662,153 @@ export default function BlogManager() {
                 />
               </div>
 
-              {/* Content Body */}
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Article Content (Markdown or HTML supported) *
-                </label>
-                <textarea
-                  required
-                  rows={8}
-                  value={formData.content}
-                  onChange={e => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                  placeholder="Write your comprehensive technical guide, specification breakdown, or project news here..."
-                  className="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition font-mono leading-relaxed"
-                />
+              {/* Content Body with Internal Link Toolbar */}
+              <div className="space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700">
+                      Article Content (Markdown & HTML supported) *
+                    </label>
+                    <p className="text-[11px] text-slate-500">
+                      Insert internal links to connect articles with products, solutions, and services for maximum SEO.
+                    </p>
+                  </div>
+
+                  {/* View Mode Toggle */}
+                  <div className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+                    <button
+                      type="button"
+                      onClick={() => setContentViewMode('edit')}
+                      className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition ${
+                        contentViewMode === 'edit'
+                          ? 'bg-white text-slate-900 shadow-2xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      ✏️ Edit Content
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setContentViewMode('preview')}
+                      className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition ${
+                        contentViewMode === 'preview'
+                          ? 'bg-white text-amber-700 shadow-2xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      👁️ Live Preview
+                    </button>
+                  </div>
+                </div>
+
+                {/* Toolbar */}
+                <div className="bg-slate-50 border border-slate-300 rounded-t-xl p-2.5 space-y-2">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {/* Primary Insert Link Button */}
+                    <button
+                      type="button"
+                      onClick={handleOpenLinkModal}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition shadow-xs cursor-pointer"
+                      title="Insert Internal Link to product, solution, or category"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                      <span>🔗 Insert Internal Link</span>
+                    </button>
+
+                    <div className="h-4 w-px bg-slate-300 mx-1 hidden sm:block" />
+
+                    {/* Standard Markdown Formatting Tools */}
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('**', '**', 'bold text')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs font-bold transition cursor-pointer"
+                      title="Bold text (**text**)"
+                    >
+                      B
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('*', '*', 'italic text')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs italic font-serif transition cursor-pointer"
+                      title="Italic text (*text*)"
+                    >
+                      I
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('\n## ', '\n', 'Section Heading')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs font-bold transition cursor-pointer"
+                      title="Heading 2 (## Heading)"
+                    >
+                      H2
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('\n### ', '\n', 'Subsection Heading')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs font-semibold transition cursor-pointer"
+                      title="Heading 3 (### Heading)"
+                    >
+                      H3
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('\n- ', '', 'Bullet point')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs transition cursor-pointer"
+                      title="Bullet list (- item)"
+                    >
+                      • List
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => insertTextAtCursor('\n> ', '\n', 'Important note or quote')}
+                      className="px-2 py-1 bg-white hover:bg-slate-200 border border-slate-200 text-slate-700 rounded text-xs transition cursor-pointer"
+                      title="Quote (> quote)"
+                    >
+                      “ Quote
+                    </button>
+                  </div>
+
+                  {/* 1-Click Quick Internal Link Pills */}
+                  <div className="flex items-center gap-1.5 flex-wrap pt-1 border-t border-slate-200">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      Quick Links:
+                    </span>
+                    {INTERNAL_LINK_PRESETS.slice(0, 7).map((preset) => (
+                      <button
+                        key={preset.path}
+                        type="button"
+                        onClick={() => handleQuickInsert(preset)}
+                        className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition cursor-pointer"
+                        title={`Insert link to ${preset.path}`}
+                      >
+                        + {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Editor or Preview */}
+                {contentViewMode === 'edit' ? (
+                  <textarea
+                    ref={contentTextareaRef}
+                    required
+                    rows={10}
+                    value={formData.content}
+                    onChange={e => setFormData(prev => ({ ...prev, content: e.target.value }))}
+                    placeholder="Write your article content. Click 'Insert Internal Link' or use markdown [Anchor Text](/products/steel-gratings) to link internally..."
+                    className="w-full px-3.5 py-3 bg-white border border-slate-300 rounded-b-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition font-mono leading-relaxed"
+                  />
+                ) : (
+                  <div className="p-4 bg-white border border-slate-300 rounded-b-xl min-h-[200px] max-h-96 overflow-y-auto">
+                    {formData.content ? (
+                      <BlogContentRenderer content={formData.content} />
+                    ) : (
+                      <p className="text-xs text-slate-400 italic">No content entered yet to preview.</p>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* SEO Extras Accordion */}
@@ -580,6 +854,192 @@ export default function BlogManager() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Internal Link Inserter Modal */}
+      {isLinkModalOpen && (
+        <div className="fixed inset-0 z-60 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150 max-h-[85vh] flex flex-col text-slate-900">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 bg-amber-50 text-amber-700 rounded-lg">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                </span>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900">Insert Internal Link</h4>
+                  <p className="text-[11px] text-slate-500">Select an Arabian Gratings page or product to link into your article</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsLinkModalOpen(false)}
+                className="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Mode: Preset vs Custom */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsCustomPathMode(false)}
+                className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition cursor-pointer ${
+                  !isCustomPathMode
+                    ? 'bg-amber-600 text-white border-amber-600 shadow-2xs'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                Browse Site Pages
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsCustomPathMode(true)}
+                className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition cursor-pointer ${
+                  isCustomPathMode
+                    ? 'bg-amber-600 text-white border-amber-600 shadow-2xs'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                Custom URL / Path
+              </button>
+            </div>
+
+            {!isCustomPathMode ? (
+              <>
+                {/* Search & Category Filter */}
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    value={linkFilterQuery}
+                    onChange={e => setLinkFilterQuery(e.target.value)}
+                    placeholder="Search products, solutions, locations..."
+                    className="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-amber-500"
+                  />
+
+                  <div className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-none">
+                    {['All', 'Products', 'Solutions', 'Industries', 'Locations', 'Core Pages', 'Blogs'].map(cat => (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => setLinkCategoryFilter(cat)}
+                        className={`px-2.5 py-1 text-[11px] font-semibold rounded-lg whitespace-nowrap transition cursor-pointer ${
+                          linkCategoryFilter === cat
+                            ? 'bg-slate-900 text-white'
+                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pages List */}
+                <div className="flex-1 overflow-y-auto max-h-56 divide-y divide-slate-100 border border-slate-200 rounded-xl bg-slate-50/50">
+                  {[
+                    ...INTERNAL_LINK_PRESETS,
+                    ...blogs
+                      .filter(b => b.slug && b.id !== editingBlogId)
+                      .map(b => ({
+                        category: 'Blogs',
+                        label: b.title,
+                        path: `/blog/${b.slug}`,
+                        defaultText: b.title,
+                      })),
+                  ]
+                    .filter(item => {
+                      const matchesCat = linkCategoryFilter === 'All' || item.category === linkCategoryFilter;
+                      const matchesQuery = !linkFilterQuery || 
+                        item.label.toLowerCase().includes(linkFilterQuery.toLowerCase()) ||
+                        item.path.toLowerCase().includes(linkFilterQuery.toLowerCase());
+                      return matchesCat && matchesQuery;
+                    })
+                    .map(item => (
+                      <div
+                        key={item.path}
+                        onClick={() => {
+                          setSelectedLinkPath(item.path);
+                          if (!linkAnchorText || linkAnchorText === 'learn more') {
+                            setLinkAnchorText(item.defaultText);
+                          }
+                        }}
+                        className={`p-2.5 flex items-center justify-between cursor-pointer transition text-xs ${
+                          selectedLinkPath === item.path
+                            ? 'bg-amber-50/80 border-l-4 border-amber-600'
+                            : 'hover:bg-slate-100'
+                        }`}
+                      >
+                        <div className="min-w-0 pr-2">
+                          <div className="font-semibold text-slate-900 truncate">{item.label}</div>
+                          <div className="font-mono text-[10px] text-slate-500 truncate">{item.path}</div>
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700 font-medium whitespace-nowrap">
+                          {item.category}
+                        </span>
+                      </div>
+                    ))}
+                </div>
+              </>
+            ) : (
+              <div className="space-y-3 py-2">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Internal Path (must start with /)
+                  </label>
+                  <input
+                    type="text"
+                    value={customPathInput}
+                    onChange={e => {
+                      setCustomPathInput(e.target.value);
+                      setSelectedLinkPath(e.target.value);
+                    }}
+                    placeholder="/products/your-slug"
+                    className="w-full px-3 py-2 text-xs font-mono rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Anchor Text */}
+            <div className="space-y-1">
+              <label className="block text-xs font-semibold text-slate-700">
+                Link Text (Anchor Text displayed in article) *
+              </label>
+              <input
+                type="text"
+                value={linkAnchorText}
+                onChange={e => setLinkAnchorText(e.target.value)}
+                placeholder="e.g. Heavy Duty Steel Gratings"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-amber-500 font-medium"
+              />
+              <div className="text-[11px] text-slate-500 font-mono mt-1">
+                Markdown preview: <span className="text-amber-700 font-semibold">[{linkAnchorText || 'anchor text'}]({selectedLinkPath})</span>
+              </div>
+            </div>
+
+            {/* Footer Buttons */}
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setIsLinkModalOpen(false)}
+                className="px-3.5 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => handleInsertInternalLink(selectedLinkPath, linkAnchorText)}
+                className="px-4 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-lg transition shadow-xs cursor-pointer"
+              >
+                Insert Link
+              </button>
+            </div>
           </div>
         </div>
       )}

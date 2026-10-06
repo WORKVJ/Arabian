@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: IndustryDetailPageProps): Pro
 
   try {
     const industry = await getIndustry(slug);
-    return generatePageMetadata(industry, {
+    return await generatePageMetadata(industry, {
       title: `${industry.name} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(industry.short_description),
       path: `/industries/${industry.slug}`,

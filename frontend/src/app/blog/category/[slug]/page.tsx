@@ -29,7 +29,7 @@ export async function generateMetadata({ params, searchParams }: CategoryPagePro
         robots: { index: false, follow: true },
       };
     }
-    return generatePageMetadata(null, {
+    return await generatePageMetadata(null, {
       title: `${category.name} Articles | Arabian Gratings Saudi Arabia`,
       description: category.description || `Read articles and guides related to ${category.name}.`,
       path: `/blog/category/${category.slug}`,
