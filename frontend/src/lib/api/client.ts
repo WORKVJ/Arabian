@@ -63,12 +63,37 @@ async function fetchFromAPI<T>(endpoint: string, options?: RequestInit): Promise
 
 export function getImageUrl(path: string | null | undefined): string | null {
   if (!path) return null;
-  if (path.includes('/media/')) {
-    const idx = path.indexOf('/media/');
-    const mediaPath = path.substring(idx);
-    return `https://arabiangratings.com${mediaPath}`;
+  const trimmed = path.trim();
+  if (!trimmed) return null;
+
+  // If path is already a full absolute URL with protocol
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    // If it points to an internal media URL like http://127.0.0.1:8000/media/... or localhost
+    if (trimmed.includes('/media/')) {
+      const idx = trimmed.indexOf('/media/');
+      return `https://arabiangratings.com${trimmed.substring(idx)}`;
+    }
+    return trimmed;
   }
-  return path;
+
+  // If it's a media path (e.g. /media/uploads/... or media/uploads/...)
+  if (trimmed.includes('media/')) {
+    const idx = trimmed.indexOf('media/');
+    return `https://arabiangratings.com/${trimmed.substring(idx)}`;
+  }
+
+  // If it's an uploads path directly (e.g. uploads/2026/...)
+  if (trimmed.startsWith('uploads/')) {
+    return `https://arabiangratings.com/media/${trimmed}`;
+  }
+
+  // If it's a relative path starting with slash (e.g. /steel-grating.jpg)
+  if (trimmed.startsWith('/')) {
+    return trimmed;
+  }
+
+  // Otherwise ensure leading slash for local static images
+  return `/${trimmed}`;
 }
 
 // ─── Helper to wrap arrays in paginated format ───────────────────────────────
@@ -375,7 +400,8 @@ export interface PublicPageSEO {
   canonical_url: string;
   og_title: string;
   og_description: string;
-  og_image: string | null;
+  og_image: string | { id?: number; file?: string; [key: string]: any } | null;
+  og_image_url?: string | null;
   no_index: boolean;
 }
 

@@ -1,4 +1,4 @@
-import { getProject, getProjects, getBlogPosts } from '@/lib/api/client';
+import { getProject, getProjects, getBlogPosts, getImageUrl } from '@/lib/api/client';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -31,11 +31,12 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
   const { slug } = await params;
   try {
     const project = await getProject(slug);
+    const ogImg = project.featured_image?.file ? (getImageUrl(project.featured_image.file) || project.featured_image.file) : undefined;
     return await generatePageMetadata(project, {
       title: `${project.title} | Arabian Gratings Saudi Arabia`,
       description: stripHtml(project.description),
       path: `/projects/${project.slug}`,
-      ogImageFallback: project.featured_image?.file || undefined,
+      ogImageFallback: ogImg,
     });
   } catch {
     return { title: 'Project | Arabian Gratings Saudi Arabia' };
@@ -134,11 +135,11 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           </Reveal>
 
           {/* Featured Showcase Image */}
-          {project.featured_image && (
+          {project.featured_image?.file && (
             <Reveal direction="none" delay={0.2}>
               <div className="relative w-full aspect-[16/9] max-h-[620px] overflow-hidden rounded-3xl border border-slate-200/90 shadow-xl bg-slate-100">
                 <Image
-                  src={project.featured_image.file}
+                  src={getImageUrl(project.featured_image.file) || project.featured_image.file}
                   alt={project.featured_image.alt_text || project.title}
                   fill
                   priority
@@ -273,10 +274,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               {relatedProjects.map((rel: Project, idx: number) => (
                 <Reveal key={rel.id} direction="up" delay={idx * 0.05}>
                   <article className="group border border-border-color bg-white overflow-hidden rounded-sm hover:border-accent transition-colors">
-                    {rel.featured_image && (
+                    {rel.featured_image?.file && (
                       <div className="relative aspect-[16/9] overflow-hidden bg-slate-105">
                         <Image
-                          src={rel.featured_image.file}
+                          src={getImageUrl(rel.featured_image.file) || rel.featured_image.file}
                           alt={rel.featured_image.alt_text || rel.title}
                           fill
                           loading="lazy"

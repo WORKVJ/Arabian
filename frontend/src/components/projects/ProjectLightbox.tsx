@@ -3,6 +3,7 @@
 import { useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getImageUrl } from '@/lib/api/client';
 
 interface LightboxImage {
   id: number;
@@ -91,7 +92,7 @@ export default function ProjectLightbox({
         onClick={(e) => e.stopPropagation()}
       >
         <Image
-          src={current.file}
+          src={getImageUrl(current.file) || current.file}
           alt={current.alt_text || current.title || 'Project image'}
           fill
           className="object-contain"

@@ -95,11 +95,22 @@ export async function generatePageMetadata(
     seoData?.seo_description ||
     fallback.description;
 
-  const ogImg =
-    customSEO?.og_image ||
-    seoData?.og_image ||
-    fallback.ogImageFallback ||
-    '/og-image.jpg';
+  let rawOgImg: string | null = null;
+  if (typeof customSEO?.og_image === 'object' && customSEO?.og_image !== null && 'file' in customSEO.og_image) {
+    rawOgImg = (customSEO.og_image as { file?: string }).file || null;
+  } else if (typeof customSEO?.og_image === 'string' && customSEO.og_image.trim()) {
+    rawOgImg = customSEO.og_image.trim();
+  } else if (typeof customSEO?.og_image_url === 'string' && customSEO.og_image_url.trim()) {
+    rawOgImg = customSEO.og_image_url.trim();
+  } else if (typeof seoData?.og_image === 'object' && seoData?.og_image !== null && 'file' in seoData.og_image) {
+    rawOgImg = (seoData.og_image as { file?: string }).file || null;
+  } else if (typeof seoData?.og_image === 'string' && seoData.og_image.trim()) {
+    rawOgImg = seoData.og_image.trim();
+  } else if (typeof fallback.ogImageFallback === 'string' && fallback.ogImageFallback.trim()) {
+    rawOgImg = fallback.ogImageFallback.trim();
+  }
+
+  const ogImg = rawOgImg || '/og-image.jpg';
 
   const noIndex =
     customSEO?.no_index !== undefined

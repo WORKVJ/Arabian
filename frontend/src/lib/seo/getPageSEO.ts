@@ -43,7 +43,20 @@ export async function getPageSEO(
     fallback.ogDescription ||
     fallback.description;
 
-  const ogImage = customSEO?.og_image || fallback.ogImage || '/og-image.jpg';
+  let rawOgImage: string | null = null;
+  if (typeof customSEO?.og_image === 'object' && customSEO?.og_image !== null && 'file' in customSEO.og_image) {
+    rawOgImage = (customSEO.og_image as { file?: string }).file || null;
+  } else if (typeof customSEO?.og_image === 'string' && customSEO.og_image.trim()) {
+    rawOgImage = customSEO.og_image.trim();
+  } else if (typeof customSEO?.og_image_url === 'string' && customSEO.og_image_url.trim()) {
+    rawOgImage = customSEO.og_image_url.trim();
+  }
+
+  if (!rawOgImage && typeof fallback.ogImage === 'string' && fallback.ogImage.trim()) {
+    rawOgImage = fallback.ogImage.trim();
+  }
+
+  const ogImage = rawOgImage || '/og-image.jpg';
   const noIndex = customSEO?.no_index !== undefined ? customSEO.no_index : !!fallback.noIndex;
 
   const formattedOgImage = ogImage.startsWith('http')

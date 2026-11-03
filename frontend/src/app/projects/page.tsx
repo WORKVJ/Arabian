@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Reveal from '@/components/animations/Reveal';
 import ProjectFilterPanel from '@/components/projects/ProjectFilterPanel';
-import { getProjects, getIndustries, getProducts } from '@/lib/api/client';
+import { getProjects, getIndustries, getProducts, getImageUrl } from '@/lib/api/client';
 import { Project, Industry, ProductListItem, PaginatedResponse } from '@/types';
 import { ChevronRight, MapPin, Calendar } from 'lucide-react';
 import { Metadata } from 'next';
@@ -25,7 +25,7 @@ interface ProjectsPageProps {
 }
 
 export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
-  const params = await searchParams;
+  const params = (await searchParams) || {};
 
   let projectsRes: PaginatedResponse<Project> = { count: 0, next: null, previous: null, results: [] };
   let industriesRes: PaginatedResponse<Industry> = { count: 0, next: null, previous: null, results: [] };
@@ -52,10 +52,10 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
     console.warn('Products not available for project filters.');
   }
 
-  const projects = projectsRes.results;
-  const industries = industriesRes.results;
-  const products = productsRes.results;
-  const isFiltered = params.industry || params.product;
+  const projects = projectsRes?.results || [];
+  const industries = industriesRes?.results || [];
+  const products = productsRes?.results || [];
+  const isFiltered = Boolean(params.industry || params.product);
 
   return (
     <div className="pt-24 pb-20 min-h-screen bg-slate-50/50">
@@ -95,9 +95,9 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
                 <article className="group bg-white border border-slate-200/90 hover:border-amber-500/60 rounded-2xl flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   {/* Featured Image */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                    {project.featured_image ? (
+                    {project.featured_image?.file ? (
                       <Image
-                        src={project.featured_image.file}
+                        src={getImageUrl(project.featured_image.file) || project.featured_image.file}
                         alt={project.featured_image.alt_text || project.title}
                         fill
                         loading="lazy"

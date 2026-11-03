@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ProjectLightbox from './ProjectLightbox';
+import { getImageUrl } from '@/lib/api/client';
 
 interface GalleryImage {
   id: number;
@@ -82,7 +83,7 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
               aria-label={`View image ${idx + 1}: ${img.alt_text}`}
             >
               <Image
-                src={img.file}
+                src={getImageUrl(img.file) || img.file}
                 alt={img.alt_text}
                 fill
                 loading="lazy"
