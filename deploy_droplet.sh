@@ -107,6 +107,22 @@ server {
 
     client_max_body_size 50M;
 
+    # Gzip compression for fast asset delivery
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml font/woff2;
+
+    # Next.js immutable static assets
+    location /_next/static/ {
+        proxy_pass http://127.0.0.1:3000/_next/static/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        expires 365d;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
     # Media uploads
     location /media/ {
         alias /var/www/arabian/Arabian_gratings/backend/media/;

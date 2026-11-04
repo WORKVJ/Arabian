@@ -580,7 +580,7 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                   <motion.div
                     key={slide.src}
                     className="absolute inset-0"
-                    initial={{ opacity: 0 }}
+                    initial={idx === 0 ? false : { opacity: 0 }}
                     animate={{ opacity: isCurrent ? 1 : 0 }}
                     transition={{ duration: 0.8, ease: 'easeInOut' }}
                   >
@@ -588,9 +588,11 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                       src={slide.src}
                       alt={slide.alt}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 580px"
                       className="object-cover object-center"
                       priority={idx === 0}
+                      // @ts-expect-error fetchPriority is standard in modern HTML / Next 15+
+                      fetchPriority={idx === 0 ? "high" : "auto"}
                     />
                   </motion.div>
                 );
@@ -794,7 +796,7 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                         src={imgSrc}
                         alt={cat.name}
                         fill
-                        sizes="100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 680px"
                         className="object-cover"
                       />
                       {/* Subtle bottom gradient for text legibility only */}
@@ -998,7 +1000,7 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                         src={imgSrc}
                         alt="Arabian Gratings structural material overview"
                         fill
-                        sizes="100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#111318]/20 to-transparent" />
