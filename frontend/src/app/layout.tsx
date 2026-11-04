@@ -37,8 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           rel="preload"
           as="image"
           href="/hero-steel.jpg"
-          // @ts-expect-error fetchpriority is standard in modern HTML
-          fetchpriority="high"
+          {...({ fetchPriority: "high", fetchpriority: "high" })}
         />
         {/* Google Tag Manager */}
         <Script

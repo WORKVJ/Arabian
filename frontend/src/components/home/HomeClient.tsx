@@ -591,7 +591,6 @@ export default function HomeClient({ categories: rawCategories, industries: rawI
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 580px"
                       className="object-cover object-center"
                       priority={idx === 0}
-                      // @ts-expect-error fetchPriority is standard in modern HTML / Next 15+
                       fetchPriority={idx === 0 ? "high" : "auto"}
                     />
                   </motion.div>
